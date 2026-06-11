@@ -1,0 +1,13 @@
+{
+  "_meta": {
+    "table": "Cat_Label",
+    "generatedAt": "2026-06-10",
+    "rowCount": 3,
+    "columns": ["ID","Label","Color","Datasource","ServerUpdate","ServerCreate","UserUpdate","UserCreate","DateCreate","DateUpdate","UserLockID","DateLock","IsDelete","IPCreate","IPUpdate","SortID"]
+  },
+  "data": [
+    {"ID":"82DEA49D-D4C1-49AB-9E61-0319C6DC7411","Label":"Nhãn 1","Color":"#f2c1c1","Datasource":"Rec_Candidate","ServerUpdate":"113.161.54.110","ServerCreate":"113.161.54.110","UserUpdate":"vnr","UserCreate":"vnr","DateCreate":"2025-03-17T10:59:46.393Z","DateUpdate":"2025-03-17T10:59:46.393Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null,"SortID":4},
+    {"ID":"6AF43EC6-29BA-4684-A777-AF39BEDFE4E9","Label":"Nhãn 2","Color":"#fff","Datasource":null,"ServerUpdate":"113.161.54.110","ServerCreate":"113.161.54.110","UserUpdate":"vnr","UserCreate":"vnr","DateCreate":"2025-02-25T15:56:34.573Z","DateUpdate":"2025-02-25T15:57:07.713Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null,"SortID":2},
+    {"ID":"352B4BED-C363-423F-AA73-FC88EC78F16F","Label":"note","Color":"#4981d4","Datasource":"Rec_CandidateProfile","ServerUpdate":"113.161.54.110","ServerCreate":"113.161.54.110","UserUpdate":"ngoc.do","UserCreate":"ngoc.do","DateCreate":"2025-02-17T14:10:36.983Z","DateUpdate":"2025-02-17T14:10:36.983Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null,"SortID":1}
+  ]
+}

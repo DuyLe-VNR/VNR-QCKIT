@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "table": "Cat_ElementBudget",
+    "generatedAt": "2026-06-10",
+    "rowCount": 5,
+    "columns": ["ID","Code","ElementBudgetName","IsSummaryBudget","Formula","FormulaNewHeadcount","ServerUpdate","ServerCreate","UserUpdate","UserCreate","DateCreate","DateUpdate","UserLockID","DateLock","IsDelete","IPCreate","IPUpdate","Note"]
+  },
+  "data": [
+    {"ID":"C99CCE7B-622F-451A-AEC2-1242C7EA7130","Code":"MPT_HUYEN01","ElementBudgetName":"Tên phân tử tính ngân sách Huyên check 1","IsSummaryBudget":true,"Formula":"1000","FormulaNewHeadcount":"2000","ServerUpdate":"113.161.54.110","ServerCreate":"113.161.54.110","UserUpdate":"vnr","UserCreate":"vnr","DateCreate":"2025-03-18T15:28:29.050Z","DateUpdate":"2025-03-18T15:28:42.397Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null,"Note":"Huyênnnn"},
+    {"ID":"715E2262-B75E-4FBA-B621-18887D191E5B","Code":"1","ElementBudgetName":"1","IsSummaryBudget":false,"Formula":"1000","FormulaNewHeadcount":null,"ServerUpdate":"113.161.54.110","ServerCreate":"113.161.54.110","UserUpdate":"vnr","UserCreate":"vnr","DateCreate":"2025-03-18T15:54:27.110Z","DateUpdate":"2025-03-18T15:54:27.110Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null,"Note":null},
+    {"ID":"7C529C8D-C02B-4FCC-966F-27DCD69A3993","Code":"MPT_HUYEN03","ElementBudgetName":"7","IsSummaryBudget":false,"Formula":null,"FormulaNewHeadcount":null,"ServerUpdate":"113.161.54.110","ServerCreate":"113.161.54.110","UserUpdate":"vnr","UserCreate":"vnr","DateCreate":"2025-03-18T15:30:15.047Z","DateUpdate":"2025-03-18T15:30:15.047Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null,"Note":null},
+    {"ID":"051762EF-5682-4141-8B77-B7D04CDEDE7E","Code":"2","ElementBudgetName":"2","IsSummaryBudget":false,"Formula":null,"FormulaNewHeadcount":null,"ServerUpdate":"113.161.54.110","ServerCreate":"113.161.54.110","UserUpdate":"vnr","UserCreate":"vnr","DateCreate":"2025-03-18T15:30:21.693Z","DateUpdate":"2025-03-18T15:30:27.570Z","UserLockID":null,"DateLock":null,"IsDelete":true,"IPCreate":null,"IPUpdate":null,"Note":null},
+    {"ID":"AE52AF77-6303-4552-A314-D16DB3D84C5E","Code":"MPT_HUYEN02","ElementBudgetName":"Tên phần tử tính ngân sách Huyên check 2","IsSummaryBudget":false,"Formula":null,"FormulaNewHeadcount":null,"ServerUpdate":"113.161.54.110","ServerCreate":"113.161.54.110","UserUpdate":"vnr","UserCreate":"vnr","DateCreate":"2025-03-18T15:29:23.607Z","DateUpdate":"2025-03-18T15:29:23.607Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null,"Note":null}
+  ]
+}

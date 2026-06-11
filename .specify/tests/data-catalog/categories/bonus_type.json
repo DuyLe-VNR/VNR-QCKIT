@@ -1,0 +1,42 @@
+{
+  "table": "Cat_BonusType",
+  "rows": [
+    {
+      "ID": "57CFE332-E192-4731-83E1-275C3FE70C32",
+      "BonusTypeCode": "345345",
+      "BonusTypeName": "345345",
+      "IsInactive": false,
+      "IsDelete": null
+    },
+    {
+      "ID": "4A3AABF4-F7B6-4DB7-9E72-2C08F8AC2CE2",
+      "BonusTypeCode": "BaoTest",
+      "BonusTypeName": "Thưởng Đặc biệt 111",
+      "IsInactive": true,
+      "Seniority": 222,
+      "IsDelete": null
+    },
+    {
+      "ID": "D818B733-FF4B-429F-A948-3071D1A6A743",
+      "BonusTypeCode": "BaoTest",
+      "BonusTypeName": "Thưởng Tháng Lương thứ 14",
+      "IsInactive": false,
+      "IsDelete": true
+    },
+    {
+      "ID": "33110C75-3525-426E-A169-5EDA9CC41169",
+      "BonusTypeCode": "13th",
+      "BonusTypeName": "Bonus-13th",
+      "IsInactive": false,
+      "IsDelete": null,
+      "IsActiveEmployee": true
+    },
+    {
+      "ID": "23B3F7A7-17B0-4033-8F55-BF079BBDB034",
+      "BonusTypeCode": "Performance",
+      "BonusTypeName": "Bonus-Performance",
+      "IsInactive": false,
+      "IsDelete": null
+    }
+  ]
+}

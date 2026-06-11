@@ -1,0 +1,15 @@
+{
+  "table": "Cat_BudgetParameter",
+  "rows": [
+    {
+      "ID": "3C5745C7-78C9-4806-BC9F-6BF3E03C16EA",
+      "Code": "1000",
+      "ParameterName": "Test",
+      "Type": "E_MONTHCOUNT",
+      "Value": 50000,
+      "CurrencyID": null,
+      "Description": null,
+      "IsDelete": null
+    }
+  ]
+}

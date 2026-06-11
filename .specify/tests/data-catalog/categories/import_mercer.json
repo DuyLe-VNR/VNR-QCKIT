@@ -1,0 +1,11 @@
+{
+  "_meta": {
+    "table": "Cat_ImportMercer",
+    "generatedAt": "2026-06-10",
+    "rowCount": 1,
+    "columns": ["ID","Code","TemplateName","DateEffectIndex","JobFamilyCodeList","StartRowIndex","RowNoPayslip","PivotColumnStart","PivotColumnEnd","Description","TemplateFile","ServerUpdate","ServerCreate","UserUpdate","UserCreate","DateCreate","DateUpdate","UserLockID","DateLock","IsDelete","IPCreate","IPUpdate"]
+  },
+  "data": [
+    {"ID":"806E90F3-19E4-4C1E-994E-25051FF947A2","Code":"TEMPLATE","TemplateName":"Mẫu import","DateEffectIndex":"F1","JobFamilyCodeList":"GMA","StartRowIndex":6,"RowNoPayslip":56,"PivotColumnStart":1,"PivotColumnEnd":9,"Description":null,"TemplateFile":null,"ServerUpdate":"::1","ServerCreate":"::1","UserUpdate":null,"UserCreate":null,"DateCreate":"2020-07-16T10:42:18.207Z","DateUpdate":"2020-07-17T16:10:24.690Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null}
+  ]
+}

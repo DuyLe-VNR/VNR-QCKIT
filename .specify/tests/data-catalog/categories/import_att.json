@@ -1,0 +1,12 @@
+{
+  "_meta": {
+    "table": "Cat_ImportAtt",
+    "generatedAt": "2026-06-10",
+    "rowCount": 2,
+    "columns": ["ID","Code","TemplateName","SheetIndex","StartRowIndex","StartColumnIndex","SkipRowNumbers","PivotHeaderRow","PivotColumnStart","PivotColumnEnd","Note","IsResultImport","TemplateFile","ServerUpdate","ServerCreate","UserUpdate","UserCreate","DateCreate","DateUpdate","UserLockID","DateLock","IsDelete","IPCreate","IPUpdate","IsNotOvertimeImport","IsRosterImport","IsOvertimeImport","IsLeaveDayImport","IsImportTAMScanLog","FormulaImportAttendance"]
+  },
+  "data": [
+    {"ID":"D1BB6F82-F955-4E27-85AE-364F862D73B2","Code":"M12","TemplateName":"T12","SheetIndex":null,"StartRowIndex":null,"StartColumnIndex":null,"SkipRowNumbers":null,"PivotHeaderRow":null,"PivotColumnStart":null,"PivotColumnEnd":null,"Note":null,"IsResultImport":false,"TemplateFile":null,"ServerUpdate":"113.161.54.110","ServerCreate":"113.161.54.110","UserUpdate":"vnr","UserCreate":"vnr","DateCreate":"2025-03-12T13:47:39.280Z","DateUpdate":"2025-03-12T13:49:17.583Z","UserLockID":null,"DateLock":null,"IsDelete":true,"IPCreate":null,"IPUpdate":null,"IsNotOvertimeImport":null,"IsRosterImport":false,"IsOvertimeImport":false,"IsLeaveDayImport":false,"IsImportTAMScanLog":false,"FormulaImportAttendance":null},
+    {"ID":"E855EC84-22FB-4765-B0F0-390AE8846792","Code":"ATT","TemplateName":"Bảng Công","SheetIndex":4,"StartRowIndex":8,"StartColumnIndex":0,"SkipRowNumbers":0,"PivotHeaderRow":null,"PivotColumnStart":1,"PivotColumnEnd":null,"Note":null,"IsResultImport":true,"TemplateFile":null,"ServerUpdate":"115.78.239.195","ServerCreate":"115.78.239.195","UserUpdate":"son.hoang","UserCreate":"son.hoang","DateCreate":"2015-12-11T14:08:24.317Z","DateUpdate":"2015-12-28T11:32:31.130Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null,"IsNotOvertimeImport":null,"IsRosterImport":null,"IsOvertimeImport":null,"IsLeaveDayImport":null,"IsImportTAMScanLog":null,"FormulaImportAttendance":null}
+  ]
+}

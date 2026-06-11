@@ -1,0 +1,11 @@
+{
+  "_meta": {
+    "table": "Cat_ImportHistory",
+    "generatedAt": "2026-06-10",
+    "rowCount": 1,
+    "columns": ["ID","UserImport","DateImport","Function","ImportName","FileImport","TotalData","TotalImport","ImportID","ServerUpdate","ServerCreate","UserUpdate","UserCreate","DateCreate","DateUpdate","UserLockID","DateLock","IsDelete","IPCreate","IPUpdate","ProfileID"]
+  },
+  "data": [
+    {"ID":"AC7BCA37-59DD-464F-84C9-9E15F1C1F408","UserImport":null,"DateImport":"2025-03-27T10:37:45.873Z","Function":"E_RECRUITMENTPROCEDURES","ImportName":"TC - TC vị trí test bắt buộc nhập","FileImport":"Book11743046557562.xlsx","TotalData":1,"TotalImport":1,"ImportID":"4E63DE7C-EF96-43BF-8548-A6EA8A4867F5","ServerUpdate":null,"ServerCreate":null,"UserUpdate":"huyen_itl.cao","UserCreate":"huyen_itl.cao","DateCreate":"2025-03-27T10:37:45.903Z","DateUpdate":"2025-03-27T10:37:45.903Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null,"ProfileID":"8FA09998-9392-413F-AD3D-C3F1B3B34855"}
+  ]
+}

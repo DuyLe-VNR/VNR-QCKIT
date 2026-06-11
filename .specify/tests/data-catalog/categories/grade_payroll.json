@@ -1,0 +1,29 @@
+{
+  "table": "Cat_GradePayroll",
+  "rows": [
+    {
+      "ID": "5BF78004",
+      "Code": "ITL_VN",
+      "GradeCfgName": "Che do luong VN",
+      "OrderNumber": 5
+    },
+    {
+      "ID": "CB68D377",
+      "Code": "VNR_Official",
+      "GradeCfgName": "VNR_Official",
+      "OrderNumber": 3
+    },
+    {
+      "ID": "AEE71CFE",
+      "Code": "Robert_Gross",
+      "GradeCfgName": "Robert Gross",
+      "OrderNumber": 4
+    },
+    {
+      "ID": "4D13768A",
+      "Code": "ITL_FTL_LN",
+      "GradeCfgName": "Che do luong FTL",
+      "OrderNumber": 11
+    }
+  ]
+}

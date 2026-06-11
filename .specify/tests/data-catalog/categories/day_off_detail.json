@@ -1,0 +1,14 @@
+{
+  "_meta": {
+    "table": "Cat_DayOffDetail",
+    "generatedAt": "2026-06-10",
+    "rowCount": 4,
+    "columns": ["ID","DayOffID","ProfileID","ServerUpdate","ServerCreate","UserUpdate","UserCreate","DateCreate","DateUpdate","UserLockID","DateLock","IsDelete","IPCreate","IPUpdate","IsDataFromWorkSchedule"]
+  },
+  "data": [
+    {"ID":"3EA13ECF-6F1B-4AB0-81AC-5C35E5B7CE5D","DayOffID":"5CF66CDF-C695-4763-A5C6-86A14C5F1D93","ProfileID":"11EA48FF-308D-4FBE-BC33-7C5F2D27CA70","ServerUpdate":null,"ServerCreate":null,"UserUpdate":"vnr","UserCreate":"vnr","DateCreate":"2025-02-28T16:11:26.370Z","DateUpdate":"2025-02-28T16:11:26.283Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null,"IsDataFromWorkSchedule":null},
+    {"ID":"B3F1AE57-E976-422A-B05E-67B12A4D9FBD","DayOffID":"9E294C58-2A64-4346-BDBC-D7BC5BD2C557","ProfileID":"6005A137-1286-44FB-959A-1F206B98CF8F","ServerUpdate":null,"ServerCreate":null,"UserUpdate":"vnr","UserCreate":"vnr","DateCreate":"2025-02-27T15:17:24.593Z","DateUpdate":"2025-02-27T15:17:24.523Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null,"IsDataFromWorkSchedule":null},
+    {"ID":"4D045E5C-526E-467F-A39C-80300109F6AC","DayOffID":"73362A03-899C-43D6-BFAA-FB3D3602420B","ProfileID":"21AD8893-55ED-46AD-953C-135EDD84BA90","ServerUpdate":null,"ServerCreate":null,"UserUpdate":"vnr","UserCreate":"vnr","DateCreate":"2025-02-27T15:55:31.923Z","DateUpdate":"2025-02-27T15:55:31.850Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null,"IsDataFromWorkSchedule":null},
+    {"ID":"A8C5BBF6-C285-429B-BCF8-A6B63CCA6235","DayOffID":"9BAB7956-C75B-4728-B8D8-89C0134A8112","ProfileID":"412FCBB9-1DEA-4ECD-BFC1-68D3E0EB3FE9","ServerUpdate":null,"ServerCreate":null,"UserUpdate":"vnr","UserCreate":"vnr","DateCreate":"2025-03-05T14:44:11.277Z","DateUpdate":"2025-03-05T14:44:11.227Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null,"IsDataFromWorkSchedule":null}
+  ]
+}

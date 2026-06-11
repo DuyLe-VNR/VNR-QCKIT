@@ -1,0 +1,21 @@
+{
+  "table": "Cat_Element",
+  "rows": [
+    {
+      "ID": "5C156B52",
+      "ElementCode": "AVN_PCCVU",
+      "ElementName": "AVN PCCVU",
+      "Formula": "[ALLOWANCES_PCCVU_BASICSALARY]",
+      "ElementType": "Payroll",
+      "IsDelete": true
+    },
+    {
+      "ID": "F606B634",
+      "ElementCode": "ITL_Log_SNPT",
+      "ElementName": "So ngay phep ton",
+      "GradePayrollID": "33E9D0ED",
+      "TabType": "Luong",
+      "IsDelete": null
+    }
+  ]
+}

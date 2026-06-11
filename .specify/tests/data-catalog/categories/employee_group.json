@@ -1,0 +1,23 @@
+{
+  "table": "Cat_EmployeeGroup",
+  "rows": [
+    {
+      "ID": "AE9398E2",
+      "Code": "HT1",
+      "EmployeeGroupName": "Nhan vien chinh thuc",
+      "OrderNumber": 453
+    },
+    {
+      "ID": "00A531F7",
+      "Code": "HT2",
+      "EmployeeGroupName": "Nhan vien thu viec",
+      "OrderNumber": 454
+    },
+    {
+      "ID": "744520B2",
+      "Code": "IPDP",
+      "EmployeeGroupName": "IPDP",
+      "OrderNumber": 2
+    }
+  ]
+}

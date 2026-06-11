@@ -1,0 +1,21 @@
+{
+  "runId": "run-20260609-150639",
+  "datetime": "2026-06-09T15:06:39Z",
+  "playwright": "1.60.0",
+  "specFile": "090626.spec.ts",
+  "totalTests": 9,
+  "passed": 0,
+  "failed": 9,
+  "skipped": 0,
+  "results": [
+    { "tc": "TC-001", "title": "Hiển thị 3 field mới trên form cấu hình", "status": "failed", "duration": 25825, "error": "expect(locator).toBeVisible() failed — Locator: input[name=\"MaxPerTimes\"], migration DB chưa chạy" },
+    { "tc": "TC-002", "title": "Cấu hình MaxRequestPerMonth thành công", "status": "failed", "duration": 30000, "error": "Test timeout of 30000ms — session hết hạn, redirect ExternalLoginRedirect/Provider-01" },
+    { "tc": "TC-003", "title": "Cấu hình IsConsecutive = true thành công", "status": "failed", "duration": 30000, "error": "Test timeout of 30000ms — session hết hạn, redirect ExternalLoginRedirect/Provider-01" },
+    { "tc": "TC-004", "title": "Cấu hình IsConsecutive = false (tắt)", "status": "failed", "duration": 30000, "error": "Test timeout of 30000ms — session hết hạn, redirect về /" },
+    { "tc": "TC-006", "title": "Lần đầu đăng ký — pass (count = 0 < max)", "status": "failed", "duration": 30000, "error": "Test timeout of 30000ms — session hết hạn, btnTaoMoi không click được" },
+    { "tc": "TC-010", "title": "Đơn đầu tiên trong tháng — luôn pass (EX-003)", "status": "failed", "duration": 31185, "error": "Test timeout of 30000ms — session hết hạn, btnTaoMoi không click được" },
+    { "tc": "TC-012", "title": "Gap sau đơn cũ — hard block (BR-NEW-02)", "status": "failed", "duration": 31067, "error": "Test timeout of 30000ms — session hết hạn, btnTaoMoi không click được" },
+    { "tc": "TC-013", "title": "Gap trước đơn cũ — hard block", "status": "failed", "duration": 30000, "error": "Test timeout of 30000ms — session hết hạn, btnTaoMoi không click được" },
+    { "tc": "TC-016", "title": "Loại nghỉ không cấu hình rule mới — tự do đăng ký", "status": "failed", "duration": 30000, "error": "Test timeout of 30000ms — session hết hạn, btnTaoMoi không click được" }
+  ]
+}

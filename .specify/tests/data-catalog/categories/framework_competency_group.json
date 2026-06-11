@@ -1,0 +1,11 @@
+{
+  "_meta": {
+    "table": "Cat_FrameworkCompetencyGroup",
+    "generatedAt": "2026-06-10",
+    "rowCount": 1,
+    "columns": ["ID","CompetencyFrameworkID","CompetencyGroupID","Weight","FormulaID","ServerCreate","UserUpdate","UserCreate","DateCreate","DateUpdate","UserLockID","DateLock","IsDelete","IPCreate","IPUpdate"]
+  },
+  "data": [
+    {"ID":"A34CCA17-E54B-450E-A0FA-DEA105F45D7B","CompetencyFrameworkID":"450F3CFF-A485-4B1E-94FE-38B793A4BE95","CompetencyGroupID":"74649931-4D2F-490D-84B1-C258204B9B36","Weight":1,"FormulaID":null,"ServerCreate":"113.161.54.110","UserUpdate":"huyen_itl.cao","UserCreate":"huyen_itl.cao","DateCreate":"2025-03-17T09:17:47.790Z","DateUpdate":"2025-03-17T09:17:47.790Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null}
+  ]
+}

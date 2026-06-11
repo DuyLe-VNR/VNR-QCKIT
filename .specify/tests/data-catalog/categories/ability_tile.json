@@ -1,0 +1,93 @@
+{
+  "table": "Cat_AbilityTile",
+  "rows": [
+    {
+      "ID": "A4C83025-BDC9-4D52-B0AD-2377627267C5",
+      "RankID": null,
+      "AbilityTitleVNI": "P10",
+      "AbilityTitleEng": null,
+      "Code": "P10",
+      "IsDelete": true
+    },
+    {
+      "ID": "AB332F03-D813-452F-953F-36ED5A6BF65E",
+      "RankID": null,
+      "AbilityTitleVNI": "a",
+      "AbilityTitleEng": null,
+      "Code": "a",
+      "IsDelete": null
+    },
+    {
+      "ID": "7B560746-4379-47E5-B76F-4A61FF22A6FE",
+      "RankID": null,
+      "AbilityTitleVNI": "Không thuộc quản lý",
+      "AbilityTitleEng": "None - Management",
+      "Code": "None - Management",
+      "IsDelete": null
+    },
+    {
+      "ID": "AE735CAA-C0AE-4BDD-ABDF-517B15B67ECE",
+      "RankID": "5446376E-2FF9-426C-A448-55FB6100BC3C",
+      "AbilityTitleVNI": "ths",
+      "AbilityTitleEng": "dfh",
+      "Code": "2811",
+      "IsDelete": true
+    },
+    {
+      "ID": "5090FE4E-0D35-469A-BDCD-5ABBE4FDB859",
+      "RankID": "49E8F89B-2D38-4EDE-926A-DC2C27638542",
+      "AbilityTitleVNI": null,
+      "AbilityTitleEng": null,
+      "Code": "abc1",
+      "IsDelete": true
+    },
+    {
+      "ID": "1C7873EF-FF63-430B-905F-6CDD120D49D6",
+      "RankID": "49E8F89B-2D38-4EDE-926A-DC2C27638542",
+      "AbilityTitleVNI": null,
+      "AbilityTitleEng": null,
+      "Code": "abc",
+      "IsDelete": true
+    },
+    {
+      "ID": "4DA75680-0709-49DE-82A8-8EE47652D448",
+      "RankID": null,
+      "AbilityTitleVNI": "Quản lý",
+      "AbilityTitleEng": "Management",
+      "Code": "Management",
+      "IsDelete": null
+    },
+    {
+      "ID": "87384F8D-C94C-44F8-B308-9FD93C15045F",
+      "RankID": null,
+      "AbilityTitleVNI": "test",
+      "AbilityTitleEng": null,
+      "Code": "Managerment",
+      "IsDelete": true
+    },
+    {
+      "ID": "5C408118-BF63-4CDC-8AF7-B779169A068A",
+      "RankID": null,
+      "AbilityTitleVNI": "Không thuộc quản lý - Lái xe",
+      "AbilityTitleEng": "None - Management - Drivers",
+      "Code": "002",
+      "IsDelete": true
+    },
+    {
+      "ID": "A21230C9-8C18-472A-AD0B-E425C2237D03",
+      "RankID": null,
+      "AbilityTitleVNI": "ư",
+      "AbilityTitleEng": null,
+      "Code": "2811",
+      "IsDelete": true
+    },
+    {
+      "ID": "FB982B2C-0B0E-490C-BA4D-F2261CCE9094",
+      "RankID": null,
+      "AbilityTitleVNI": "drh",
+      "AbilityTitleEng": null,
+      "Code": "2811",
+      "IsDelete": true
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "table": "Cat_DisciplinedTypes",
+  "rows": [
+    {
+      "ID": "A8421DF7-DE49-40DD-8A06-0042EFB1110B",
+      "Code": "HTKL3",
+      "DisciplinedTypesName": "Hình Thức kỷ luật 3",
+      "Notes": null,
+      "IsDelete": true,
+      "DurationForWarning": null,
+      "IsBlackList": null,
+      "DisciplineDuration": null,
+      "IsDelaySalary": null,
+      "IsFired": null
+    },
+    {
+      "ID": "55CE514C-A8E2-4FC1-B72E-016D2C6ED308",
+      "Code": "1",
+      "DisciplinedTypesName": "ưer",
+      "Notes": "ge",
+      "IsDelete": true
+    },
+    {
+      "ID": "F5E6CF7F-FFAC-4144-926D-28AE2A728BCD",
+      "Code": "HT2",
+      "DisciplinedTypesName": "Khiển trách lần cuối/ Last Warning",
+      "Notes": null,
+      "IsDelete": true,
+      "DisciplineDuration": 6,
+      "IsFired": true
+    },
+    {
+      "ID": "AB734283-E1AD-4B47-A882-2F5C926FE8B4",
+      "Code": "CC",
+      "DisciplinedTypesName": "Cách chức",
+      "Notes": null,
+      "IsDelete": null
+    },
+    {
+      "ID": "7738460F-5157-4E44-9D21-3B22F14CC273",
+      "Code": "PB",
+      "DisciplinedTypesName": "Phê bình",
+      "Notes": null,
+      "IsDelete": null
+    },
+    {
+      "ID": "DA989537-5AC7-4B93-9D95-7E84B86C15B8",
+      "Code": "ST-BT",
+      "DisciplinedTypesName": "Sa thải (Gây thiệt hại)",
+      "Notes": null,
+      "IsDelete": null
+    },
+    {
+      "ID": "28B200E0-3D71-48F7-A8CB-8DDC6F02C5C5",
+      "Code": "KK",
+      "DisciplinedTypesName": "Các hình thức khác",
+      "Notes": null,
+      "IsDelete": null
+    },
+    {
+      "ID": "A5256FC2-04C0-4FFE-B7ED-9BAB8B35E85C",
+      "Code": "KT",
+      "DisciplinedTypesName": "Khiển trách",
+      "Notes": null,
+      "IsDelete": null
+    },
+    {
+      "ID": "62E5C6E9-4F5D-4C34-B25C-9CFD125A9CB2",
+      "Code": "ST",
+      "DisciplinedTypesName": "Sa thải",
+      "Notes": null,
+      "IsDelete": null
+    },
+    {
+      "ID": "94B80528-5083-48DF-9B94-9D8F957582D6",
+      "Code": "CC-BT",
+      "DisciplinedTypesName": "Cách chức (Gây thiệt hại)",
+      "Notes": null,
+      "IsDelete": null
+    },
+    {
+      "ID": "E2804D30-56DE-4DE2-967B-57F5317D5673",
+      "Code": "HT4",
+      "DisciplinedTypesName": "Nhắc nhở bằng miệng/ Vebal Warning",
+      "Notes": null,
+      "IsDelete": true,
+      "DisciplineDuration": 3,
+      "IsFired": true
+    },
+    {
+      "ID": "D0523E47-2A19-4F4E-85A6-4FF27223C8B5",
+      "Code": "HTKL2",
+      "DisciplinedTypesName": "Hình thức kỷ luật 2",
+      "Notes": "asefasef",
+      "IsDelete": true
+    },
+    {
+      "ID": "27AF6AC1-A49B-4434-AAA3-859D91DD490D",
+      "Code": "Nh?p text",
+      "DisciplinedTypesName": "Nhập text",
+      "Notes": "Nhập text",
+      "IsDelete": true
+    },
+    {
+      "ID": "9153D355-D775-4EC9-8298-AD44FAB3561B",
+      "Code": "abc",
+      "DisciplinedTypesName": "Thích thì đuổi",
+      "Notes": null,
+      "IsDelete": true
+    },
+    {
+      "ID": "A2A4E6D4-2FF7-4ED8-B900-AF96AE2992A1",
+      "Code": "HTKL1",
+      "DisciplinedTypesName": "Hình thức kỷ luật 1",
+      "Notes": null,
+      "IsDelete": true
+    }
+  ]
+}

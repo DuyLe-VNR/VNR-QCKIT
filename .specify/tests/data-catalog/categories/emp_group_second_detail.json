@@ -1,0 +1,11 @@
+{
+  "_meta": {
+    "table": "Cat_EmpGroupSecondDetail",
+    "generatedAt": "2026-06-10",
+    "rowCount": 1,
+    "columns": ["ID","Code","EmpGroupSecondDetailName","EmpGroupFirstDetailID","EnglishName","Note","IsInactive","EmployeeGroupID","ServerUpdate","ServerCreate","UserUpdate","UserCreate","DateCreate","DateUpdate","UserLockID","DateLock","IsDelete","IPCreate","IPUpdate"]
+  },
+  "data": [
+    {"ID":"5A6D8002-8B3A-42D2-A3A1-0F88046D409F","Code":"NNVCT2","EmpGroupSecondDetailName":"Nhóm nhân viên chi tiết 2_Huyên","EmpGroupFirstDetailID":"2DB1988E-EB82-43E8-8C8E-8459DDB21398","EnglishName":null,"Note":null,"IsInactive":false,"EmployeeGroupID":"851D2A42-4F44-4C66-A7EC-57EB8E65EA6F","ServerUpdate":"113.161.54.110","ServerCreate":"113.161.54.110","UserUpdate":"vnr","UserCreate":"vnr","DateCreate":"2025-02-26T15:51:50.867Z","DateUpdate":"2025-02-26T15:53:07.020Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null}
+  ]
+}

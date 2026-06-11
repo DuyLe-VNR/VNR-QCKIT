@@ -1,0 +1,12 @@
+{
+  "_meta": {
+    "table": "Cat_FacilityIssueTemplate",
+    "generatedAt": "2026-06-10",
+    "rowCount": 2,
+    "columns": ["ID","FacilityIssueTemplateName","Description","Code","ServerUpdate","ServerCreate","UserUpdate","UserCreate","DateCreate","DateUpdate","UserLockID","DateLock","IsDelete","IPCreate","IPUpdate","EmployeeGroupID","SalaryClassIDs","EmployeeTypeIDs","WorkPlaceIDs","EmployeeGroupIDs"]
+  },
+  "data": [
+    {"ID":"3359B805-12BB-4CF6-A3D2-1EFD3898DBB6","FacilityIssueTemplateName":"234234","Description":"234234","Code":"234234","ServerUpdate":null,"ServerCreate":null,"UserUpdate":"vnr","UserCreate":"vnr","DateCreate":"2025-03-12T16:08:29.417Z","DateUpdate":"2025-03-12T16:08:29.417Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null,"EmployeeGroupID":"851D2A42-4F44-4C66-A7EC-57EB8E65EA6F","SalaryClassIDs":null,"EmployeeTypeIDs":null,"WorkPlaceIDs":null,"EmployeeGroupIDs":null},
+    {"ID":"A5A1E20E-161A-4CB6-8F0D-EFC997FEC19A","FacilityIssueTemplateName":"Mã cấp phát 1","Description":null,"Code":"M02","ServerUpdate":null,"ServerCreate":null,"UserUpdate":"vnr","UserCreate":"vnr","DateCreate":"2025-03-14T10:03:26.820Z","DateUpdate":"2025-03-14T10:36:31.923Z","UserLockID":null,"DateLock":null,"IsDelete":true,"IPCreate":null,"IPUpdate":null,"EmployeeGroupID":"9D54695D-9160-4D58-8B92-62673221C024","SalaryClassIDs":"222ad67d-1d3c-4476-8fb4-03abeb1cae43","EmployeeTypeIDs":"ac3dcfd4-bdc3-4b47-8c43-b561a8496be9","WorkPlaceIDs":"231c8ae4-a4d1-471e-9984-a754d7e7623f","EmployeeGroupIDs":"851d2a42-4f44-4c66-a7ec-57eb8e65ea6f"}
+  ]
+}

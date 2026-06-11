@@ -1,0 +1,20 @@
+{
+  "name": "vnr-qckit",
+  "description": "VNR QC automation plugins for Claude Code",
+  "owner": {
+    "name": "VNR"
+  },
+  "plugins": [
+    {
+      "name": "vnr-qckit",
+      "source": "./",
+      "description": "VNR Playwright QC automation — setup preflight, BasePage generation, and URL alias crawling",
+      "version": "1.0.0",
+      "author": {
+        "name": "VNR"
+      },
+      "license": "MIT",
+      "keywords": ["playwright", "automation", "qc", "testing"]
+    }
+  ]
+}

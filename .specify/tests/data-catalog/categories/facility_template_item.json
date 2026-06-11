@@ -1,0 +1,12 @@
+{
+  "_meta": {
+    "table": "Cat_FacilityTemplateItem",
+    "generatedAt": "2026-06-10",
+    "rowCount": 2,
+    "columns": ["ID","FacilityIssueTemplateID","FacilityItemID","Quantity","IsNew","IsPeriodic","PeriodicTime","PeriodicTimeType","ServerUpdate","ServerCreate","UserUpdate","UserCreate","DateCreate","DateUpdate","UserLockID","DateLock","IsDelete","IPCreate","IPUpdate","Gender","SpecificationID","Specification2ID","SizeID","CategoryID","FacilityID"]
+  },
+  "data": [
+    {"ID":"97DB4DA0-D19D-4E5D-9087-5E0A3FC14F3B","FacilityIssueTemplateID":"3359B805-12BB-4CF6-A3D2-1EFD3898DBB6","FacilityItemID":null,"Quantity":2,"IsNew":false,"IsPeriodic":false,"PeriodicTime":null,"PeriodicTimeType":"All","ServerUpdate":"113.161.54.110","ServerCreate":"113.161.54.110","UserUpdate":"vnr","UserCreate":"vnr","DateCreate":"2025-03-14T10:04:52.273Z","DateUpdate":"2025-03-14T10:04:52.273Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null,"Gender":null,"SpecificationID":null,"Specification2ID":null,"SizeID":null,"CategoryID":null,"FacilityID":null},
+    {"ID":"425CC8D9-3E84-4FB9-8E8D-FC9AD9CEF270","FacilityIssueTemplateID":"A5A1E20E-161A-4CB6-8F0D-EFC997FEC19A","FacilityItemID":"449A0167-5382-4593-995B-7FB524B80DEA","Quantity":1,"IsNew":true,"IsPeriodic":true,"PeriodicTime":null,"PeriodicTimeType":"E_MONTH","ServerUpdate":"113.161.54.110","ServerCreate":"113.161.54.110","UserUpdate":"vnr","UserCreate":"vnr","DateCreate":"2025-03-14T10:29:44.970Z","DateUpdate":"2025-03-14T10:33:10.717Z","UserLockID":null,"DateLock":null,"IsDelete":true,"IPCreate":null,"IPUpdate":null,"Gender":null,"SpecificationID":null,"Specification2ID":null,"SizeID":null,"CategoryID":"CB33EAC7-AB97-419A-B556-7F40C7E31722","FacilityID":"B432EE3F-D394-43C1-90E5-837700D76E52"}
+  ]
+}

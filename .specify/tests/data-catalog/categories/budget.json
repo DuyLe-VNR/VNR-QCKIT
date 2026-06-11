@@ -1,0 +1,47 @@
+{
+  "table": "Cat_Budget",
+  "rows": [
+    {
+      "ID": "2B86E0BE-7057-4A33-BA40-16D18E41112E",
+      "BudgetName": "d",
+      "Description": "đ",
+      "IsDelete": true
+    },
+    {
+      "ID": "D03BCBF2-162D-4CE6-9D75-19EFA26CA34E",
+      "BudgetName": "ewr",
+      "Description": "ẻ",
+      "IsDelete": true
+    },
+    {
+      "ID": "E2AC4BB9-8E95-41A5-B9DC-22F2A689EC58",
+      "BudgetName": "Nguồn chi 1",
+      "Description": null,
+      "IsDelete": true
+    },
+    {
+      "ID": "61F50DE0-2C1D-4013-ACB7-8575ECF72C68",
+      "BudgetName": "fdgdg",
+      "Description": "dgdg",
+      "IsDelete": true
+    },
+    {
+      "ID": "4286327F-36DC-4AEC-AF6A-AB452C30F4BB",
+      "BudgetName": "r",
+      "Description": "r",
+      "IsDelete": true
+    },
+    {
+      "ID": "3BB14472-0DD4-4BA7-8414-BB4ECBC4A042",
+      "BudgetName": "Nguồn chi 2",
+      "Description": "djfbjd",
+      "IsDelete": true
+    },
+    {
+      "ID": "0405CBE7-B6E0-4085-A977-C94A967BF572",
+      "BudgetName": "Nguồn chi 3",
+      "Description": "A A",
+      "IsDelete": true
+    }
+  ]
+}

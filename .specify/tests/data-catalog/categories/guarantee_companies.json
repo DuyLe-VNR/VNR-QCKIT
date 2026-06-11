@@ -1,0 +1,11 @@
+{
+  "_meta": {
+    "table": "Cat_GuaranteeCompanies",
+    "generatedAt": "2026-06-10",
+    "rowCount": 1,
+    "columns": ["ID","Code","GuaranteeCompany","Type","OrderNumber","Note","ServerUpdate","ServerCreate","UserUpdate","UserCreate","DateCreate","DateUpdate","UserLockID","DateLock","IsDelete","IPCreate","IPUpdate"]
+  },
+  "data": [
+    {"ID":"EA16A01A-F52F-4021-AD39-A283C871C678","Code":"CT01","GuaranteeCompany":"Công ty bảo lãnh Huyên 1","Type":null,"OrderNumber":null,"Note":null,"ServerUpdate":"113.161.54.110","ServerCreate":"113.161.54.110","UserUpdate":"vnr","UserCreate":"vnr","DateCreate":"2025-02-25T15:38:46.603Z","DateUpdate":"2025-02-25T15:38:46.603Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null}
+  ]
+}

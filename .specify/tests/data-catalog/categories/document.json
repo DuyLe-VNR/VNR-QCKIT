@@ -1,0 +1,33 @@
+{
+  "_meta": {
+    "table": "Cat_Document",
+    "generatedAt": "2026-06-10",
+    "rowCount": 1,
+    "columns": ["ID","Code","DocumentName","DateEffective","DateEnd","Author","Inspector","Attachment","Description","Note","ServerUpdate","ServerCreate","UserUpdate","UserCreate","DateCreate","DateUpdate","UserLockID","DateLock","IsDelete","IPCreate","IPUpdate"]
+  },
+  "data": [
+    {
+      "ID": "0A54FEF1-F9ED-491D-8FBF-1468A9775571",
+      "Code": "TL1",
+      "DocumentName": "Tài Liệu 1",
+      "DateEffective": "2025-03-03T00:00:00.000Z",
+      "DateEnd": "2025-03-31T00:00:00.000Z",
+      "Author": "Nguyễn Văn A",
+      "Inspector": "Nguyễn Văn A",
+      "Attachment": "anh-dai-dien-tet-4833202515148.jpg",
+      "Description": "Mô tả",
+      "Note": "Ghi chú",
+      "ServerUpdate": "113.161.54.110",
+      "ServerCreate": "113.161.54.110",
+      "UserUpdate": "vnr",
+      "UserCreate": "vnr",
+      "DateCreate": "2025-03-03T15:01:56.470Z",
+      "DateUpdate": "2025-03-03T15:01:56.470Z",
+      "UserLockID": null,
+      "DateLock": null,
+      "IsDelete": null,
+      "IPCreate": null,
+      "IPUpdate": null
+    }
+  ]
+}

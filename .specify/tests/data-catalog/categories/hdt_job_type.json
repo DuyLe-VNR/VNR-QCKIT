@@ -1,0 +1,53 @@
+{
+  "table": "Cat_HDTJobType",
+  "rows": [
+    {
+      "ID": "DFDF7A4A-F27C-41C7-8E28-1C94902DCCC8",
+      "HDTJobTypeName": "efg",
+      "Code": "egf",
+      "Type": "Loại 1",
+      "Description": null,
+      "IsDelete": true
+    },
+    {
+      "ID": "E3ED2D62-2DDF-4312-B915-3EFDE0408AF0",
+      "HDTJobTypeName": "Công việc nặng nhọc 1",
+      "Code": "1",
+      "Type": "E_TYPE3",
+      "Description": "mô tả công việc nặng nhọc 1",
+      "IsDelete": null
+    },
+    {
+      "ID": "CD6087D3-DC9C-4D73-A01D-5ED3EA1E5141",
+      "HDTJobTypeName": "f",
+      "Code": "g",
+      "Type": "E_TYPE1",
+      "Description": "cv",
+      "IsDelete": true
+    },
+    {
+      "ID": "F8D0FBD9-30FE-48E8-AE8D-D2571B256C04",
+      "HDTJobTypeName": "đ",
+      "Code": "d",
+      "Type": "E_TYPE4",
+      "Description": "dd",
+      "IsDelete": true
+    },
+    {
+      "ID": "8A05F4EF-F0AF-496B-9A03-E297F3AC069E",
+      "HDTJobTypeName": "2",
+      "Code": "2",
+      "Type": "E_TYPE2",
+      "Description": "e",
+      "IsDelete": true
+    },
+    {
+      "ID": "67713669-150A-4310-9EA4-E5F2205E9650",
+      "HDTJobTypeName": "dff",
+      "Code": "dfs",
+      "Type": "E_TYPE1",
+      "Description": null,
+      "IsDelete": null
+    }
+  ]
+}

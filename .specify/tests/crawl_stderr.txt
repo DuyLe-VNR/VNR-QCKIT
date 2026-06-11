@@ -1,0 +1,14 @@
+
+=== [cat_leave_day_type] https://pehn02.vnresource.net:4406/#/Hrm_Main_Web/Cat_LeaveDayType/Index
+  type: List screen
+  toolbar actions: Tạo mới, Tìm kiếm, Xuất excel, Xuất excel đã chọn, Xuất excel tất cả, Đổi cột, Xóa, Lưu và đóng, Hủy
+  search fields: 10
+  no create href, trying inline
+  inline form fields: 12
+
+=== [att_leave_day] https://pehn02.vnresource.net:4406/#/Hrm_Main_Web/Att_LeaveDay/Index
+  type: List screen
+  toolbar actions: Tạo mới, Tạo mới ngày nghỉ không ca, Add new, Tìm kiếm, Xác nhận khẩn cấp, Chờ duyệt, Phê duyệt, Từ chối, Hủy, Kết xuất, Tạo mẫu, Khác, Đổi cột, Gửi mail, Sao chép, Tính số ngày nghỉ, Cập nhật loại ngày nghỉ, Xóa
+  search fields: 6
+  no create href, trying inline
+  inline form fields: 45

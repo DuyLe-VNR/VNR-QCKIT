@@ -1,0 +1,53 @@
+{
+  "table": "Cat_9BoxCategory",
+  "rows": [
+    {
+      "ID": "47811DCA-2C60-460B-805E-24D61ACBBB00",
+      "CategoryName": "Năng lực cao",
+      "Min": 4,
+      "Max": 888,
+      "Type": "E_SKILL",
+      "Order": 1
+    },
+    {
+      "ID": "590BDD18-020D-4E47-9527-7BAE3E8E71C9",
+      "CategoryName": "Hiệu quả công việc thấp",
+      "Min": 0,
+      "Max": 74.99,
+      "Type": "E_KPI",
+      "Order": 3
+    },
+    {
+      "ID": "8D4501BB-FD00-4B6B-A2D2-94FE6A892283",
+      "CategoryName": "Năng lực thấp",
+      "Min": 0,
+      "Max": 2.99,
+      "Type": "E_SKILL",
+      "Order": 3
+    },
+    {
+      "ID": "B9443A18-5EB2-4C19-ABCB-9759A3D10BCF",
+      "CategoryName": "Hiệu quả công việc cao",
+      "Min": 95,
+      "Max": 888,
+      "Type": "E_KPI",
+      "Order": 1
+    },
+    {
+      "ID": "94F687A6-395F-4727-A126-ADB8880F4D32",
+      "CategoryName": "Năng lực vừa",
+      "Min": 3,
+      "Max": 3.99,
+      "Type": "E_SKILL",
+      "Order": 2
+    },
+    {
+      "ID": "4269F08B-6603-47CD-81ED-D0A79C28FDAF",
+      "CategoryName": "Hiệu quả công việc vừa",
+      "Min": 75,
+      "Max": 94.99,
+      "Type": "E_KPI",
+      "Order": 2
+    }
+  ]
+}

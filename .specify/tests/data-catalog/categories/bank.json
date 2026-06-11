@@ -1,0 +1,145 @@
+{
+  "table": "Cat_Bank",
+  "rows": [
+    {
+      "ID": "291634D9-FD98-408D-8F38-04304924020B",
+      "BankName": "NGÂN HÀNG BẮC Á",
+      "BankCode": "BAB",
+      "IsDelete": true,
+      "IsPayrollPayment": true
+    },
+    {
+      "ID": "E1D8817A-357D-4524-BF23-0599ED3F6740",
+      "BankName": "NGÂN HÀNG QUỐC TẾ",
+      "BankCode": "VIB",
+      "IsDelete": null,
+      "IsPayrollPayment": true
+    },
+    {
+      "ID": "09293BBF-D771-485C-B162-0BA8078D9535",
+      "BankName": "NGÂN HÀNG ĐẦU TƯ VÀ PHÁT TRIỂN VIỆT NAM",
+      "BankCode": "BIDV",
+      "IsDelete": null,
+      "IsPayrollPayment": true
+    },
+    {
+      "ID": "E7CE652E-9537-40FD-B7FF-0BEE446D6F04",
+      "BankName": "NGÂN HÀNG ĐÔNG Á",
+      "BankCode": "DONGABANK",
+      "IsDelete": null,
+      "IsPayrollPayment": true
+    },
+    {
+      "ID": "7A2EA311-BA41-4661-B687-0F48D252859E",
+      "BankName": "NGÂN HÀNG TMCP AN BÌNH",
+      "BankCode": "ABBANK",
+      "IsDelete": null,
+      "IsPayrollPayment": true
+    },
+    {
+      "ID": "30098556-B6BD-41A2-8514-0FD91F88BBF2",
+      "BankName": "Ngân hàng",
+      "BankCode": "NH01",
+      "IsDelete": true,
+      "IsPayrollPayment": false
+    },
+    {
+      "ID": "DE8E1E31-2B98-4877-BC5E-1464CEB4F63F",
+      "BankName": "NGÂN HÀNG BƯU ĐIỆN LIÊN VIỆT",
+      "BankCode": "LIENVIETPOSTBANK",
+      "IsDelete": null,
+      "IsPayrollPayment": true
+    },
+    {
+      "ID": "6450764D-A893-44DD-AA38-156907BE8AA3",
+      "BankName": "NGÂN HÀNG CHÍNH SÁCH XÃ HỘI",
+      "BankCode": "VSP",
+      "IsDelete": true,
+      "IsPayrollPayment": true
+    },
+    {
+      "ID": "EC919509-F586-4F34-B69E-1636E4E9FB1B",
+      "BankName": "NGÂN HÀNG THƯƠNG MẠI CỔ PHẦN NAM Á",
+      "BankCode": "NAB",
+      "IsDelete": true,
+      "IsPayrollPayment": true
+    },
+    {
+      "ID": "700C3A12-6AAE-4952-87A1-174DE9E1AC4E",
+      "BankName": "NGÂN HÀNG TMCP BẢN VIỆT",
+      "BankCode": "VIET_CAPITAL_BANK",
+      "IsDelete": null,
+      "IsPayrollPayment": true
+    },
+    {
+      "ID": "AB951229-C724-497A-85B1-2105B382C81D",
+      "BankName": "NGÂN HÀNG CÔNG THƯƠNG VIỆT NAM",
+      "BankCode": "ICB",
+      "IsDelete": true,
+      "IsPayrollPayment": true
+    },
+    {
+      "ID": "390A46F8-3898-4A03-8861-26876D3620F2",
+      "BankName": "Test",
+      "BankCode": "Test",
+      "IsDelete": true,
+      "IsPayrollPayment": false
+    },
+    {
+      "ID": "2439A35D-03C2-4C9F-BFA8-2A5B1C7FB4D9",
+      "BankName": "NGÂN HÀNG PHƯƠNG ĐÔNG",
+      "BankCode": "OCB",
+      "IsDelete": true,
+      "IsPayrollPayment": true
+    },
+    {
+      "ID": "AE94477E-B28C-4352-8550-2A60AD88558A",
+      "BankName": "NGÂN HÀNG TMCP ĐẠI Á",
+      "BankCode": "DAA",
+      "IsDelete": true,
+      "IsPayrollPayment": true
+    },
+    {
+      "ID": "58DBE9C1-690D-452D-AA08-2AC85B7B6C87",
+      "BankName": "NGÂN HÀNG SHINHAN VIỆT NAM",
+      "BankCode": "SHBVN",
+      "IsDelete": null,
+      "IsPayrollPayment": true
+    },
+    {
+      "ID": "9E580C7E-9B46-43F1-9F03-3180D8A8EEF2",
+      "BankName": "Vietcombank",
+      "BankCode": "VCB",
+      "IsDelete": true,
+      "IsPayrollPayment": true
+    },
+    {
+      "ID": "E2AFB2C0-19BF-4408-9D2A-3768E3ABFCB8",
+      "BankName": "NGÂN HÀNG QUỐC TẾ",
+      "BankCode": "VIB",
+      "IsDelete": true,
+      "IsPayrollPayment": true
+    },
+    {
+      "ID": "E84602B8-325B-43CF-A816-45998CC68A45",
+      "BankName": "NGÂN HÀNG TMCP SÀI GÒN",
+      "BankCode": "SCB",
+      "IsDelete": true,
+      "IsPayrollPayment": true
+    },
+    {
+      "ID": "C4C1AE77-CF29-46EE-B746-4650BACAA421",
+      "BankName": "NGÂN HÀNG TMCP SÀI GÒN THƯƠNG TÍN",
+      "BankCode": "SGTT",
+      "IsDelete": true,
+      "IsPayrollPayment": true
+    },
+    {
+      "ID": "DFE9D291-7C8E-40AB-A963-557C76A922F8",
+      "BankName": "NGÂN HÀNG HSBC",
+      "BankCode": "HSBC",
+      "IsDelete": null,
+      "IsPayrollPayment": true
+    }
+  ]
+}

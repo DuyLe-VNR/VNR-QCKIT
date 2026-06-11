@@ -1,0 +1,18 @@
+{
+  "_meta": {
+    "table": "Cat_KPIBonusItem",
+    "generatedAt": "2026-06-10",
+    "rowCount": 8,
+    "columns": ["ID","ShopID","KPIBonusID","Value","ServerUpdate","ServerCreate","UserUpdate","UserCreate","DateCreate","DateUpdate","UserLockID","DateLock","IsDelete","IPCreate","IPUpdate","CompletionRate"]
+  },
+  "data": [
+    {"ID":"DDBB1355-81CE-4324-B2C0-1BD768ABFC66","ShopID":null,"KPIBonusID":"F64A8759-048B-4C24-AD7C-2954651055E7","Value":11,"ServerUpdate":"::1","ServerCreate":"::1","UserUpdate":"demo","UserCreate":"demo","DateCreate":null,"DateUpdate":"2014-12-26T14:36:34.643Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null,"CompletionRate":null},
+    {"ID":"E677A918-BB00-4142-A50C-73283BCF7985","ShopID":null,"KPIBonusID":null,"Value":2,"ServerUpdate":"127.0.0.1","ServerCreate":"::1","UserUpdate":"demo","UserCreate":"demo","DateCreate":null,"DateUpdate":"2014-12-26T14:53:51.203Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null,"CompletionRate":null},
+    {"ID":"858C9584-5A97-4E4D-AD8C-77AFB7A4DC6A","ShopID":null,"KPIBonusID":null,"Value":70,"ServerUpdate":"::1","ServerCreate":"::1","UserUpdate":"demo","UserCreate":"demo","DateCreate":"2014-12-26T11:16:53.073Z","DateUpdate":"2014-12-26T11:32:47.650Z","UserLockID":null,"DateLock":null,"IsDelete":true,"IPCreate":null,"IPUpdate":null,"CompletionRate":null},
+    {"ID":"F48E24A5-D24E-482F-984E-93DA0812733A","ShopID":"B983FE58-D51B-4092-BE88-AFDEB096C378","KPIBonusID":"F64A8759-048B-4C24-AD7C-2954651055E7","Value":11,"ServerUpdate":"127.0.0.1","ServerCreate":"::1","UserUpdate":"demo","UserCreate":"demo","DateCreate":null,"DateUpdate":"2014-12-26T15:00:04.490Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null,"CompletionRate":null},
+    {"ID":"5391404C-5ACA-4D60-9D5B-9B2EDB0D45C0","ShopID":null,"KPIBonusID":null,"Value":11,"ServerUpdate":"127.0.0.1","ServerCreate":"::1","UserUpdate":"demo","UserCreate":"demo","DateCreate":null,"DateUpdate":"2014-12-26T14:54:09.357Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null,"CompletionRate":null},
+    {"ID":"3DD55A32-5776-4629-B6E1-B43DDD0CCA72","ShopID":null,"KPIBonusID":null,"Value":8,"ServerUpdate":"::1","ServerCreate":"::1","UserUpdate":"demo","UserCreate":"demo","DateCreate":"2014-12-26T11:17:45.753Z","DateUpdate":"2014-12-26T11:32:47.437Z","UserLockID":null,"DateLock":null,"IsDelete":true,"IPCreate":null,"IPUpdate":null,"CompletionRate":null},
+    {"ID":"71E20A14-9671-44BE-9466-C2BAEEBFB769","ShopID":null,"KPIBonusID":"F64A8759-048B-4C24-AD7C-2954651055E7","Value":100,"ServerUpdate":"::1","ServerCreate":"::1","UserUpdate":"demo","UserCreate":"demo","DateCreate":null,"DateUpdate":"2014-12-26T14:53:12.453Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null,"CompletionRate":null},
+    {"ID":"6CC692E1-0946-439F-8721-C6A6C15C56FD","ShopID":"48B85DBD-8736-4C47-87F1-937C604DB062","KPIBonusID":"F64A8759-048B-4C24-AD7C-2954651055E7","Value":11,"ServerUpdate":"127.0.0.1","ServerCreate":"::1","UserUpdate":"demo","UserCreate":"demo","DateCreate":null,"DateUpdate":"2014-12-26T15:00:34.437Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null,"CompletionRate":null}
+  ]
+}

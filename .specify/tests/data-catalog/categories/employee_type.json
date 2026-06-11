@@ -1,0 +1,23 @@
+{
+  "table": "Cat_EmployeeType",
+  "rows": [
+    {
+      "ID": "7CEED8B2",
+      "Code": "GroupLevel13",
+      "EmployeeTypeName": "Chuyen gia doc lap",
+      "Notes": "EL13-EL20"
+    },
+    {
+      "ID": "64BE90DC",
+      "Code": "GroupLevel8",
+      "EmployeeTypeName": "Quan ly cap cao",
+      "Notes": "ML14-ML17"
+    },
+    {
+      "ID": "C2CE802F",
+      "Code": "GroupLevel7",
+      "EmployeeTypeName": "Dieu hanh",
+      "Notes": "ML18-ML22"
+    }
+  ]
+}

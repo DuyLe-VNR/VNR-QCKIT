@@ -1,0 +1,52 @@
+{
+  "_meta": {
+    "table": "Cat_ConditionalColor",
+    "generatedAt": "2026-06-10",
+    "rowCount": 2,
+    "columns": ["ID","ConditionalColorName","ConditionalCode","PropertyName","Condition","Value","ColorCode","BGColorCode","ServerUpdate","ServerCreate","UserUpdate","UserCreate","DateCreate","DateUpdate","UserLockID","DateLock","IsDelete","IPCreate","IPUpdate"]
+  },
+  "data": [
+    {
+      "ID": "082EF8BE-5746-4C0B-BD5B-8750E4482DBB",
+      "ConditionalColorName": "Sal_BasicSalary",
+      "ConditionalCode": null,
+      "PropertyName": "E_GrossAmount",
+      "Condition": null,
+      "Value": null,
+      "ColorCode": "#fb0707",
+      "BGColorCode": null,
+      "ServerUpdate": "116.110.252.198",
+      "ServerCreate": "116.110.252.198",
+      "UserUpdate": "123",
+      "UserCreate": "123",
+      "DateCreate": "2018-11-03T11:17:18.940Z",
+      "DateUpdate": "2018-11-03T11:18:40.020Z",
+      "UserLockID": null,
+      "DateLock": null,
+      "IsDelete": null,
+      "IPCreate": "192.168.1.13",
+      "IPUpdate": "192.168.1.13"
+    },
+    {
+      "ID": "6F9603AF-5225-4C21-8130-E47EDF15CD3A",
+      "ConditionalColorName": "Att_AdvanceTableItem",
+      "ConditionalCode": null,
+      "PropertyName": null,
+      "Condition": null,
+      "Value": null,
+      "ColorCode": null,
+      "BGColorCode": null,
+      "ServerUpdate": "115.78.239.195",
+      "ServerCreate": "115.78.239.195",
+      "UserUpdate": null,
+      "UserCreate": null,
+      "DateCreate": "2014-12-24T16:43:49.440Z",
+      "DateUpdate": "2014-12-24T16:43:49.000Z",
+      "UserLockID": null,
+      "DateLock": null,
+      "IsDelete": null,
+      "IPCreate": null,
+      "IPUpdate": null
+    }
+  ]
+}

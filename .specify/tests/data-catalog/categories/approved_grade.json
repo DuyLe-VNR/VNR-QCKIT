@@ -1,0 +1,145 @@
+{
+  "table": "Cat_ApprovedGrade",
+  "rows": [
+    {
+      "ID": "53F5F983-29D0-4B30-A332-0309F89FD86F",
+      "FunctionType": "E_WORKHISTORYSALARY",
+      "SubmitByFor": "E_SUBMIT_FOR",
+      "ConceptType": "E_EACH_ORG",
+      "IsDelete": null
+    },
+    {
+      "ID": "66E0B1F3-B293-4053-84AC-10454CEE2FF8",
+      "FunctionType": "E_PREGNANCYREGISTER",
+      "SubmitByFor": "E_SUBMIT_FOR",
+      "ConceptType": "E_EACH_PROFILE",
+      "IsDelete": true
+    },
+    {
+      "ID": "61868C26-A8EF-415B-9223-10CFD023BCEC",
+      "FunctionType": "E_CONTRACTEVALUATIONANDPROBATION",
+      "SubmitByFor": "E_SUBMIT_FOR",
+      "ConceptType": "E_FORMULAR",
+      "IsDelete": null
+    },
+    {
+      "ID": "38F84A85-9303-43A5-81E1-1375FF7D173B",
+      "FunctionType": "E_ROSTERGROUPBYEMP",
+      "SubmitByFor": "E_SUBMIT_FOR",
+      "ConceptType": "E_FORMULAR",
+      "IsDelete": true
+    },
+    {
+      "ID": "467EDEDA-6DE8-47D6-A2E2-14E946BEEF8E",
+      "FunctionType": "E_OVERTIME_FORM",
+      "SubmitByFor": "E_SUBMIT_BY",
+      "ConceptType": "E_FORMULAR",
+      "IsDelete": null
+    },
+    {
+      "ID": "11047E48-21D8-4D2A-905D-17D737C8DEEA",
+      "FunctionType": "E_APPROVE_LATEEARLYALLOWED",
+      "SubmitByFor": "E_SUBMIT_FOR",
+      "ConceptType": "E_FORMULAR",
+      "IsDelete": null
+    },
+    {
+      "ID": "A6660B5F-8844-4F16-834C-18A002E06CE1",
+      "FunctionType": "E_APPROVEPERFORMANCERESULTS",
+      "SubmitByFor": "E_SUBMIT_FOR",
+      "ConceptType": "E_FORMULAR",
+      "IsDelete": null
+    },
+    {
+      "ID": "43DAF9B1-DF28-4134-A5E5-1CEFBF92AC18",
+      "FunctionType": "E_CONTRACTAPPROVE",
+      "SubmitByFor": "E_SUBMIT_FOR",
+      "ConceptType": "E_EACH_PROFILE",
+      "IsDelete": true
+    },
+    {
+      "ID": "55D8FEDF-A26B-4A22-98CD-1F1F99554E16",
+      "FunctionType": "E_CONTRACTAPPROVE",
+      "SubmitByFor": "E_SUBMIT_FOR",
+      "ConceptType": "E_EACH_PROFILE",
+      "IsDelete": true
+    },
+    {
+      "ID": "FE5987CC-39C0-4B60-B986-2A46F551C00D",
+      "FunctionType": "E_CAREERPATH",
+      "SubmitByFor": "E_SUBMIT_FOR",
+      "ConceptType": "E_FORMULAR",
+      "IsDelete": null
+    },
+    {
+      "ID": "FC2A0AE7-1AB7-4467-BBAA-2B09A1312B27",
+      "FunctionType": "E_WORKHISTORY",
+      "SubmitByFor": "E_SUBMIT_FOR",
+      "ConceptType": "E_FORMULAR",
+      "IsDelete": null
+    },
+    {
+      "ID": "66DD4647-8933-45F5-B462-2CDCF6F0D8F1",
+      "FunctionType": "E_APPROVALINTERNALAPPLICATION",
+      "SubmitByFor": "E_SUBMIT_BY",
+      "ConceptType": "E_FORMULAR",
+      "IsDelete": null
+    },
+    {
+      "ID": "1725CA9C-6CB7-441A-9DE5-2E38F5651B85",
+      "FunctionType": "E_SHIFT_SCHEDULE",
+      "SubmitByFor": "E_SUBMIT_FOR",
+      "ConceptType": "E_EACH_ORG",
+      "IsDelete": true
+    },
+    {
+      "ID": "010890A9-3360-447C-8745-31ECAD84796F",
+      "FunctionType": "E_CONTRACTEVALUATIONTOEVALUATOR",
+      "SubmitByFor": "E_SUBMIT_FOR",
+      "ConceptType": "E_FORMULAR",
+      "IsDelete": null
+    },
+    {
+      "ID": "2BF9CEC6-558B-4321-B721-3364A02D3401",
+      "FunctionType": "E_CONTRACTNEARLYEXPIRED",
+      "SubmitByFor": "E_SUBMIT_FOR",
+      "ConceptType": "E_FORMULAR",
+      "IsDelete": true
+    },
+    {
+      "ID": "A6A4C607-FA54-4C0D-A40D-34B4F2E162C4",
+      "FunctionType": "E_EVALUATEEMPLYEE",
+      "SubmitByFor": "E_SUBMIT_FOR",
+      "ConceptType": "E_EACH_PROFILE",
+      "IsDelete": null
+    },
+    {
+      "ID": "65C16C09-F180-4350-A116-3B121A73C1CD",
+      "FunctionType": "E_CONTRACTNEARLYEXPIRED",
+      "SubmitByFor": "E_SUBMIT_FOR",
+      "ConceptType": "E_EACH_PROFILE",
+      "IsDelete": true
+    },
+    {
+      "ID": "FFE3E584-4968-460E-9C51-3E9275B01A0F",
+      "FunctionType": "E_APPROVEROTATIONASSIGNMENT",
+      "SubmitByFor": "E_SUBMIT_FOR",
+      "ConceptType": "E_EACH_PROFILE",
+      "IsDelete": true
+    },
+    {
+      "ID": "6057C7D3-75F9-4D9C-94EA-3E9E0AEEEE53",
+      "FunctionType": "E_REQUIREMENTTRAINDETAIL",
+      "SubmitByFor": "E_SUBMIT_BY",
+      "ConceptType": "E_FORMULAR",
+      "IsDelete": null
+    },
+    {
+      "ID": "0E0817C0-FFB9-436A-BE05-48B30916BD59",
+      "FunctionType": "E_TAMSCANLOGREGISTER",
+      "SubmitByFor": "E_SUBMIT_FOR",
+      "ConceptType": "E_EACH_ORG",
+      "IsDelete": null
+    }
+  ]
+}

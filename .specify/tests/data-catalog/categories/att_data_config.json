@@ -1,0 +1,110 @@
+{
+  "table": "Cat_AttDataConfig",
+  "rows": [
+    {
+      "ID": "7AACC55E-92FD-442C-8B91-025707236C4E",
+      "BusinessType": "E_ATT_GRADE",
+      "DateStart": "2025-02-01",
+      "DateEnd": "2025-04-30",
+      "IsDelete": null
+    },
+    {
+      "ID": "855D299C-917F-4ED3-B2E6-12D036B1BFFA",
+      "BusinessType": "E_ATT_GRADE",
+      "DateStart": "2021-11-01",
+      "DateEnd": "2100-01-01",
+      "IsDelete": true
+    },
+    {
+      "ID": "4FF803B8-C766-4D32-9D4D-332728D7F9C6",
+      "BusinessType": "E_ATT_GRADE",
+      "DateStart": "2021-12-01",
+      "DateEnd": "2100-01-01",
+      "IsDelete": true
+    },
+    {
+      "ID": "E6367B97-DF0F-4DEF-AFED-338C743A781B",
+      "BusinessType": "E_ATT_GRADE",
+      "DateStart": "2023-01-04",
+      "DateEnd": "2026-03-01",
+      "IsDelete": true
+    },
+    {
+      "ID": "B5A4A01A-7EC1-47FF-9A6E-3DF17E503B8F",
+      "BusinessType": "E_ATT_GRADE",
+      "DateStart": "2021-08-01",
+      "DateEnd": "2100-01-01",
+      "IsDelete": true
+    },
+    {
+      "ID": "CE52257B-77CE-4A15-866B-4233FB2C007B",
+      "BusinessType": "E_ATT_GRADE",
+      "DateStart": "2021-11-01",
+      "DateEnd": "2100-01-01",
+      "IsDelete": true
+    },
+    {
+      "ID": "862B0D18-4A09-451C-997C-4FD91E749EE0",
+      "BusinessType": "E_ATT_GRADE",
+      "DateStart": "2025-01-01",
+      "DateEnd": "2025-04-30",
+      "IsDelete": true
+    },
+    {
+      "ID": "67C10F1C-DAC2-470E-A911-631CE9A56027",
+      "BusinessType": "E_ATT_GRADE",
+      "DateStart": "2021-11-01",
+      "DateEnd": "2100-01-01",
+      "IsDelete": true
+    },
+    {
+      "ID": "2ED371C7-DFD0-4CE3-A380-6C5DBB10F585",
+      "BusinessType": "E_ATT_GRADE",
+      "DateStart": "2021-11-01",
+      "DateEnd": "2100-01-01",
+      "IsDelete": true
+    },
+    {
+      "ID": "0D2EC762-45FB-48FF-A92E-A5007C14BF6F",
+      "BusinessType": "E_ATT_GRADE",
+      "DateStart": "2020-12-21",
+      "DateEnd": "2100-12-20",
+      "IsDelete": true
+    },
+    {
+      "ID": "AB828178-47D1-436F-B61E-B36A44077649",
+      "BusinessType": "E_ATT_GRADE",
+      "DateStart": "2025-03-01",
+      "DateEnd": "2025-03-31",
+      "IsDelete": null
+    },
+    {
+      "ID": "DD30553B-A91A-4DC1-B0B5-B5DE8A58E237",
+      "BusinessType": "E_ATT_GRADE",
+      "DateStart": "2025-02-01",
+      "DateEnd": "2027-04-10",
+      "IsDelete": null
+    },
+    {
+      "ID": "36FBF180-BEA8-40D5-BE7A-E1879347D12A",
+      "BusinessType": "E_ATT_GRADE",
+      "DateStart": "2025-01-01",
+      "DateEnd": "2026-01-01",
+      "IsDelete": true
+    },
+    {
+      "ID": "6988873E-403C-4FE6-89D6-F7CB92393301",
+      "BusinessType": "E_ATT_GRADE",
+      "DateStart": "2021-11-01",
+      "DateEnd": "2100-01-01",
+      "IsDelete": null
+    },
+    {
+      "ID": "8DECE257-9CD9-4D70-B507-F9DD3D0E91C2",
+      "BusinessType": null,
+      "DateStart": null,
+      "DateEnd": null,
+      "IsDelete": true
+    }
+  ]
+}

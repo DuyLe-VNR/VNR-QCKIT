@@ -1,0 +1,30 @@
+{
+  "_meta": {
+    "table": "Cat_CompetencyFramework",
+    "generatedAt": "2026-06-10",
+    "rowCount": 1,
+    "columns": ["ID","Code","CompetencyFrameworkName","PositionID","EffectiveDate","FormulaID","Description","IsInactive","ServerCreate","UserUpdate","UserCreate","DateCreate","DateUpdate","UserLockID","DateLock","IsDelete","IPCreate","IPUpdate"]
+  },
+  "data": [
+    {
+      "ID": "450F3CFF-A485-4B1E-94FE-38B793A4BE95",
+      "Code": "HT_POSCV1",
+      "CompetencyFrameworkName": "Chức vụ HuyenTest Trưởng Chức vụ1",
+      "PositionID": "B73E582C-3252-4A75-BF50-67D932B39C68",
+      "EffectiveDate": "2025-03-17T00:00:00.000Z",
+      "FormulaID": null,
+      "Description": "Khung năng lực Huyên check nhân tài chức vụ HT_POSCV1",
+      "IsInactive": false,
+      "ServerCreate": "113.161.54.110",
+      "UserUpdate": "huyen_itl.cao",
+      "UserCreate": "huyen_itl.cao",
+      "DateCreate": "2025-03-17T09:17:37.173Z",
+      "DateUpdate": "2025-03-17T09:17:50.980Z",
+      "UserLockID": null,
+      "DateLock": null,
+      "IsDelete": null,
+      "IPCreate": null,
+      "IPUpdate": null
+    }
+  ]
+}

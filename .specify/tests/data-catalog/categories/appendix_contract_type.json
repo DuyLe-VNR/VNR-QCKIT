@@ -1,0 +1,138 @@
+{
+  "table": "Cat_AppendixContractType",
+  "rows": [
+    {
+      "ID": "83F0E8B0-82F6-4D9E-83C2-047D3482158A",
+      "AppendixContractName": "Phụ lục HĐLĐ Thuyên chuyển, bổ nhiệm",
+      "Code": "PLHD_02",
+      "IsDelete": null,
+      "OrderNumber": 2
+    },
+    {
+      "ID": "2C1BEA32-1EE3-4ADD-A64B-0AC1D2904101",
+      "AppendixContractName": "Phụ lục HĐ kiêm nhiệm",
+      "Code": "PLHĐxx",
+      "IsDelete": true
+    },
+    {
+      "ID": "FF6683D6-CC26-4DF8-A5AA-0C6D8A095111",
+      "AppendixContractName": "PLHĐ Điều Chỉnh Lương CB",
+      "Code": "PLDCL",
+      "IsDelete": true,
+      "OrderNumber": 4
+    },
+    {
+      "ID": "1B046168-A45A-40F0-A974-1D6DEA38A525",
+      "AppendixContractName": "PLHĐ Điều Chỉnh Phụ Cấp ATVSV",
+      "Code": "PLĐCPCATVSV",
+      "IsDelete": true,
+      "OrderNumber": 7
+    },
+    {
+      "ID": "D6202116-A741-4EAB-9176-1E8C922D72A4",
+      "AppendixContractName": "PLHĐ Tăng Lương / Điều Chỉnh Lương",
+      "Code": "A1",
+      "IsDelete": true,
+      "IsAdjSalary": true,
+      "OrderNumber": 1
+    },
+    {
+      "ID": "9EAF19F7-25E7-47DD-900C-2B5126FBB38F",
+      "AppendixContractName": "PLHĐ Điều Chỉnh Lương CB + Chức Vụ",
+      "Code": "PLDCLCV",
+      "IsDelete": true,
+      "OrderNumber": 2
+    },
+    {
+      "ID": "09084FCE-D2B4-4814-B358-3F24FCC22F8E",
+      "AppendixContractName": "PLHĐ Điều Chỉnh Phụ Cấp PCCC",
+      "Code": "PLĐCPCPCCC",
+      "IsDelete": true,
+      "OrderNumber": 8
+    },
+    {
+      "ID": "7524F235-288D-4783-8E5E-4183F2B15EB6",
+      "AppendixContractName": "PLHD Kiêm Nhiệm (Thay đổi PCCVU)",
+      "Code": "A7",
+      "IsDelete": true,
+      "OrderNumber": 7
+    },
+    {
+      "ID": "05FFBAEE-37AB-42D4-B0DB-43408B11F1DD",
+      "AppendixContractName": "PLHD Tích hợp các thay đổi",
+      "Code": "A8",
+      "IsDelete": true,
+      "OrderNumber": 8
+    },
+    {
+      "ID": "0202B956-CC59-4011-B419-48571FE7DBF4",
+      "AppendixContractName": "PL",
+      "Code": "1",
+      "IsDelete": true
+    },
+    {
+      "ID": "08C46657-0263-4E59-BF41-4D6FE080B836",
+      "AppendixContractName": "PLHĐ Lương Tháng 13 và Thưởng Đặc biệt",
+      "Code": "A13",
+      "IsDelete": true,
+      "OrderNumber": 10
+    },
+    {
+      "ID": "8CE04216-4E31-4D60-9188-52E06D423D8B",
+      "AppendixContractName": "Tích hợp các Quyết Định (Bổ nhiệm/ Chuyển bậc/ Phân bậc)",
+      "Code": "QD",
+      "IsDelete": true
+    },
+    {
+      "ID": "F92F1C79-BA2A-431F-B53F-598C6319379C",
+      "AppendixContractName": "PLHĐ Thưởng Tết Âm Lịch",
+      "Code": "A14",
+      "IsDelete": true,
+      "OrderNumber": 11
+    },
+    {
+      "ID": "BB89239E-1CEA-4A6B-B5D6-59E33AA20D23",
+      "AppendixContractName": "abc",
+      "Code": "2",
+      "IsDelete": true
+    },
+    {
+      "ID": "FC0CAF9A-9986-4428-9CB9-5E9CD69908D4",
+      "AppendixContractName": "1",
+      "Code": "1",
+      "IsDelete": true
+    },
+    {
+      "ID": "3DF7F92C-F5D0-4D5C-812C-6442946E8985",
+      "AppendixContractName": "Điều chỉnh thời hạn hợp đồng",
+      "Code": "PLDC-TH",
+      "IsDelete": true
+    },
+    {
+      "ID": "F5176435-D82A-42FC-951B-666582DAE70C",
+      "AppendixContractName": "PLHĐ Thay đổi lương _Nhân viên người Nhật",
+      "Code": "A10",
+      "IsDelete": true
+    },
+    {
+      "ID": "81D4D901-4042-48F2-89EA-6C424ACA7DA4",
+      "AppendixContractName": "PLHĐ Điều Chỉnh Chức Vụ",
+      "Code": "PLDCCV",
+      "IsDelete": true,
+      "OrderNumber": 5
+    },
+    {
+      "ID": "7CD11A70-1F71-47AF-9556-720C5BB0897A",
+      "AppendixContractName": "PLHĐ Điều Chỉnh Phụ Cấp + Chức Vụ",
+      "Code": "PLDCPCCV",
+      "IsDelete": true,
+      "OrderNumber": 3
+    },
+    {
+      "ID": "A865C08C-0FAC-4D47-B511-7BBD1369DC48",
+      "AppendixContractName": "PL Gia hạn hợp đồng lao động",
+      "Code": "PLGHHD",
+      "IsDelete": true
+    }
+  ]
+}

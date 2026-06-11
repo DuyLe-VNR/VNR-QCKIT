@@ -1,0 +1,28 @@
+{
+  "name": "vnr-qckit",
+  "version": "1.0.0",
+  "description": "Claude Code slash commands for VNR Playwright QC automation",
+  "bin": {
+    "vnr-qckit": "./bin/vnr-qckit.js"
+  },
+  "files": [
+    "bin/",
+    "commands/",
+    "skills/",
+    "templates/",
+    "README.md",
+    "INSTALL.md"
+  ],
+  "keywords": [
+    "claude-code",
+    "playwright",
+    "automation",
+    "qc",
+    "testing",
+    "vnr"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=16"
+  }
+}

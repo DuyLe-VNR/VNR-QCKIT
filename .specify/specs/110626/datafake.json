@@ -1,0 +1,99 @@
+{
+  "_meta": {
+    "pbi": "090626",
+    "generated": "2026-06-10",
+    "screen": "cat_leave_day_type + att_leave_day (Nghỉ kinh nguyệt NV nữ — BS-01..BS-03)"
+  },
+
+  "menstrual": {
+    "_note": "Loại nghỉ kinh nguyệt chính — dùng cho BS-01..BS-03",
+    "ten_loai": "Nghỉ kinh nguyệt",
+    "ma_loai": "KN",
+    "ten_loai_test": "Nghỉ kinh nguyệt TEST",
+    "ma_loai_test": "KN_TEST",
+    "ly_do": "Nghỉ kinh nguyệt theo Điều 137 BLLĐ 2019",
+    "max_ngay_thang": "3",
+    "config": {
+      "ApplyGender": "Female",
+      "IsRequireConsecutive": true,
+      "MaxConsecutiveDaysPerMonth": 3,
+      "IsMenses": true,
+      "description": "Record kinh nguyệt đúng chuẩn BS-01: Gender=Female, Consecutive=true, MaxPerMonth=3"
+    }
+  },
+
+  "all_gender": {
+    "_note": "Loại nghỉ ApplyGender=All — không filter giới tính, không check consecutive",
+    "ten_loai": "Nghỉ phép năm",
+    "ma_loai": "PH_NAM",
+    "config": {
+      "ApplyGender": "All",
+      "IsRequireConsecutive": false,
+      "MaxConsecutiveDaysPerMonth": null
+    }
+  },
+
+  "consecutive_no_limit": {
+    "_note": "Loại nghỉ IsRequireConsecutive=true nhưng MaxConsecutiveDaysPerMonth=null — Rule 3 skip",
+    "ten_loai": "Nghỉ liên tục không giới hạn TEST",
+    "ma_loai": "LTKGH_TEST",
+    "config": {
+      "ApplyGender": "Female",
+      "IsRequireConsecutive": true,
+      "MaxConsecutiveDaysPerMonth": null,
+      "description": "Dùng cho TC-018: verify Rule 3 bị skip khi MaxConsecutiveDaysPerMonth=null"
+    }
+  },
+
+  "employee_nu": {
+    "name": "Nguyễn Thị Nữ Test",
+    "code": "NTN001",
+    "gender": "Female",
+    "department": "Phòng Nhân sự",
+    "note": "NV nữ test — Gender=E_FEMALE. Cần tạo sẵn trong hệ thống"
+  },
+
+  "employee_nam": {
+    "name": "Nguyễn Văn Nam Test",
+    "code": "NVN001",
+    "gender": "Male",
+    "department": "Phòng IT",
+    "note": "NV nam test — Gender≠E_FEMALE. Cần tạo sẵn trong hệ thống"
+  },
+
+  "employee_bpns": {
+    "name": "Trần Thị BPNS Test",
+    "code": "TTB001",
+    "role": "BPNS",
+    "department": "Phòng Nhân sự",
+    "note": "Account BPNS để test TC-009, TC-010, TC-022, TC-023 — đăng ký hộ NV"
+  },
+
+  "month": "06/2026",
+
+  "dates": {
+    "ngay_hop_le_1": "10/06/2026",
+    "ngay_hop_le_2": "11/06/2026",
+    "ngay_hop_le_3": "12/06/2026",
+    "ngay_bat_ky": "15/06/2026",
+    "ngay_tiep_theo": "13/06/2026",
+    "approved_start": "02/06/2026",
+    "approved_end": "04/06/2026",
+    "approved_end_plus_1": "05/06/2026",
+    "gap_date": "06/06/2026",
+    "note": "approved_end_plus_1 = approved_end + 1 ngày (dùng cho TC-012 consecutive pass). gap_date = ngày tạo gap sau approved_end_plus_1 (dùng cho TC-013 consecutive fail)"
+  },
+
+  "validation": {
+    "bs01_message": "Vui lòng nhập số ngày tối đa/tháng",
+    "gender_block_message": "Loại ngày nghỉ {TenLoai} chỉ áp dụng cho nhân viên nữ",
+    "consecutive_block_message": "Ngày đăng ký phải là {NgayKeTiep}. Các ngày nghỉ {TenLoai} phải liên tiếp nhau.",
+    "monthly_limit_message": "Bạn đã đăng ký đủ {N} ngày {TenLoai} trong tháng {MM/YYYY}.",
+    "note": "Message template theo spec BS-01/BS-02. {TenLoai}, {NgayKeTiep}, {N}, {MM/YYYY} là placeholder — thay bằng giá trị thực khi verify"
+  },
+
+  "admin": {
+    "username": "admin_test",
+    "note": "Account Admin có quyền tạo/sửa Cat_LeaveDayType"
+  }
+}

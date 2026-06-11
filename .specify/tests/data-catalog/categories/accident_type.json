@@ -1,0 +1,57 @@
+{
+  "table": "Cat_AccidentType",
+  "rows": [
+    {
+      "ID": "CA2A543A-4226-43E0-A465-252C308FAE5E",
+      "AccidentTypeName": "ef",
+      "Code": "ef",
+      "Type": null,
+      "IsDelete": true
+    },
+    {
+      "ID": "98C89FCD-3C76-4485-A8EE-2E949F75D79B",
+      "AccidentTypeName": "1",
+      "Code": "2",
+      "Type": null,
+      "IsDelete": true
+    },
+    {
+      "ID": "84BD031D-FA2D-4DA6-BC39-39EB6DEC50FC",
+      "AccidentTypeName": "fgf",
+      "Code": "3",
+      "Type": null,
+      "IsDelete": true
+    },
+    {
+      "ID": "7C056F5C-D62F-4BE7-8AF6-76FD5F5D8F2E",
+      "AccidentTypeName": "Inside - Labor Accident",
+      "Code": "TN1",
+      "Type": "E_LABOR",
+      "IsDelete": null,
+      "Description": "Vụ tai nạn được xác định là Tai nạn lao động"
+    },
+    {
+      "ID": "BC55EE9F-FAB0-4769-A6D6-91254E0E7953",
+      "AccidentTypeName": "Personal accident",
+      "Code": "TN3",
+      "Type": null,
+      "IsDelete": null,
+      "Description": "Tai nạn rủi ro"
+    },
+    {
+      "ID": "C2262732-D0E9-415A-B9AC-912C159B672B",
+      "AccidentTypeName": "Outside company",
+      "Code": "TN2",
+      "Type": "E_NONLABOR",
+      "IsDelete": null,
+      "Description": "Vụ tai nạn được xác định là tai nạn được hưởng trợ câp theo quy định tại Khoản 2, Điều 39 Luật An toàn vệ sinh lao động"
+    },
+    {
+      "ID": "D3774CB0-A87F-4070-9B62-FFBA9FE920DB",
+      "AccidentTypeName": "nbuini",
+      "Code": "jl",
+      "Type": null,
+      "IsDelete": true
+    }
+  ]
+}

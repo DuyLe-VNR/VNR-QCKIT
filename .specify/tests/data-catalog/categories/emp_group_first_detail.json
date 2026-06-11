@@ -1,0 +1,23 @@
+{
+  "table": "Cat_EmpGroupFirstDetail",
+  "rows": [
+    {
+      "ID": "2DB1988E-EB82-43E8-8C8E-8459DDB21398",
+      "Code": "NNVCT1",
+      "EmpGroupFirstDetailName": "Nhóm nhân viên chi tiết 1_Huyên",
+      "EnglishName": null,
+      "Note": null,
+      "IsInactive": false,
+      "EmployeeGroupID": "851D2A42-4F44-4C66-A7EC-57EB8E65EA6F"
+    },
+    {
+      "ID": "E7F1E947-7650-48B7-BA37-973BFACD2BF7",
+      "Code": "NNVCT11",
+      "EmpGroupFirstDetailName": "Nhóm nhân viên chi tiết 11_Huyên",
+      "EnglishName": null,
+      "Note": null,
+      "IsInactive": false,
+      "EmployeeGroupID": null
+    }
+  ]
+}

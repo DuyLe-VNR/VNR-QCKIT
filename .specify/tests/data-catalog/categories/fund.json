@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "table": "Cat_Fund",
+    "generatedAt": "2026-06-10",
+    "rowCount": 10,
+    "columns": ["ID","Code","FundName","Notes","ServerUpdate","ServerCreate","UserUpdate","UserCreate","DateCreate","DateUpdate","UserLockID","DateLock","IsDelete","IPCreate","IPUpdate"]
+  },
+  "data": [
+    {"ID":"1BAB3DB0-7DF3-4836-B7D2-0FC15D6DAF4C","Code":"002","FundName":"test2","Notes":"Nhung test nữa","ServerUpdate":"171.247.171.75","ServerCreate":"171.247.171.75","UserUpdate":"khang.nguyen","UserCreate":"khang.nguyen","DateCreate":"2021-10-04T16:58:32.657Z","DateUpdate":"2021-10-04T17:09:30.657Z","UserLockID":null,"DateLock":null,"IsDelete":true,"IPCreate":null,"IPUpdate":null},
+    {"ID":"46E707A5-6258-40D2-A84C-24AE3B523081","Code":"001","FundName":"aaaaa","Notes":null,"ServerUpdate":"171.247.171.75","ServerCreate":"171.247.171.75","UserUpdate":"khang.nguyen","UserCreate":"khang.nguyen","DateCreate":"2021-10-04T17:00:19.647Z","DateUpdate":"2021-10-04T17:09:29.987Z","UserLockID":null,"DateLock":null,"IsDelete":true,"IPCreate":null,"IPUpdate":null},
+    {"ID":"71815D86-C109-4949-B1BF-4838310A0C32","Code":"003","FundName":"aaaaa","Notes":null,"ServerUpdate":"171.247.171.75","ServerCreate":"171.247.171.75","UserUpdate":"khang.nguyen","UserCreate":"khang.nguyen","DateCreate":"2021-10-04T17:03:30.540Z","DateUpdate":"2021-10-04T17:09:28.640Z","UserLockID":null,"DateLock":null,"IsDelete":true,"IPCreate":null,"IPUpdate":null},
+    {"ID":"DF2CDB4D-0637-469B-818A-A30377B1EF4F","Code":"H_01","FundName":"Hoài test","Notes":null,"ServerUpdate":"10.235.75.56","ServerCreate":"10.235.75.56","UserUpdate":"admin","UserCreate":"khang.nguyen","DateCreate":"2021-06-29T22:17:40.417Z","DateUpdate":"2021-06-29T22:26:30.263Z","UserLockID":null,"DateLock":null,"IsDelete":true,"IPCreate":null,"IPUpdate":null},
+    {"ID":"5E35E828-2C93-44F8-801E-AE090E96E8FB","Code":"005","FundName":"nhung test chỉnh sửa","Notes":"aaaaa","ServerUpdate":"171.247.171.75","ServerCreate":"171.247.171.75","UserUpdate":"khang.nguyen","UserCreate":"khang.nguyen","DateCreate":"2021-10-04T17:04:04.547Z","DateUpdate":"2021-10-04T17:09:27.937Z","UserLockID":null,"DateLock":null,"IsDelete":true,"IPCreate":null,"IPUpdate":null},
+    {"ID":"291F39A3-FB78-4CF2-95F8-B369368BDA26","Code":"546546ds","FundName":"5756756dsd","Notes":"7567567sds","ServerUpdate":"113.161.54.110","ServerCreate":"113.161.54.110","UserUpdate":"vnr","UserCreate":"vnr","DateCreate":"2025-03-12T16:31:40.767Z","DateUpdate":"2025-03-12T16:32:16.413Z","UserLockID":null,"DateLock":null,"IsDelete":true,"IPCreate":null,"IPUpdate":null},
+    {"ID":"D554F751-5498-4C10-975D-D17834802276","Code":"123","FundName":"123","Notes":null,"ServerUpdate":"10.235.75.56","ServerCreate":"10.235.75.56","UserUpdate":"admin","UserCreate":"admin","DateCreate":"2021-07-19T11:13:28.363Z","DateUpdate":"2021-07-19T11:14:05.553Z","UserLockID":null,"DateLock":null,"IsDelete":true,"IPCreate":null,"IPUpdate":null},
+    {"ID":"DBF181B8-6766-4583-8507-EB91BB229EA7","Code":"001","FundName":"test","Notes":"Nhung test","ServerUpdate":"171.247.171.75","ServerCreate":"171.247.171.75","UserUpdate":"khang.nguyen","UserCreate":"khang.nguyen","DateCreate":"2021-10-04T16:58:14.827Z","DateUpdate":"2021-10-04T16:58:14.827Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null},
+    {"ID":"BA153731-A70E-4933-A75C-EFBFF3C54DDA","Code":"345","FundName":"34534534","Notes":"345345","ServerUpdate":"113.161.54.110","ServerCreate":"113.161.54.110","UserUpdate":"vnr","UserCreate":"vnr","DateCreate":"2025-03-12T16:31:36.113Z","DateUpdate":"2025-03-12T16:31:36.113Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null},
+    {"ID":"5EC79CE8-2CFE-4F39-9593-F64C5CA0ADBB","Code":"002","FundName":"test","Notes":null,"ServerUpdate":"171.247.171.75","ServerCreate":"171.247.171.75","UserUpdate":"khang.nguyen","UserCreate":"khang.nguyen","DateCreate":"2021-10-04T17:01:56.927Z","DateUpdate":"2021-10-04T17:09:29.357Z","UserLockID":null,"DateLock":null,"IsDelete":true,"IPCreate":null,"IPUpdate":null}
+  ]
+}

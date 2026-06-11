@@ -1,0 +1,19 @@
+{
+  "table": "Cat_ArmedForceTypes",
+  "rows": [
+    {
+      "ID": "1188BF5B-D8BA-464F-8EA9-25943E99FFBF",
+      "Notes": "f",
+      "ArmedForceTypesName": "g",
+      "Code": "g",
+      "IsDelete": true
+    },
+    {
+      "ID": "9A9342C0-5CE0-43CB-A3DE-5A3BE6A53265",
+      "Notes": "Lực lượng vũ trang nhân dan Huyên check 1",
+      "ArmedForceTypesName": "Lực lượng vũ trang nhân dan Huyên check 1",
+      "Code": "MLLVTND_HUYEN01",
+      "IsDelete": null
+    }
+  ]
+}

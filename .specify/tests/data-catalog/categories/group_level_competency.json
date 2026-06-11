@@ -1,0 +1,68 @@
+{
+  "table": "Cat_GroupLevelCompetency",
+  "rows": [
+    {
+      "ID": "49E6BC61-7B30-4564-A9C0-2C41475EDAA0",
+      "Code": "Test01",
+      "GroupLevelCompetencyName": "Kịch bản test",
+      "Description": null,
+      "IsDelete": null
+    },
+    {
+      "ID": "C1855F12-7A7F-4A82-B82A-44D2A4FEB669",
+      "Code": "NCD004",
+      "GroupLevelCompetencyName": "CHUYÊN MÔN",
+      "Description": null,
+      "IsDelete": null
+    },
+    {
+      "ID": "0C7A24F7-ABCF-4AC2-B3D2-7A1B4C2F2ACC",
+      "Code": "LV1-LV5",
+      "GroupLevelCompetencyName": "LV1 - LV5",
+      "Description": null,
+      "IsDelete": null
+    },
+    {
+      "ID": "E96ECDC7-A34A-4388-A740-868132938879",
+      "Code": "CDNL007",
+      "GroupLevelCompetencyName": "LV1_LV5",
+      "Description": null,
+      "IsDelete": null
+    },
+    {
+      "ID": "1EC3D4A0-BF01-4E70-B73B-870D844409A1",
+      "Code": "NCD002",
+      "GroupLevelCompetencyName": "wss",
+      "Description": null,
+      "IsDelete": null
+    },
+    {
+      "ID": "8D02152B-3434-461D-A309-BAE4BC8336C4",
+      "Code": "NCD001",
+      "GroupLevelCompetencyName": "Nhóm cấp độ năng lực",
+      "Description": null,
+      "IsDelete": null
+    },
+    {
+      "ID": "116B117A-7C7C-4F6B-8698-E6CF82A8CC98",
+      "Code": "NNL_HUYEN",
+      "GroupLevelCompetencyName": "Nhóm năng lực Huyên check đào tạooo",
+      "Description": "Nhóm năng lực Huyên check đào tạooo",
+      "IsDelete": null
+    },
+    {
+      "ID": "15C8D75A-5E0D-45DA-9C89-E9576A26A275",
+      "Code": "NCD003",
+      "GroupLevelCompetencyName": "Nhóm cấp độ Huyên check nhân tài",
+      "Description": "Nhóm cấp độ Huyên check nhân tài",
+      "IsDelete": null
+    },
+    {
+      "ID": "2013CC53-ADCA-47FC-8301-4D69A7817D58",
+      "Code": "001",
+      "GroupLevelCompetencyName": "test",
+      "Description": null,
+      "IsDelete": true
+    }
+  ]
+}

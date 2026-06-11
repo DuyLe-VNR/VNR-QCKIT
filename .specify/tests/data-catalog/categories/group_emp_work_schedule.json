@@ -1,0 +1,11 @@
+{
+  "_meta": {
+    "table": "Cat_GroupEmpWorkSchedule",
+    "generatedAt": "2026-06-10",
+    "rowCount": 1,
+    "columns": ["ID","Code","GroupEmpName","Note","ServerUpdate","ServerCreate","UserUpdate","UserCreate","DateCreate","DateUpdate","UserLockID","DateLock","IsDelete","IPCreate","IPUpdate"]
+  },
+  "data": [
+    {"ID":"E76967A7-65A8-4DFB-95EC-629FA64F6C19","Code":"M01","GroupEmpName":"Nhóm 1","Note":null,"ServerUpdate":"113.161.54.110","ServerCreate":"113.161.54.110","UserUpdate":"vnr","UserCreate":"vnr","DateCreate":"2025-03-03T10:18:59.017Z","DateUpdate":"2025-03-03T10:18:59.017Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null}
+  ]
+}

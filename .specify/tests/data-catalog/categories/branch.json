@@ -1,0 +1,146 @@
+{
+  "table": "Cat_Branch",
+  "rows": [
+    {
+      "ID": "259E48D4-6CA7-4612-97C4-00051C155B1C",
+      "BranchName": "CN TRẢNG BOM - ĐỒNG NAI",
+      "BranchCode": "ICB59",
+      "BankID": "AB951229-C724-497A-85B1-2105B382C81D",
+      "Address": "CONG THUONG CN DONG NAI",
+      "IsDelete": true
+    },
+    {
+      "ID": "39C65012-07AF-4299-93C9-0012FBAD8346",
+      "BranchName": "CN SÓC TRĂNG",
+      "BranchCode": "SGTT38",
+      "BankID": "C4C1AE77-CF29-46EE-B746-4650BACAA421",
+      "IsDelete": true
+    },
+    {
+      "ID": "30449105-4260-4475-AA78-002F8BF1BD87",
+      "BranchName": "CN PHƯƠNG MAI - HÀ NỘI",
+      "BranchCode": "VPB8",
+      "BankID": "B829D2FB-BBA2-41EA-BC4E-721744464836",
+      "IsDelete": true
+    },
+    {
+      "ID": "ED31BC74-34FF-43D9-A47A-0031FC98D6EB",
+      "BranchName": "CN NINH THUẬN",
+      "BranchCode": "SGTT36",
+      "BankID": "0AD404A0-A759-490A-95C2-63C2E5B65D0C",
+      "IsDelete": null
+    },
+    {
+      "ID": "28A8AD23-B2C6-4EB0-AA8F-0080FAD3B5AA",
+      "BranchName": "CN BẮC ĐÀ NẴNG",
+      "BranchCode": "ICB141",
+      "BankID": "AB951229-C724-497A-85B1-2105B382C81D",
+      "IsDelete": true
+    },
+    {
+      "ID": "93A38DA7-AB18-4741-A37B-009366AC364E",
+      "BranchName": "CN PGD ÔNG TẠ",
+      "BranchCode": "SGTT46",
+      "BankID": "C4C1AE77-CF29-46EE-B746-4650BACAA421",
+      "IsDelete": true
+    },
+    {
+      "ID": "BF209FD6-DAFC-4B0C-80DE-00AAB037ED90",
+      "BranchName": "CN TRÀ VINH",
+      "BranchCode": "ICB103",
+      "BankID": "148DBDD8-436B-4E9F-9FAF-65BD94F6B9E2",
+      "IsDelete": null
+    },
+    {
+      "ID": "8074BADA-22D5-4E92-AA81-00CCDEF13E1E",
+      "BranchName": "CN TP.HCM",
+      "BranchCode": "ACB65",
+      "BankID": "8BC4D4CE-D122-4AA9-9CF9-6EC5D9929FD5",
+      "IsDelete": null
+    },
+    {
+      "ID": "083A57FD-A236-45D4-8DD1-012BD992AEB9",
+      "BranchName": "CN CẦN THƠ",
+      "BranchCode": "DA7",
+      "BankID": "03E4FCEB-0D02-49AC-830F-688F7F719159",
+      "IsDelete": true
+    },
+    {
+      "ID": "9DE5235A-6BB8-4BF2-B956-0133C659A5F8",
+      "BranchName": "CN THÁI NGUYÊN",
+      "BranchCode": "DTU51",
+      "BankID": "2C77EC16-41A3-4DD2-B736-FA5AB411FC9E",
+      "IsDelete": true
+    },
+    {
+      "ID": "591891C2-0963-4B42-B2E0-0137F96B98E4",
+      "BranchName": "Q. HOANG MAI, HA NOI",
+      "BranchCode": "NN109",
+      "BankID": "C0843EC0-B398-4481-99DF-98D30CB18EEE",
+      "IsDelete": true
+    },
+    {
+      "ID": "36DF1BB9-0BE8-4BC7-96F3-013FF51F9913",
+      "BranchName": "CN TÂN BÌNH, TP HCM",
+      "BranchCode": "DTU48",
+      "BankID": "2C77EC16-41A3-4DD2-B736-FA5AB411FC9E",
+      "IsDelete": true
+    },
+    {
+      "ID": "DC356F65-5DD9-4C80-AC6B-0151B83DD6D5",
+      "BranchName": "CN 169 ĐIỆN BIÊN PHỦ Q,BÌNH THẠNH, TP HCM",
+      "BranchCode": "VCB24",
+      "BankID": "E33AFCC9-FA9A-4DCC-9744-D30C15042E62",
+      "IsDelete": null
+    },
+    {
+      "ID": "5CF8DB9A-F768-4EB6-A5DA-01537975929E",
+      "BranchName": "CN HAI BÀ TRƯNG",
+      "BranchCode": "DA26",
+      "BankID": "03E4FCEB-0D02-49AC-830F-688F7F719159",
+      "IsDelete": true
+    },
+    {
+      "ID": "407342DC-B938-4BF5-A5DC-0154CA0C0686",
+      "BranchName": "CN NGUYỄN THỊ MINH KHAI, TP HCM",
+      "BranchCode": "ACB19",
+      "BankID": "9C1E95A9-4D41-4C47-93A9-75C41E12FC61",
+      "IsDelete": true
+    },
+    {
+      "ID": "DC5097EB-A80E-44BC-88DC-0173EE50C22D",
+      "BranchName": "PGD TP PLEIKU, GIA LAI",
+      "BranchCode": "DTU21",
+      "BankID": "09293BBF-D771-485C-B162-0BA8078D9535",
+      "IsDelete": null
+    },
+    {
+      "ID": "93DA244F-AEBC-4F37-AF2F-01A345726478",
+      "BranchName": "CN BÌNH TÂY, TP. HCM",
+      "BranchCode": "SCB2",
+      "BankID": "F2A156F3-1CB1-4454-AA27-7503F98A5DF4",
+      "IsDelete": null
+    },
+    {
+      "ID": "B9905B6B-66F5-4BBC-BF7C-01A3E497F1EF",
+      "BranchName": "CN PHAN DANG LUU - TP. HCM",
+      "BranchCode": "ACB26",
+      "BankID": "9C1E95A9-4D41-4C47-93A9-75C41E12FC61",
+      "IsDelete": true
+    },
+    {
+      "ID": "C00A4854-5C87-4351-B296-01D24351565B",
+      "BranchName": "HÀ NỘI",
+      "BranchCode": "VCB86",
+      "BankID": "D01D8115-FF1A-4374-B9DC-811719D51EBF",
+      "IsDelete": true
+    },
+    {
+      "ID": "40A2CCE4-75AE-461C-AD54-01D4E3A44E1B",
+      "BranchName": "CN TỈNH QUẢNG NINH",
+      "BranchCode": "ICB75",
+      "BankID": "AB951229-C724-497A-85B1-2105B382C81D",
+      "IsDelete": true
+    }
+  ]
+}

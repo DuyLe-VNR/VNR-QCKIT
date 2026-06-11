@@ -1,0 +1,81 @@
+{
+  "table": "Cat_District",
+  "rows": [
+    {
+      "ID": "B79B5988-22E1-4ABF-B378-00BF919C814D",
+      "Code": "439",
+      "ProvinceID": "510F63B6-B8F7-4CF4-AEFE-5A3D65DD7E77",
+      "DistrictName": "HƯƠNG SƠN",
+      "DistrictNameEN": "HUONG SON",
+      "CodeTax": "40509"
+    },
+    {
+      "ID": "08DBA47A-811B-451C-9410-0107F6F71D57",
+      "Code": "0106",
+      "ProvinceID": "88F26F5E-5531-4CF2-8484-81FEAE17455E",
+      "DistrictName": "Quận Đống Đa",
+      "IsDelete": true
+    },
+    {
+      "ID": "D897A756-A9DD-46C1-A7E4-01556AB99902",
+      "Code": "6801",
+      "ProvinceID": "5ACA241F-1635-42BD-B7D0-BBC9B2041762",
+      "DistrictName": "Thành phố Đà Lạt",
+      "IsDelete": true
+    },
+    {
+      "ID": "8B35D697-106F-4ED7-8914-015E96DA1B2B",
+      "Code": "413",
+      "ProvinceID": "D3DD3651-BE1F-49B9-8568-724C64C00E49",
+      "DistrictName": "CỬA LÒ",
+      "DistrictNameEN": "CUA LO",
+      "CodeTax": "40303"
+    },
+    {
+      "ID": "E1DDEE53-3683-4569-8853-01D72E3391BD",
+      "Code": "365",
+      "ProvinceID": "BF5EFD46-0B08-4EE2-8429-6A9FA36D3682",
+      "DistrictName": "GIAO THỦY",
+      "DistrictNameEN": "GIAO THUY",
+      "CodeTax": "11315"
+    },
+    {
+      "ID": "39B9427A-9D47-4FD5-93C7-022B57CEF9A0",
+      "Code": "417",
+      "ProvinceID": "D3DD3651-BE1F-49B9-8568-724C64C00E49",
+      "DistrictName": "KỲ SƠN",
+      "DistrictNameEN": "KY SON",
+      "CodeTax": "30507"
+    },
+    {
+      "ID": "262AD871-DBE0-4827-BE13-022D1F7F9C65",
+      "Code": "7902",
+      "ProvinceID": "18F3BA59-0463-4999-9A6B-97B296D11766",
+      "DistrictName": "Quận 12",
+      "IsDelete": true
+    },
+    {
+      "ID": "8DBEC2B1-0A31-41A1-A9D2-02EC0702A75D",
+      "Code": "329",
+      "ProvinceID": "7FA599E9-EC02-4797-8EDB-C6ECB2004370",
+      "DistrictName": "ÂN THI",
+      "DistrictNameEN": "AN THI",
+      "CodeTax": "10907"
+    },
+    {
+      "ID": "8ED25800-ADD1-4DF0-91C5-03425F57E28A",
+      "Code": "737",
+      "ProvinceID": "4499AEC3-A0E2-4967-97D7-A871D6ABD5E2",
+      "DistrictName": "TRẢNG BOM",
+      "DistrictNameEN": "TRANG BOM",
+      "CodeTax": "71308"
+    },
+    {
+      "ID": "D59D5596-854D-40AF-9BA7-031522EC395A",
+      "Code": "9601",
+      "ProvinceID": "282AC48A-94FF-4C89-ACC0-DEDD3A150265",
+      "DistrictName": "Thành phố Cà Mau",
+      "IsDelete": true
+    }
+  ]
+}

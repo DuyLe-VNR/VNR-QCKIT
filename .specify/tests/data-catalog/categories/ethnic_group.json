@@ -1,0 +1,30 @@
+{
+  "table": "Cat_EthnicGroup",
+  "rows": [
+    {
+      "ID": "2770FBFF",
+      "EthnicGroupName": "BRU-VAN KIEU",
+      "Code": "23"
+    },
+    {
+      "ID": "0B9418AD",
+      "EthnicGroupName": "E-DE",
+      "Code": "12"
+    },
+    {
+      "ID": "47E79610",
+      "EthnicGroupName": "MUONG",
+      "Code": "06"
+    },
+    {
+      "ID": "FBC86AEF",
+      "EthnicGroupName": "HAN",
+      "Code": "56"
+    },
+    {
+      "ID": "5EF3FF8B",
+      "EthnicGroupName": "Kinh",
+      "Code": "M01"
+    }
+  ]
+}

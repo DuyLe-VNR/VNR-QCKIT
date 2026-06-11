@@ -1,0 +1,75 @@
+{
+  "table": "Cat_CardType",
+  "rows": [
+    {
+      "ID": "81EFF1BB-4FC5-4339-9957-01DFC5E57311",
+      "Code": "BD",
+      "CardTypeName": "Bao thẻ + Dây đeo thẻ",
+      "CostLevel": 25000,
+      "IsDelete": null
+    },
+    {
+      "ID": "D2EDA155-FD6C-4D76-8D30-091BCACC7A72",
+      "Code": "T",
+      "CardTypeName": "Thẻ",
+      "CostLevel": 50000,
+      "IsDelete": null
+    },
+    {
+      "ID": "DE702DEB-C25F-4492-A3F7-2521D9162944",
+      "Code": "T1",
+      "CardTypeName": "Thẻ1",
+      "CostLevel": null,
+      "IsDelete": true
+    },
+    {
+      "ID": "D3B9D0A2-2843-467E-B788-3F06E7D49074",
+      "Code": "TB",
+      "CardTypeName": "Thẻ + Bao thẻ",
+      "CostLevel": 60000,
+      "IsDelete": null
+    },
+    {
+      "ID": "E8E73C44-26DE-47E2-A32D-713B2B694A24",
+      "Code": "2",
+      "CardTypeName": "Thẻ từ",
+      "CostLevel": null,
+      "IsDelete": true
+    },
+    {
+      "ID": "61515297-E99F-41F6-8424-72024F500627",
+      "Code": "TD",
+      "CardTypeName": "Thẻ + Dây đeo thẻ",
+      "CostLevel": 65000,
+      "IsDelete": null
+    },
+    {
+      "ID": "20CABE21-B6C4-4DD0-B83A-7526F3AEC03C",
+      "Code": "1",
+      "CardTypeName": "Thẻ nhựa",
+      "CostLevel": null,
+      "IsDelete": true
+    },
+    {
+      "ID": "CB07ED32-4BEB-45B1-96D5-95E2A371AF13",
+      "Code": "B",
+      "CardTypeName": "Bao thẻ",
+      "CostLevel": 10000,
+      "IsDelete": null
+    },
+    {
+      "ID": "D688260A-740F-4FC9-AA7F-9B446B3D2369",
+      "Code": "TBD",
+      "CardTypeName": "Thẻ + Bao thẻ + Dây đeo thẻ",
+      "CostLevel": 75000,
+      "IsDelete": null
+    },
+    {
+      "ID": "BDF8A6C9-DAA7-48D0-990E-ED626005B8B3",
+      "Code": "D",
+      "CardTypeName": "Dây đeo thẻ",
+      "CostLevel": 15000,
+      "IsDelete": null
+    }
+  ]
+}

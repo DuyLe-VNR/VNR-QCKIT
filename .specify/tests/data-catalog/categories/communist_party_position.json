@@ -1,0 +1,39 @@
+{
+  "table": "Cat_CommunistPartyPosition",
+  "rows": [
+    {
+      "ID": "A38B7E28-DD48-4543-BD34-0E6F69057E16",
+      "Code": "CVD_HUYEN01",
+      "CommunistPartyPositionName": "Chức vụ Đảng Huyên check 1",
+      "Notes": "Chức vụ Đảng Huyên check 1",
+      "ServerUpdate": "113.161.54.110",
+      "ServerCreate": "113.161.54.110",
+      "UserUpdate": "vnr",
+      "UserCreate": "vnr",
+      "DateCreate": "2025-03-12T16:13:57.953Z",
+      "DateUpdate": "2025-03-12T16:13:57.953Z",
+      "UserLockID": null,
+      "DateLock": null,
+      "IsDelete": null,
+      "IPCreate": null,
+      "IPUpdate": null
+    },
+    {
+      "ID": "381D69DC-ECF4-430E-ADBA-61AF0FAB005C",
+      "Code": "g",
+      "CommunistPartyPositionName": "g",
+      "Notes": "f",
+      "ServerUpdate": "115.78.239.195",
+      "ServerCreate": "115.78.239.195",
+      "UserUpdate": null,
+      "UserCreate": null,
+      "DateCreate": null,
+      "DateUpdate": "2014-12-24T17:19:41.160Z",
+      "UserLockID": null,
+      "DateLock": null,
+      "IsDelete": true,
+      "IPCreate": null,
+      "IPUpdate": null
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "_meta": {
+    "table": "Cat_CostActivity",
+    "generatedAt": "2026-06-10",
+    "rowCount": 1,
+    "columns": ["ID","CostActivityCode","CostActivity","Description","ServerUpdate","ServerCreate","UserUpdate","UserCreate","DateCreate","DateUpdate","UserLockID","DateLock","IsDelete","IPCreate","IPUpdate"]
+  },
+  "data": [
+    {
+      "ID": "79B7B679-9BF1-4F89-8F29-B63894968015",
+      "CostActivityCode": "HMCP",
+      "CostActivity": "Hạng mục chi phí",
+      "Description": null,
+      "ServerUpdate": "113.161.54.110",
+      "ServerCreate": "113.161.54.110",
+      "UserUpdate": "vnr",
+      "UserCreate": "vnr",
+      "DateCreate": "2025-02-26T15:54:04.357Z",
+      "DateUpdate": "2025-02-26T15:54:04.357Z",
+      "UserLockID": null,
+      "DateLock": null,
+      "IsDelete": null,
+      "IPCreate": null,
+      "IPUpdate": null
+    }
+  ]
+}

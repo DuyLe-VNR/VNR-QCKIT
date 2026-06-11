@@ -1,0 +1,41 @@
+{
+  "table": "Cat_Brand",
+  "rows": [
+    {
+      "ID": "9CCF0A1D-C530-4CBE-8148-036CEE6DC575",
+      "BrandName": "Thương hiệu 3",
+      "Code": "3",
+      "IsDelete": null
+    },
+    {
+      "ID": "70D15E16-CEC8-4947-8488-305E6D932153",
+      "BrandName": "TH4",
+      "Code": "4",
+      "IsDelete": true
+    },
+    {
+      "ID": "66A7D47A-68BF-4851-89B3-3B3FAB01C32C",
+      "BrandName": "Thương hiệu 1",
+      "Code": "1",
+      "IsDelete": null
+    },
+    {
+      "ID": "404BEA18-8CC8-4437-A063-5EC4F9E76DE4",
+      "BrandName": " Thương hiệu 2",
+      "Code": "2",
+      "IsDelete": null
+    },
+    {
+      "ID": "94420ECA-65CD-49FA-9D78-C98737B480A0",
+      "BrandName": "f",
+      "Code": "f",
+      "IsDelete": true
+    },
+    {
+      "ID": "C348CDD7-E273-46DE-A3B1-FF9678ED7C2C",
+      "BrandName": "hạnh",
+      "Code": "4",
+      "IsDelete": true
+    }
+  ]
+}

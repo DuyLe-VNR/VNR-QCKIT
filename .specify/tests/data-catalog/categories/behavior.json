@@ -1,0 +1,128 @@
+{
+  "table": "Cat_Behavior",
+  "rows": [
+    {
+      "ID": "381B913A-F8E0-4977-B810-000BA94CB6AF",
+      "BehaviorName": "Không biết về quy trình Nam Long",
+      "BehaviorCode": "HV_LEAD_067",
+      "IsDelete": null
+    },
+    {
+      "ID": "A175C7B6-B6E1-45C2-984C-00CFD4EECC37",
+      "BehaviorName": "Là người nắm giữ mối quan hệ chính của các đối tác quan trọng bên ngoài",
+      "BehaviorCode": "HV_FUNC_062",
+      "IsDelete": null
+    },
+    {
+      "ID": "478E0629-3C53-444E-ABC8-02DC2C9F754E",
+      "BehaviorName": "Chuyên gia trong lĩnh vực năng lực hẹp",
+      "BehaviorCode": "HV_LEAD_104",
+      "IsDelete": null
+    },
+    {
+      "ID": "CBF193D1-EF23-43D3-B7BB-02FCF17CBB18",
+      "BehaviorName": "Hành vi tốt đẹp_Huyên 1",
+      "BehaviorCode": "HV_HUYEN01",
+      "IsDelete": null,
+      "MinScore": 5,
+      "MaxScore": 1000,
+      "StandardScore": 100
+    },
+    {
+      "ID": "A7462F5C-F0BD-4EFE-B643-032CD68852EC",
+      "BehaviorName": "Không sắp xếp công việc của bản thân và nhóm một cách hiệu quả",
+      "BehaviorCode": "HV_LEAD_139",
+      "IsDelete": null
+    },
+    {
+      "ID": "0651DE54-87A3-4B72-8031-0354FF3070A5",
+      "BehaviorName": "Thực hiện theo hướng dẫn của quản lý cấp trên",
+      "BehaviorCode": "HV_LEAD_085",
+      "IsDelete": null
+    },
+    {
+      "ID": "C55DF25C-A2CD-4F8A-8726-04C2BEF98D7A",
+      "BehaviorName": "Phát triển kiến thức kỹ thuật để sử dụng các công cụ kinh doanh",
+      "BehaviorCode": "HV_FUNC_068",
+      "IsDelete": null
+    },
+    {
+      "ID": "79116AA7-01DE-46A9-84F9-057EE434CB34",
+      "BehaviorName": "Đối phó thỏa đáng trong các tình huống căng thẳng",
+      "BehaviorCode": "HV_LEAD_087",
+      "IsDelete": null
+    },
+    {
+      "ID": "489B2361-371B-4EB5-A0D2-077A80EC1C5F",
+      "BehaviorName": "Cung cấp đào tạo khi được yêu cầu",
+      "BehaviorCode": "HV_LEAD_106",
+      "IsDelete": null
+    },
+    {
+      "ID": "F7C9491F-8469-4926-857F-0AC51C74A08D",
+      "BehaviorName": "Có khả năng trả lời các câu hỏi cơ bản",
+      "BehaviorCode": "HV_FUNC_023",
+      "IsDelete": null
+    },
+    {
+      "ID": "ECCFFBFC-D57C-4CC7-85B3-0C672CA982D1",
+      "BehaviorName": "Thể hiện tốc độ học tập trên mức trung bình",
+      "BehaviorCode": "HV_LEAD_079",
+      "IsDelete": null
+    },
+    {
+      "ID": "4B4C7D7C-C269-4F94-BAD4-0FD67301132C",
+      "BehaviorName": "Đưa ra hướng dẫn chậm trễ",
+      "BehaviorCode": "HV_LEAD_137",
+      "IsDelete": null
+    },
+    {
+      "ID": "178FAF25-8F31-48FE-B313-10C79D153E43",
+      "BehaviorName": "Có khả năng thiết lập cơ sở cho tầm nhìn và văn hóa ở cấp độ tổ chức",
+      "BehaviorCode": "HV_LEAD_172",
+      "IsDelete": null
+    },
+    {
+      "ID": "DD99B816-9E27-43E3-A1AA-11310C72608C",
+      "BehaviorName": "Không Thể bảo vệ quan điểm",
+      "BehaviorCode": "HV_LEAD_055",
+      "IsDelete": null
+    },
+    {
+      "ID": "74D26386-71A8-4015-8C5A-115B65A9A566",
+      "BehaviorName": "Giúp loại bỏ các rào cản và trở ngại",
+      "BehaviorCode": "HV_FUNC_088",
+      "IsDelete": null
+    },
+    {
+      "ID": "46721E65-9F1F-422E-90AE-121133222843",
+      "BehaviorName": "Thiếu tự tin và gặp khó khăn trong việc thiết lập niềm tin",
+      "BehaviorCode": "HV_LEAD_027",
+      "IsDelete": null
+    },
+    {
+      "ID": "5C4C0FE4-0502-476D-B0E1-133D4487CEA6",
+      "BehaviorName": "Gặp khó khăn trong việc xây dựng các khuôn khổ và chiến lược",
+      "BehaviorCode": "HV_LEAD_084",
+      "IsDelete": null
+    },
+    {
+      "ID": "3C962FD6-2EB4-4801-BCF0-133F517C5A43",
+      "BehaviorName": "Dẫn dắt các nhóm trung bình vượt qua các giai đoạn lớn của sự thay đổi",
+      "BehaviorCode": "HV_LEAD_099",
+      "IsDelete": null
+    },
+    {
+      "ID": "DFBEB87E-85E8-4D04-ABC0-134109CFEE41",
+      "BehaviorName": "Phát triển test 4",
+      "BehaviorCode": "HV008",
+      "IsDelete": null
+    },
+    {
+      "ID": "0031FED0-BE2E-4814-8C84-13BCF42DCF78",
+      "BehaviorName": "Nhà tư tưởng đột phá",
+      "BehaviorCode": "HV_LEAD_064",
+      "IsDelete": null
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "vnr-qckit",
+  "description": "VNR Playwright QC automation — setup preflight, BasePage generation, URL alias crawling, component detection",
+  "version": "1.0.0",
+  "author": {
+    "name": "VNR"
+  },
+  "homepage": "https://github.com/your-org/vnr-qckit",
+  "license": "MIT",
+  "keywords": ["playwright", "automation", "qc", "testing", "basepage", "url-aliases"]
+}

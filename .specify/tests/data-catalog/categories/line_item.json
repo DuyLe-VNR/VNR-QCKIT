@@ -1,0 +1,14 @@
+{
+  "_meta": {
+    "table": "Cat_LineItem",
+    "generatedAt": "2026-06-10",
+    "rowCount": 4,
+    "columns": ["ID","LineItemName","Code","BrandID","Note","ServerUpdate","ServerCreate","UserUpdate","UserCreate","DateCreate","DateUpdate","UserLockID","DateLock","IsDelete","IPCreate","IPUpdate"]
+  },
+  "data": [
+    {"ID":"1AFAECE3-7C84-4DB9-9907-1F0E0BEE551A","LineItemName":"fgg","Code":"fgg","BrandID":"9CCF0A1D-C530-4CBE-8148-036CEE6DC575","Note":null,"ServerUpdate":"115.78.239.195","ServerCreate":"115.78.239.195","UserUpdate":null,"UserCreate":null,"DateCreate":null,"DateUpdate":"2014-12-24T17:27:12.113Z","UserLockID":null,"DateLock":null,"IsDelete":true,"IPCreate":null,"IPUpdate":null},
+    {"ID":"5E029CE3-D4BA-4F3C-876C-26E9274FF399","LineItemName":null,"Code":null,"BrandID":null,"Note":null,"ServerUpdate":"115.78.239.195","ServerCreate":"115.78.239.195","UserUpdate":null,"UserCreate":null,"DateCreate":"2014-12-10T08:57:23.063Z","DateUpdate":"2014-12-10T08:59:21.190Z","UserLockID":null,"DateLock":null,"IsDelete":true,"IPCreate":null,"IPUpdate":null},
+    {"ID":"6CE2D7F9-3643-44AE-93C6-4F5594A44917","LineItemName":"f","Code":"fd","BrandID":"9CCF0A1D-C530-4CBE-8148-036CEE6DC575","Note":null,"ServerUpdate":"115.78.239.195","ServerCreate":"115.78.239.195","UserUpdate":null,"UserCreate":null,"DateCreate":"2014-12-24T17:27:47.000Z","DateUpdate":"2014-12-24T17:28:06.360Z","UserLockID":null,"DateLock":null,"IsDelete":true,"IPCreate":null,"IPUpdate":null},
+    {"ID":"3D7CF705-1C06-4E4E-88EE-B232D7C588D7","LineItemName":null,"Code":null,"BrandID":null,"Note":null,"ServerUpdate":"115.78.239.195","ServerCreate":"115.78.239.195","UserUpdate":null,"UserCreate":null,"DateCreate":"2014-12-10T08:56:59.490Z","DateUpdate":"2014-12-10T08:59:21.143Z","UserLockID":null,"DateLock":null,"IsDelete":true,"IPCreate":null,"IPUpdate":null}
+  ]
+}

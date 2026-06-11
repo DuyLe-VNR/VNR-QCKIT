@@ -1,0 +1,50 @@
+{
+  "table": "Cat_ElementBonus",
+  "rows": [
+    {
+      "ID": "C2318B6F-E8A1-4F29-8466-128E4931D461",
+      "Code": "M01",
+      "ElementBonusName": "Phần tử 1",
+      "BonusTypeID": null,
+      "Formula": "123",
+      "IsApplyAll": false,
+      "IsTotalAmount": false,
+      "IsDelete": true,
+      "Type": null,
+      "DisplayPosition": null,
+      "Description": null,
+      "IsBold": false,
+      "DisplayOnRewardPayslip": false
+    },
+    {
+      "ID": "8496BA27-4E11-4BBA-B275-7C7DD6E66B19",
+      "Code": "4888",
+      "ElementBonusName": "4888",
+      "BonusTypeID": null,
+      "Formula": "4888",
+      "IsApplyAll": true,
+      "IsTotalAmount": false,
+      "IsDelete": null,
+      "Type": "Double",
+      "DisplayPosition": "1",
+      "Description": null,
+      "IsBold": false,
+      "DisplayOnRewardPayslip": true
+    },
+    {
+      "ID": "82E4C1C2-43FE-4FC1-A49C-8C734C00FCE1",
+      "Code": "testID",
+      "ElementBonusName": "testName",
+      "BonusTypeID": "33110C75-3525-426E-A169-5EDA9CC41169",
+      "Formula": "123",
+      "IsApplyAll": false,
+      "IsTotalAmount": false,
+      "IsDelete": null,
+      "Type": "Double",
+      "DisplayPosition": null,
+      "Description": null,
+      "IsBold": false,
+      "DisplayOnRewardPayslip": false
+    }
+  ]
+}

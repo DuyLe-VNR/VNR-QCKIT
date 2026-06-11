@@ -1,0 +1,23 @@
+{
+  "table": "Cat_EnumSalary",
+  "rows": [
+    {
+      "ID": "5984F619",
+      "EnumName": "SAL_BASICSALARY_ALLOWANCEAMOUNT14_BYDAY",
+      "Signification": "Phan tu luong ngay",
+      "EnumType": "E_PAYROLLELEMENTBYDAY"
+    },
+    {
+      "ID": "576A604E",
+      "EnumName": "ATT_ATTENDANCETABLE_LATEEARLYCOUNT",
+      "Signification": "Tong so lan di tre ve som",
+      "EnumType": "E_PAYROLLELEMENT"
+    },
+    {
+      "ID": "EFDAB35A",
+      "EnumName": "INS_SALARY_INSURANCE_ROOT",
+      "Signification": "Luong dong bao hiem goc",
+      "EnumType": "E_PAYROLLELEMENT"
+    }
+  ]
+}

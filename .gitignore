@@ -1,0 +1,7 @@
+Backend/
+Frontend/
+node_modules/
+.specify/tests/test-results/
+.env.*
+user.json
+logs/

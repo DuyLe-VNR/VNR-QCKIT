@@ -1,0 +1,11 @@
+{
+  "_meta": {
+    "table": "Cat_KPIRank",
+    "generatedAt": "2026-06-10",
+    "rowCount": 1,
+    "columns": ["ID","SalaryClassID","SalaryClassTypeID","KPIRankName","DateOfEffect","DateEnd","IsInsurance","DurationOfRank","IsSalaryStandard","IsMinSalaryRate","Rate","SalaryStandard","CurrencyID","SalaryMin","SalaryMax","InsuranceRate","AdjusteRate","FinalRate","Level","ProbationSalary","ProbationPercent","FileAttach","ServerUpdate","ServerCreate","UserUpdate","UserCreate","DateCreate","DateUpdate","UserLockID","DateLock","IsDelete","IPCreate","IPUpdate"]
+  },
+  "data": [
+    {"ID":"0A44208A-DBEA-43C3-A189-BAAE28C0624F","SalaryClassID":"222AD67D-1D3C-4476-8FB4-03ABEB1CAE43","SalaryClassTypeID":null,"KPIRankName":"bac kpi test nha a Phuoc","DateOfEffect":"2025-02-15T00:00:00.000Z","DateEnd":"2025-04-16T00:00:00.000Z","IsInsurance":false,"DurationOfRank":null,"IsSalaryStandard":null,"IsMinSalaryRate":null,"Rate":null,"SalaryStandard":null,"CurrencyID":null,"SalaryMin":null,"SalaryMax":null,"InsuranceRate":null,"AdjusteRate":null,"FinalRate":null,"Level":null,"ProbationSalary":null,"ProbationPercent":null,"FileAttach":null,"ServerUpdate":"113.161.54.110","ServerCreate":null,"UserUpdate":"vnr","UserCreate":null,"DateCreate":null,"DateUpdate":"2025-02-27T08:40:31.673Z","UserLockID":null,"DateLock":null,"IsDelete":null,"IPCreate":null,"IPUpdate":null}
+  ]
+}
