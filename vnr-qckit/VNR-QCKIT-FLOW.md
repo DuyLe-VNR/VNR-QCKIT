@@ -8,13 +8,20 @@
 ## Tổng quan kiến trúc
 
 ```
- G1: CÀI ĐẶT          G2: KHÁM PHÁ             G3: MAPPING           G4: SINH TC     G5: CHẠY TEST    G6: PHÂN TÍCH
- (chạy 1 lần)         (per group/alias)         (per alias)           (per PBI)       (per PBI, lặp)   (per run)
- ─────────────         ─────────────────         ─────────────         ───────────     ──────────────   ─────────────
- qc_pre                qc_detect_component  ──►  qc_map_flow           qc_generate     qc_auto_test     qc_triage
-  ├ qc_setup            qc_component_rule         qc_url_page_map                       (cli+mcp)
+ G1: CÀI ĐẶT          G2: KHÁM PHÁ             G3: MAPPING          
+ (chạy 1 lần)         (per group/alias)         (per alias)           
+ ─────────────         ─────────────────         ─────────────     
+ qc_pre                qc_detect_component  ──►  qc_map_flow           
+  ├ qc_setup            qc_component_rule         qc_url_page_map                       
   ├ qc_basepage         qc_user_flow         ──►  qc_sub-system-map
   └ url-aliases.md
+
+
+ G4: SINH TC     G5: CHẠY TEST    G6: PHÂN TÍCH
+ (per PBI)       (per PBI, lặp)   (per run)
+ ───────────     ──────────────   ─────────────
+ qc_generate     qc_auto_test     qc_triage
+                 (cli+mcp)
 ```
 
 ---
