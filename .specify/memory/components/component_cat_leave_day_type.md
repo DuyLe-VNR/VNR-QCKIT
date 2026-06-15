@@ -35,6 +35,14 @@
 
 ---
 
+## k-dropdown — Kendo DropdownList (1 field)  [NEW - /qc_auto_test 090626]
+
+| # | Label | name | Values | Required | Context |
+| --- | --- | --- | --- | --- | --- |
+| 1 | Giới tính áp dụng | ApplyGender | All/Female/Male | — | dialog (Create/Edit page) [NEW - /qc_auto_test 090626] |
+
+---
+
 ## checkbox — input checkbox (27 fields)  [NEW - chưa có trong components.md]
 
 | # | Label | name | Required | Context |
@@ -65,7 +73,8 @@
 | 24 | Suất ăn | IsMeal | — | dialog |
 | 25 | Tải người thân | IsLoadRelatives | — | dialog |
 | 26 | Vô hiệu | IsInactive | — | dialog |
-| 27 | (các checkbox bổ sung trong config) | — | — | dialog |
+| 27 | Yêu cầu ngày liên tục | IsRequireConsecutive | — | dialog [NEW - /qc_auto_test 090626] |
+| 28 | (các checkbox bổ sung trong config) | — | — | dialog |
 
 ---
 
@@ -76,6 +85,7 @@
 | 1 | Số thứ tự | Order | — | — | dialog |
 | 2 | Số ngày nghỉ tối đa/năm | MaxPerYear | — | — | dialog |
 | 3 | Số ngày nghỉ tối đa/tháng | MaxPerMonth | — | — | dialog |
+| 4 | Số ngày tối đa/tháng (KN) | MaxConsecutiveDaysPerMonth | — | conditional (hiện khi IsRequireConsecutive=true) | dialog [NEW - /qc_auto_test 090626] |
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-description: "Đọc component_temp_{alias}.md + userflow.md, sinh 2 file TypeScript cho từng màn hình: {AliasName}Locator.ts (khai báo locator) đặt ở pages/{group}/ và {AliasName}Page.ts (action methods, import Locator) đặt ở pages/{group}/{alias}/. Chạy sau qc_detect_component + qc_user_flow."
+description: "Đọc component_{alias}.md trong .specify/memory/components/ và userflow-{group}.md trong .specify/memory/, sinh 2 file TypeScript cho từng màn hình: {AliasName}Locator.ts (khai báo locator) đặt ở pages/{group}/ và {AliasName}Page.ts (action methods, import Locator) đặt ở pages/{group}/{alias}/. Chạy sau qc_detect_component + qc_user_flow."
 argument-hint: "[alias1 alias2 ...] | --all | --pbi <PBI_ID>"
 ---
 
@@ -15,7 +15,7 @@ Sinh **Locator** và **Page Object** TypeScript từ component role + user flow 
 $ARGUMENTS
 ```
 
-- **Không có argument** hoặc **`--all`** → xử lý tất cả alias có `component_temp_{alias}.md`
+- **Không có argument** hoặc **`--all`** → xử lý tất cả alias có `component_{alias}.md` trong `.specify/memory/components/`
 - **`alias1 alias2 ...`** → chỉ xử lý các alias được chỉ định
 - **`--pbi <PBI_ID>`** → chỉ xử lý các alias liên quan đến PBI (đọc từ `testcase.md` hoặc `spec.md`)
 
@@ -29,26 +29,24 @@ Tìm các file nguồn theo thứ tự:
 
 | File | Bắt buộc | Ghi chú |
 | --- | --- | --- |
-| `vnr-qckit/detected_components/component_temp_{alias}.md` | **BẮT BUỘC** | Danh sách component + field từ qc_detect_component |
+| `.specify/memory/components/component_{alias}.md` | **BẮT BUỘC** | Danh sách component + field từ qc_detect_component |
 | `.specify/tests/url-aliases.md` | **BẮT BUỘC** | Alias → URL path mapping |
-| `.specify/rules/component-rule.md` | **Ưu tiên** | Selector rules cho từng component type |
-| `vnr-qckit/templates/template-component-rule.md` | Fallback | Dùng khi không có `.specify/rules/component-rule.md` |
+| `.specify/rules/component-rule.md` | **BẮT BUỘC** | Selector rules cho từng component type |
 | `.specify/memory/userflow-{group}.md` | **Ưu tiên** | Userflow riêng theo group — tìm trước |
-| `.specify/memory/userflow.md` | Fallback | Userflow tổng hợp — dùng khi không có file theo group |
 | `.specify/specs/{PBI_ID}/testcase.md` | Tùy chọn | Để suy luận method nào cần ưu tiên |
 
-Nếu thiếu `component_temp_{alias}.md` ở `vnr-qckit/detected_components/` → **DỪNG**:
+Nếu thiếu `component_{alias}.md` ở `.specify/memory/components/` → **DỪNG**:
 
 ```
-⛔ Không tìm thấy vnr-qckit/detected_components/component_temp_{alias}.md
+⛔ Không tìm thấy .specify/memory/components/component_{alias}.md
 → Chạy /qc_detect_component {alias} trước để phát hiện component
 ```
 
-Nếu thiếu cả `.specify/rules/component-rule.md` lẫn `vnr-qckit/templates/template-component-rule.md` → **DỪNG**:
+Nếu thiếu `.specify/rules/component-rule.md` → **DỪNG**:
 
 ```
-⛔ Không tìm thấy component-rule.md
-→ Chạy /qc_init_component trước để định nghĩa selector cho component
+⛔ Không tìm thấy .specify/rules/component-rule.md
+→ Chạy /qc_component_rule trước để định nghĩa selector cho component
 ```
 
 ### 0.2 Xác định danh sách alias cần xử lý
@@ -76,8 +74,8 @@ Sẽ sinh Page Object cho {n} màn hình:
 Đọc đồng thời:
 
 1. `.specify/tests/url-aliases.md` → build map `alias → path`
-2. `.specify/rules/component-rule.md` (fallback: `vnr-qckit/templates/template-component-rule.md`) → build **ComponentRuleMap**
-3. `vnr-qckit/detected_components/component_temp_{alias}.md` cho tất cả alias cần xử lý → build **FieldInventory**
+2. `.specify/rules/component-rule.md` → build **ComponentRuleMap**
+3. `.specify/memory/components/component_{alias}.md` cho tất cả alias cần xử lý → build **FieldInventory**
 4. Userflow files theo group (xem 1.3) → build **ActionMap**
 
 ### 1.1 ComponentRuleMap
@@ -111,7 +109,7 @@ ComponentRuleMap["vnr-combobox"] = {
 
 ### 1.2 FieldInventory
 
-Từ `component_temp_{alias}.md`, parse từng section component:
+Từ `.specify/memory/components/component_{alias}.md`, parse từng section component:
 
 ```
 FieldInventory[alias][componentType] = [
@@ -134,10 +132,7 @@ Với **mỗi group** trong alias_list, resolve file userflow theo thứ tự ư
 1. Thử đọc: .specify/memory/userflow-{group}.md
      → Có → dùng file này cho TẤT CẢ alias thuộc group đó
 
-2. Fallback: .specify/memory/userflow.md
-     → Có → dùng file tổng hợp, lọc section theo alias
-
-3. Không có gì → ActionMap[alias] = {} (empty)
+2. Không có → ActionMap[alias] = {} (empty)
      → Ghi cảnh báo, tiếp tục sinh locator
 ```
 
@@ -146,7 +141,6 @@ Cảnh báo khi không có userflow:
 ```
 ⚠ Không tìm thấy userflow cho group [{group}]
   → Tìm: .specify/memory/userflow-{group}.md — không có
-  → Fallback: .specify/memory/userflow.md — không có
   → Sẽ sinh Locator đầy đủ, Page chỉ có goto(), không có action methods
   → Chạy /qc_user_flow {alias} để crawl userflow trước nếu muốn có action methods
 ```
@@ -160,8 +154,7 @@ group "cat":
 
 group "hrm":
   → Thử: .specify/memory/userflow-hrm.md  ✗ không có
-  → Fallback: .specify/memory/userflow.md  ✔ tìm thấy
-  → Tìm section "## hrm_employee" trong userflow.md
+  → ActionMap[hrm_employee] = {} — sẽ sinh locators only
 ```
 
 Sau khi có file userflow, với mỗi alias trích xuất section `## {alias}`:
@@ -267,7 +260,7 @@ import { Page, Locator } from '@playwright/test'
  * Locator: {Mô tả màn hình từ url-aliases.md}
  * URL: {path}
  * Sinh bởi /qc_map_flow — {ISO_DATE}
- * Source: component_temp_{alias}.md + component-rule.md
+ * Source: component_{alias}.md + component-rule.md
  * Group: {group-code}
  */
 export class {AliasName}Locator {
@@ -303,7 +296,7 @@ import { {AliasName}Locator } from '../{AliasName}Locator'
  * URL: {path}
  * Screen type: {list|form|detail|tab}
  * Sinh bởi /qc_map_flow — {ISO_DATE}
- * Source: component_temp_{alias}.md + userflow-{group}.md (hoặc userflow.md)
+ * Source: component_{alias}.md + userflow-{group}.md
  * Group: {group-code}
  */
 export class {AliasName}Page extends BasePage {
@@ -459,7 +452,7 @@ Ghi file `.specify/tests/knowledge/{group}/{alias}/locator-map.md`:
 
 > Sinh bởi /qc_map_flow — {ISO_DATE}
 > Group: {group-code}
-> Source: component_temp_{alias}.md + component-rule.md
+> Source: component_{alias}.md + component-rule.md
 > Locator file : .specify/tests/pages/{group}/{AliasName}Locator.ts
 > Page Object  : .specify/tests/pages/{group}/{alias}/{AliasName}Page.ts
 
@@ -526,7 +519,7 @@ Chi tiết theo group:
     ✔ obj_goal_personal
         Locator : obj/ObjGoalPersonalLocator.ts
         Page    : obj/obj_goal_personal/ObjGoalPersonalPage.ts
-    ✗ obj_dashboard → [SKIP] component_temp_obj_dashboard.md không tồn tại
+    ✗ obj_dashboard → [SKIP] component_obj_dashboard.md không tồn tại
 
 Thống kê locator:
   getByLabel         : {n} fields
@@ -551,12 +544,12 @@ Bước tiếp theo:
 - **Tách Locator và Page Object thành 2 file riêng biệt** — Locator file ở `{group}/{AliasName}Locator.ts`, Page file ở `{group}/{alias}/{AliasName}Page.ts`.
 - **Locator file không chứa action method** — chỉ khai báo `Locator` property, không import BasePage.
 - **Page Object import Locator** qua `this.loc = new {AliasName}Locator(page)` — truy cập locator trong action method qua `this.loc.*`.
-- **Không sửa** `component_temp_*.md`, `userflow-{group}.md`, `userflow.md`, `component-rule.md`, hay bất kỳ file INPUT nào.
+- **Không sửa** `component_*.md`, `userflow-{group}.md`, `component-rule.md`, hay bất kỳ file INPUT nào.
 - **Không dùng `id`** làm locator — Angular/Kendo sinh id dynamic.
 - **Không dùng `nth-child` index** nếu có thể xác định bằng label — index giòn, dễ vỡ khi UI thay đổi.
 - Nếu **label trùng nhau** trên cùng context → thêm `nth(index)` và ghi `[WARN: label trùng — cần xác nhận]`.
 - **Context wrapper** (dialog/panel) phải được áp dụng nhất quán cho mọi locator trong cùng context — không mix context.
-- Nếu `userflow-{group}.md` và `userflow.md` đều thiếu → sinh Locator file đầy đủ, Page file chỉ có `goto()`, **không** sinh action methods — ghi `[TODO: thêm action methods sau khi có userflow-{group}.md]`.
-- **Ghi đè** nếu file đã tồn tại — luôn là snapshot mới nhất từ component_temp.
+- Nếu `userflow-{group}.md` thiếu → sinh Locator file đầy đủ, Page file chỉ có `goto()`, **không** sinh action methods — ghi `[TODO: thêm action methods sau khi có userflow-{group}.md]`.
+- **Ghi đè** nếu file đã tồn tại — luôn là snapshot mới nhất từ component_{alias}.md.
 - Với field `[unknown]` label → **không bỏ qua** — sinh locator với `[TODO]` comment để reviewer biết cần check.
 - Tên property trong Locator dùng **camelCase tiếng Việt không dấu** từ label (ví dụ: `Tên phiếu mục tiêu` → `tenPhieuMucTieu`).

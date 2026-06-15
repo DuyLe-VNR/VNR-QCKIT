@@ -1,0 +1,29 @@
+{
+  "_meta": {
+    "description": "Index các PBI đã có knowledge + testcase. Dùng để tham chiếu nhanh khi sinh test.",
+    "created": "2026-06-12",
+    "updated": "2026-06-12 (110626 datafake.json + tc_summary added)"
+  },
+  "entries": [
+    {
+      "pbi": "090626",
+      "screen": "cat_leave_day_type + att_leave_day",
+      "knowledge_path": ".specify/tests/knowledge/090626/",
+      "testcase_path": ".specify/specs/090626/testcase.md",
+      "datafake_path": ".specify/specs/090626/datafake.json",
+      "generated": "2026-06-12",
+      "description": "Phép kinh nguyệt NV nữ — BS-01 (3 field mới Cat_LeaveDayType), BS-02 (3 validate rules), BS-03 (filter dropdown)"
+    },
+    {
+      "pbi": "110626",
+      "screen": "cat_bank — form Tạo mới & Cập nhật (BankNote field)",
+      "knowledge_path": ".specify/tests/knowledge/110626/",
+      "testcase_path": ".specify/specs/110626/testcase.md",
+      "datafake_path": ".specify/specs/110626/datafake.json",
+      "generated": "2026-06-12",
+      "last_regenerated": "2026-06-12",
+      "description": "Bổ sung trường Ghi chú đánh giá ngân hàng (BankNote, textarea, max 1000 ký tự, optional) vào Cat_Bank Create/Edit — BS-01",
+      "tc_summary": { "total": 8, "auto": 7, "manual": 1 }
+    }
+  ]
+}

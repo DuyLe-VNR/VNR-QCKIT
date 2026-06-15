@@ -200,7 +200,7 @@ Nếu template **không tồn tại** → dùng Format testcase chuẩn bên dư
 
 ## BƯỚC 4 — SINH datafake.json
 
-Ghi vào `.specify/specs/{PBI_ID}/datafake.json` với cấu trúc:
+Ghi vào `.specify/tests/playwright/{PBI_ID}/datafake.json` với cấu trúc:
 
 - `_meta`: pbi, generated, screen
 - `happy_path`: các field với giá trị hợp lệ điển hình

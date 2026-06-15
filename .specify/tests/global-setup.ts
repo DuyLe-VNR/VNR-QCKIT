@@ -48,6 +48,7 @@ export default async function globalSetup(_config: FullConfig) {
   const env     = { ...baseEnv, ...envVars }
 
   const baseURL      = process.env.APP_URL       || env.APP_URL       || 'http://localhost:4200'
+  const baseURLlogin = process.env.APP_URL_LOGIN       || env.APP_URL_LOGIN       || 'http://localhost:4200'
   const username     = process.env.AUTH_USERNAME || env.AUTH_USERNAME || 'admin'
   const password     = process.env.AUTH_PASSWORD || env.AUTH_PASSWORD || ''
   const headless     = (env.PW_HEADLESS ?? 'true') !== 'false'
@@ -70,7 +71,7 @@ export default async function globalSetup(_config: FullConfig) {
     executablePath: fs.existsSync(chromiumExe) ? chromiumExe : undefined,
   })
 
-  const context = await browser.newContext({ baseURL })
+  const context = await browser.newContext({ baseURLlogin })
   const page    = await context.newPage()
 
   try {

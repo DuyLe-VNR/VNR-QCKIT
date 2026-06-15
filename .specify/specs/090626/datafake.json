@@ -1,7 +1,7 @@
 {
   "_meta": {
     "pbi": "090626",
-    "generated": "2026-06-10",
+    "generated": "2026-06-12",
     "screen": "cat_leave_day_type + att_leave_day (Nghỉ kinh nguyệt NV nữ — BS-01..BS-03)"
   },
 
@@ -46,20 +46,29 @@
   },
 
   "employee_nu": {
-    "name": "Nguyễn Thị Nữ Test",
-    "code": "NTN001",
+    "name": "NGUYỄN TUYẾT ANH",
+    "code": "00002",
     "gender": "Female",
     "department": "Phòng Nhân sự",
     "note": "NV nữ test — Gender=E_FEMALE. Cần tạo sẵn trong hệ thống"
   },
 
   "employee_nam": {
-    "name": "Nguyễn Văn Nam Test",
-    "code": "NVN001",
+    "name": "VÕ NGỌC VINH",
+    "code": "VNR01716",
     "gender": "Male",
     "department": "Phòng IT",
     "note": "NV nam test — Gender≠E_FEMALE. Cần tạo sẵn trong hệ thống"
   },
+
+  "nv_nu_code": "00002",
+  "nv_nu_name": "NGUYỄN TUYẾT ANH",
+  "nv_nam_code": "VNR01716",
+  "nv_nam_name": "VÕ NGỌC VINH",
+  "ten_loai_kn": "Nghỉ kinh nguyệt",
+  "ma_loai_kn": "KN",
+  "nguoi_duyet_dau": "[TODO: nhập tên người duyệt đầu thực tế trong hệ thống test]",
+  "nguoi_duyet_cuoi": "[TODO: nhập tên người duyệt cuối thực tế trong hệ thống test]",
 
   "employee_bpns": {
     "name": "Trần Thị BPNS Test",

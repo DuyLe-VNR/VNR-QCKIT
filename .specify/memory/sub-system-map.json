@@ -1,36 +1,12 @@
 {
   "success": true,
-  "generated_at": "2026-06-11T00:00:00.000Z",
+  "generated_at": "2026-06-12T00:00:00.000Z",
   "source": ".specify/tests/pages/url-page-map.md",
   "total": 2,
   "screens": {
     "att_leave_day": {
       "group": "att",
       "url": "/Att_LeaveDay/Index",
-      "pageObject": ".specify/tests/pages/att/att_leave_day/AttLeaveDayPage.ts",
-      "locator": ".specify/tests/pages/att/AttLeaveDayLocator.ts"
-    },
-    "att_leave_day_analyze": {
-      "group": "att",
-      "url": "/Att_LeaveDayAnalyze/Index",
-      "pageObject": ".specify/tests/pages/att/att_leave_day/AttLeaveDayPage.ts",
-      "locator": ".specify/tests/pages/att/AttLeaveDayLocator.ts"
-    },
-    "att_leave_day_payback": {
-      "group": "att",
-      "url": "/Att_LeaveDay/Payback",
-      "pageObject": ".specify/tests/pages/att/att_leave_day/AttLeaveDayPage.ts",
-      "locator": ".specify/tests/pages/att/AttLeaveDayLocator.ts"
-    },
-    "att_leave_day_plan": {
-      "group": "att",
-      "url": "/Att_LeaveDayPlan/Index",
-      "pageObject": ".specify/tests/pages/att/att_leave_day/AttLeaveDayPage.ts",
-      "locator": ".specify/tests/pages/att/AttLeaveDayLocator.ts"
-    },
-    "att_leaveday_comfirm": {
-      "group": "att",
-      "url": "/Att_LeavedayComfirm/Index",
       "pageObject": ".specify/tests/pages/att/att_leave_day/AttLeaveDayPage.ts",
       "locator": ".specify/tests/pages/att/AttLeaveDayLocator.ts"
     },

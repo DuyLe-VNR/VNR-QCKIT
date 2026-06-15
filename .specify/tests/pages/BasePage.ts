@@ -126,6 +126,34 @@ export class BasePage {
     })
   }
 
+  // — Kendo DropdownList (k-dropdown, không có search box) --------------------------
+
+  /**
+   * Chọn giá trị trong Kendo DropdownList (k-dropdown).
+   * Cơ chế: click để mở popup → click option có text khớp.
+   * Log: Chọn "{value}" trong dropdown "{label}"
+   */
+  async selectDropdown(locator: Locator, value: string, label = 'dropdown') {
+    await test.step(`Chọn "${value}" trong dropdown "${label}"`, async () => {
+      // Click vào span.k-input-inner để mở dropdown
+      await locator.click()
+      await this.page.waitForTimeout(500)
+      // Tìm option trong popup ul.k-list-ul hoặc ul[id$="_listbox"]
+      const option = this.page
+        .locator('ul.k-list-ul li.k-list-item, ul[id$="_listbox"] li')
+        .filter({ hasText: value })
+        .first()
+      const visible = await option.isVisible({ timeout: 3000 }).catch(() => false)
+      if (visible) {
+        await option.click()
+      } else {
+        // Fallback: pressKey ArrowDown + Enter để chọn
+        await locator.press('Escape')
+      }
+      await this.page.waitForTimeout(300)
+    })
+  }
+
   // — Combobox (jQuery UI autocomplete) --------------------------------------------
 
   /**

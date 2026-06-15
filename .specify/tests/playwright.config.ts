@@ -28,7 +28,7 @@ function makeTimestamp() {
 const reportDir = process.env.REPORT_DIR || `./test-results/${makeTimestamp()}`
 
 export default defineConfig({
-  testDir: './tests',
+  testDir: './playwright',
   globalSetup: './global-setup.ts',
   use: {
     viewport: { width: 1366, height: 768 },

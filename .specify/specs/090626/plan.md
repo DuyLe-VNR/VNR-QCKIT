@@ -1,63 +1,64 @@
-# Implementation Plan: 059-leave-type-validation-DAESANG
+# Implementation Plan: 059 — Leave Type Validation (DAESANG)
 
-**Branch**: `059-leave-type-validation-DAESANG` | **Date**: 2026-06-10 | **User Story**: `specs/059-leave-type-validation-DAESANG/spec.md`
-**Input**: User Story file at `specs/059-leave-type-validation-DAESANG/spec.md`.
+**Branch**: `feature/059-leave-type-validation-DAESANG`  
+**Date**: 2026-06-11  
+**User Story**: `specs/059-leave-type-validation-DAESANG/spec.md`
 
 ---
 
 ## Summary
 
-**Yêu cầu**: Thêm loại ngày nghỉ kinh nguyệt cho NV nữ với 3 validate rule mới: giới tính, ngày liên tục, giới hạn tháng.
+Thêm loại ngày nghỉ kinh nguyệt với 3 validate rule mới (gender filter, consecutive days, monthly limit) vào hệ thống HRM9. Phạm vi: 3 field mới vào `Cat_LeaveDayType`, 3 validate method mới trong `Att_LeavedayServices`, filter dropdown theo giới tính trên Portal + Web Main, cập nhật form Admin MVC Kendo UI.
 
-**3 Business Scopes (BS-01 → BS-03)**:
-- **BS-01**: Bổ sung 3 field vào `Cat_LeaveDayType` (ApplyGender, IsRequireConsecutive, MaxConsecutiveDaysPerMonth) + cập nhật form Admin
-- **BS-02**: Thêm 3 validate rule vào `Att_LeavedayServices.CreateOrUpdateLeaveday()` — gender filter, consecutive days, monthly limit
-- **BS-03**: Filter dropdown loại nghỉ theo gender NV trên Portal form đăng ký
-
-**Scope**: BE (HRM9 — .NET Framework 4.6.2) + FE (Vnr.Dev.HrmPortal — Angular 15 MFE)
-**No mobile scope**: Spec không đề cập mobile screens.
+**Actors**: NV nữ (đăng ký), BPNS/HR (đăng ký hộ), Admin (cấu hình loại nghỉ).
 
 ---
 
 ## Technical Context
 
-**Language/Version**: .NET Framework 4.6.2 (BE) + Angular 15 (FE)
-**Primary Dependencies**: EF6 Database-First, ASP.NET MVC 5, ServiceCenter (`HRM.SC.Module.Att.*`), vnr-module design system
-**Storage**: SQL Server — `Cat_LeaveDayType` (ALTER TABLE), `Att_LeaveDay` (read-only query)
-**Testing**: Manual testcases
-**Target Platform**: Web (HRM9 Main + EmpPortal)
-**Performance Goals**: Validate rule thêm max 1–2 DB roundtrips per save — acceptable
-**Constraints**: Database-First — không dùng EF migration, SQL file là nguồn sự thật. SQL files UTF-16 LE
-**Scale/Scope**: 2 entities sửa đổi, 2 endpoints sửa đổi, 2 FE surfaces sửa đổi (Angular Portal + MVC Web Main)
+**Language/Version**: C# .NET Framework 4.6.2  
+**Primary Dependencies**: ASP.NET MVC 5, ASP.NET Web API 5.2.9, Entity Framework 6.4.4 (Database-First), Kendo UI Telerik  
+**Storage**: SQL Server — `Cat_LeaveDayType` (ALTER +3 cols), `Att_LeaveDay` (READ-ONLY), `Hre_Profile` (READ-ONLY)  
+**Testing**: NUnit 2.6.3  
+**Target Platform**: Web server (.NET Framework 4.6.2)  
+**Performance Goals**: Validate thêm 2 LINQ queries per LeaveDay item — acceptable; batch validate dùng `IN` clause cho ProfileIDs như pattern hiện tại  
+**Constraints**: Không Code-First migration; không tạo file constant/enum mới  
+**Scale/Scope**: Modify 2 existing services + 1 SP + 1 form view + i18n XML
 
 ---
 
 ## Constitution Check
 
-| Gate | Status | Ghi chú |
-|------|--------|---------|
-| Spec đầy đủ (mọi thay đổi có mô tả) | ✅ PASS | BS-01/02/03 đầy đủ |
-| Data model không Code-First | ✅ PASS | SQL ALTER TABLE → EF partial |
-| Controller không có business logic | ✅ PASS | Logic trong Att_LeavedayServices |
-| Permission key theo convention | ✅ PASS | Dùng key hiện có |
-| No hardcode secrets/URLs | ✅ PASS | |
-| SP là nguồn sự thật cho query phức tạp | ✅ PASS | Validate LINQ đơn giản — không cần SP |
-| Data permission filter | ✅ PASS | Validate trong CreateOrUpdateLeaveday đã có context |
+| Principle | Status | Ghi chú |
+|-----------|--------|---------|
+| I. Database-First | PASS | Script SQL thủ công `20260611_01.sql`; partial class thêm property |
+| II. SP Authority | PASS | Grid list query qua SP; new validate dùng LINQ (in-memory filter nhẹ) OK |
+| III. Data Permission | PASS | Validate query dùng ProfileID — scoped đúng NV; SP dropdown nhận @UserLogin |
+| IV. vnr-module First | N/A | Không có Angular component mới — chỉ logic trong existing form |
+| V. Separation of Concerns | PASS | Validate logic trong Business layer; Controller gọi qua ActionService |
+| VI. MFE Independence | N/A | Angular attendance MFE chỉ nhận data từ API — không thêm filtering logic |
+| VII. Speckit SDLC | PASS | spec.md → plan.md → tasks.md → implement |
+| VIII. Reflection Safety | WARN | Thêm 3 property vào Cat_LeaveDayType entity — thêm mới không phá reflection; verify CalcEngine grep trước implement |
+
+### Reflection Risk Analysis
+
+`Cat_LeaveDayType` được dùng trong CalcEngine cho formula `IsMenses` (line ~11513 trong `Att_LeavedayServices`). Thêm property mới không phá vỡ reflection — chỉ rename/delete mới nguy hiểm. Risk: LOW.
 
 ---
 
 ## Project Structure
 
-### Documentation (this feature)
+### Documentation
 
 ```
 specs/059-leave-type-validation-DAESANG/
-├── spec.md                         ← BA input
-├── plan.md                         ← This file
-├── research.md                     ← Phase 0
-├── data-model.md                   ← Phase 1
-├── contracts/api-commitments.md    ← Phase 1
-└── tasks.md                        ← Phase 2 (vnr-tasks output)
+├── spec.md                           # BA User Story (input)
+├── UI.jpg                            # UI mockup
+├── plan.md                           # This file
+├── research.md                       # Phase 0
+├── data-model.md                     # Phase 1
+├── contracts/api-commitments.md      # Phase 1
+└── tasks.md                          # Phase 2 (vnr-tasks output)
 ```
 
 ### Source Code
@@ -65,30 +66,26 @@ specs/059-leave-type-validation-DAESANG/
 ```
 src/HRM9/Main/Source/
 ├── Data/HRM.Data.Entity/
-│   ├── Models/Cat_LeaveDayType.cs                              ← +3 fields (partial)
-│   └── FluentConfigurations/Cat_LeaveDayTypeConfiguration.cs  ← +3 property configs
-├── Presentation/HRM.Presentation.Category.Models/
-│   └── CatLeaveDayTypeModel.cs                                 ← +3 fields
-└── Projects/HRM.ServiceCenter/Modules/Attendance/
-    ├── HRM.SC.Module.Att.Business/
-    │   └── Att_LeavedayServices.cs                             ← +3 validate rules
-    ├── HRM.SC.Module.Att.Api/
-    │   └── (Att_LeaveDayType controller — genderFilter param)
-    └── HRM.SC.Module.Att.Models/
-        └── (Cat_LeaveDayType model extend)
-
-src/HRM9/Updates/Stores/SQL2012/
-└── v059_add_leavetype_gender_fields.sql                        ← ALTER TABLE
-
-src/Vnr.Dev.HrmPortal/projects/attendance/
-└── src/app/pages/att-leaveday/
-    └── (dropdown API call + genderFilter param)
-
-src/HRM9/Main/Source/Presentation/HRM.Presentation.Main/
-└── (MVC Attendance LeaveDay form — dropdown loại nghỉ filter theo gender NV được chọn)
+│   └── Models/Cat_LeaveDayType.cs           # MODIFY — thêm 3 property (partial)
+├── Business/
+│   ├── HRM.Business.Category.Models/
+│   │   └── Cat_LeaveDayTypeEntity.cs        # MODIFY — thêm 3 property
+│   └── HRM.Business.Attendance.Domain/
+│       └── Att_LeavedayServices.cs          # MODIFY — thêm 3 validate method
+├── Presentation/
+│   ├── HRM.Presentation.Main/
+│   │   ├── Controllers/Cat_LeaveDayTypeController.cs    # VERIFY — kiểm tra model binding
+│   │   ├── Views/Cat_LeaveDayType/Edit.cshtml           # MODIFY — thêm 3 field vào form
+│   │   ├── Updates/Scripts/SQL/20260611_01.sql          # NEW — ALTER TABLE + UPDATE default
+│   │   └── Updates/Stores/SQL2012/                      # MODIFY — SP dropdown + get list
+│   └── HRM.Presentation.Attendance.Models/
+│       └── Att_LeaveDayModel.cs              # VERIFY — không cần thay đổi
+├── Infrastructure/HRM.Infrastructure.Utilities/
+│   ├── ConstantMessage.cs            # MODIFY — thêm 3 message key
+│   ├── ConstantDisplay.cs            # MODIFY — thêm 3 label key
+│   └── Settings/Lang_VN.xml          # MODIFY
+│       Settings/Lang_EN.xml          # MODIFY
 ```
-
-**Structure Decision**: Modify existing — không tạo project mới. Thay đổi nhỏ-vừa phân tán qua 5–6 files.
 
 ---
 
@@ -96,110 +93,112 @@ src/HRM9/Main/Source/Presentation/HRM.Presentation.Main/
 
 ### Phase 0 — Database Schema
 
-**Mục tiêu**: Thêm 3 column mới vào `Cat_LeaveDayType`
+**Files thay đổi**:
+- `src/HRM9/Main/Source/Presentation/HRM.Presentation.Main/Updates/Scripts/SQL/20260611_01.sql`
 
-**Việc làm**:
-- Tạo SQL script (UTF-16 LE via PowerShell) với IF NOT EXISTS guard:
-  ```sql
-  IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('Cat_LeaveDayType') AND name = 'ApplyGender')
-      ALTER TABLE Cat_LeaveDayType ADD ApplyGender varchar(50) NULL CONSTRAINT DF_Cat_LeaveDayType_ApplyGender DEFAULT ('All');
-  IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('Cat_LeaveDayType') AND name = 'IsRequireConsecutive')
-      ALTER TABLE Cat_LeaveDayType ADD IsRequireConsecutive bit NULL CONSTRAINT DF_Cat_LeaveDayType_IsRequireConsecutive DEFAULT (0);
-  IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('Cat_LeaveDayType') AND name = 'MaxConsecutiveDaysPerMonth')
-      ALTER TABLE Cat_LeaveDayType ADD MaxConsecutiveDaysPerMonth int NULL;
-  ```
+**Tasks**:
+1. Tạo script ALTER TABLE thêm 3 cột vào `Cat_LeaveDayType`
+2. UPDATE default `ApplyGender = 'All'` cho records hiện có
 
----
+### Phase 1 — Entity & Model
 
-### Phase 1 — EF6 Entity + Presentation Model
+**Files thay đổi**:
+- `HRM.Data.Entity/Models/Cat_LeaveDayType.cs` — partial class thêm 3 property
+- `HRM.Business.Category.Models/Cat_LeaveDayTypeEntity.cs` — thêm 3 property
+- `HRM.Infrastructure.Utilities/ConstantMessage.cs` — thêm 3 message key
+- `HRM.Infrastructure.Utilities/ConstantDisplay.cs` — thêm 3 label key
 
-**Mục tiêu**: Sync EF entity với DB schema mới, update presentation model
+**Tasks**:
+1. Thêm property `ApplyGender`, `IsRequireConsecutive`, `MaxConsecutiveDaysPerMonth` vào EF6 entity (partial class)
+2. Thêm 3 property vào `Cat_LeaveDayTypeEntity`
+3. Thêm message keys vào `ConstantMessage.cs`:
+   - `Cat_LeaveDayType_GenderNotAllow`: "Loại ngày nghỉ {0} chỉ áp dụng cho nhân viên nữ"
+   - `Cat_LeaveDayType_MustConsecutive`: "Ngày đăng ký phải là {0}. Các ngày nghỉ {1} phải liên tiếp nhau."
+   - `Cat_LeaveDayType_MonthlyLimitExceeded`: "Bạn đã đăng ký đủ {0} ngày {1} trong tháng {2}."
+4. Thêm label keys vào `ConstantDisplay.cs` và XML ngôn ngữ (VN + EN)
 
-**Việc làm**:
-1. Thêm 3 property vào `Cat_LeaveDayType.cs` (partial class): `ApplyGender`, `IsRequireConsecutive`, `MaxConsecutiveDaysPerMonth`
-2. Thêm config vào `Cat_LeaveDayTypeConfiguration.cs`
-3. Thêm 3 property + `[DisplayName]` vào `CatLeaveDayTypeModel.cs`
-4. Thêm 3 error message constants
+### Phase 2 — Business Logic (Validate Service)
 
----
+**Files thay đổi**:
+- `HRM.Business.Attendance.Domain/Att_LeavedayServices.cs`
 
-### Phase 2 — Backend Validate Rules (BS-02)
+**3 method mới**:
 
-**Mục tiêu**: Inject 3 validate rule vào `CreateOrUpdateLeaveday()`
+```csharp
+// Rule 1 — Gender Filter
+public List<Att_LeaveDayEntity> ValidateGenderApplyFilter(
+    List<Att_LeaveDayEntity> listLeaveDayItemSave,
+    List<Hre_ProfileMultiField> listProfile,
+    List<Cat_LeaveDayTypeEntity> listLeaveDayType,
+    string userLogin)
 
-**Inject point**: `Att_LeavedayServices.cs` → `CreateOrUpdateLeaveday()` sau khi `listLeavedayType` được load (line ~6422), trước vòng lặp xử lý profile.
+// Rule 2 — Consecutive Days
+public List<Att_LeaveDayEntity> ValidateConsecutiveDays(
+    List<Att_LeaveDayEntity> listLeaveDayItemSave,
+    List<Cat_LeaveDayTypeEntity> listLeaveDayType,
+    string userLogin)
 
-**Rule 1 — Gender Filter**:
-- Lấy `selectedLeaveDayType` từ `listLeavedayType` theo `model.LeaveDayTypeID`
-- Nếu `ApplyGender == "Female"`: loop `listProfile` → check `profile.Gender != "Female"` → return error
-
-**Rule 2 — Consecutive Days** (chỉ khi `IsRequireConsecutive == true`):
-- Với từng profile + từng `DateStart` trong `ListLeaveDayItem`:
-- Query `Att_LeaveDay`: `MAX(DateEnd)` WHERE ProfileID, LeaveDayTypeID, tháng/năm = tháng đăng ký, Status = `E_APPROVED`, IsDelete IS NULL
-- Nếu `lastApprovedDate != null` AND `DateStart.Date != lastApprovedDate.Value.Date.AddDays(1)` → error
-
-**Rule 3 — Monthly Limit** (chỉ khi `IsRequireConsecutive == true` AND `MaxConsecutiveDaysPerMonth != null`):
-- Query `Att_LeaveDay`: `COUNT(*)` cùng điều kiện (không bao gồm E_CANCEL/E_REJECT)
-- Nếu `approvedCount >= MaxConsecutiveDaysPerMonth` → error
-
----
-
-### Phase 3 — Dropdown Gender Filter (BS-03) — Portal + Web Main
-
-**Mục tiêu**: Filter dropdown loại nghỉ theo gender NV trên **cả 2 surface**: Angular Portal (ATT03.01) và MVC Web Main (ATT03.02 — BPNS đăng ký hộ)
-
-**BE** (dùng chung 1 API):
-- Thêm `genderFilter` param vào endpoint lấy danh sách `Cat_LeaveDayType` cho dropdown
-- Filter logic: `genderFilter = 'Female'` → trả `ApplyGender IN ('All', 'Female')`; `genderFilter = 'Male'` → trả chỉ `ApplyGender = 'All'`; `genderFilter = null` → trả tất cả
-
-**FE 1 — Angular Portal** (ATT03.01 — NV tự đăng ký):
-- Khi load dropdown loại nghỉ: lấy `gender` của NV đang đăng nhập từ user profile state → truyền `genderFilter` vào API call
-
-**FE 2 — MVC Web Main** (ATT03.02 — BPNS đăng ký hộ):
-- Khi BPNS chọn NV → trigger reload dropdown loại nghỉ kèm `genderFilter = gender của NV được chọn`
-- Cần xác định MVC controller/view load dropdown loại nghỉ trong form đăng ký hộ → sửa AJAX call truyền thêm gender NV
-- Gender NV lấy từ API `Hre_Profile` khi BPNS chọn NV (hoặc từ data đã có trên form)
-
-**Đồng bộ validate**: BE `CreateOrUpdateLeaveday()` (Phase 2 Rule 1) vẫn là tầng bảo vệ cuối — filter FE chỉ là UX, không thay thế BE validate.
-
----
-
-### Phase 4 — Admin Form UI (BS-01)
-
-**Mục tiêu**: Thêm 3 field mới vào form Cat_LeaveDayType (Admin)
-
-**Việc làm**:
-- Xác định form hiện tại (Kendo MVC hoặc Angular)
-- Thêm `ApplyGender` dropdown (Tất cả / Nữ), `IsRequireConsecutive` checkbox, `MaxConsecutiveDaysPerMonth` input number (conditional show)
-- Validate: `IsRequireConsecutive = true` → `MaxConsecutiveDaysPerMonth` required
-
----
-
-## Error Messages
-
-```
-HRM_Att_LeaveDay_GenderNotAllowed = "Loại ngày nghỉ {0} chỉ áp dụng cho nhân viên nữ"
-HRM_Att_LeaveDay_ConsecutiveRequired = "Ngày đăng ký phải là {0}. Các ngày nghỉ {1} phải liên tiếp nhau."
-HRM_Att_LeaveDay_MonthlyLimitExceeded = "Bạn đã đăng ký đủ {0} ngày {1} trong tháng {2}."
+// Rule 3 — Monthly Limit
+public List<Att_LeaveDayEntity> ValidateMonthlyConsecutiveLimit(
+    List<Att_LeaveDayEntity> listLeaveDayItemSave,
+    List<Cat_LeaveDayTypeEntity> listLeaveDayType,
+    string userLogin)
 ```
 
+Gọi sau validate #3 (`ValidateMaternityLeaveLimit`) trong pipeline BLOCK.
+
+**Implementation notes**:
+- `ValidateConsecutiveDays`: dùng LINQ trực tiếp trên `unitOfWork.CreateQueryable<Att_LeaveDay>` với filter ProfileID + LeaveDayTypeID + tháng + `Status = E_APPROVED` + `IsDelete IS NULL`
+- Batch query theo ProfileID: `.Where(x => profileIds.Contains(x.ProfileID))` để tránh N+1
+
+### Phase 3 — SP & Presentation Model
+
+**Files thay đổi**:
+- SP `hrm_cat_sp_get_Cat_LeaveDayType` — thêm 3 cột vào SELECT
+- SP dropdown `Cat_LeaveDayType` cho Portal — thêm filter `@ProfileGender`
+- Model binding thêm 3 field trong Presentation.Main
+
+### Phase 4 — Admin UI (Kendo MVC View)
+
+**Files thay đổi**:
+- `HRM.Presentation.Main/Views/Cat_LeaveDayType/Edit.cshtml`
+
+**Tasks**:
+1. Thêm dropdown `ApplyGender` (Tất cả / Nữ) — Kendo DropDownList
+2. Thêm checkbox `IsRequireConsecutive`
+3. Thêm input number `MaxConsecutiveDaysPerMonth` — show/hide theo checkbox (JS)
+4. Client-side validate: `MaxConsecutiveDaysPerMonth` required khi checkbox checked
+
+### Phase 5 — i18n
+
+**Files thay đổi**:
+- `Lang_VN.xml`, `Lang_EN.xml` trong `HRM.Presentation.Main/Settings/`
+
 ---
 
-## Risk Assessment
+## Dependencies
 
-| Rủi ro | Mức độ | Mitigation |
-|--------|--------|------------|
-| `CreateOrUpdateLeaveday` rất lớn | MEDIUM | Inject vào đúng region, không refactor toàn bộ |
-| BPNS đăng ký hộ nhiều NV | MEDIUM | Loop qua `listProfile`, check từng NV |
-| MVC Web Main — xác định đúng AJAX endpoint load dropdown | MEDIUM | Trace từ form view → JS call → controller trước khi sửa |
-| Admin form — MVC vs Angular chưa xác định | LOW | Kiểm tra trước khi implement Phase 4 |
+**NuGet/npm mới**: Không có.
 
 ---
 
-## Checklist artifacts
+## Database Migration
 
-- [x] `research.md`
-- [x] `data-model.md`
-- [x] `contracts/api-commitments.md`
-- [x] `plan.md`
-- [ ] `tasks.md` (Phase 2 — vnr-tasks)
+| Loại | File | Nội dung |
+|------|------|---------|
+| ALTER TABLE | `Updates/Scripts/SQL/20260611_01.sql` | Thêm `ApplyGender nvarchar(50)`, `IsRequireConsecutive bit`, `MaxConsecutiveDaysPerMonth int` vào `Cat_LeaveDayType` |
+| SP modify | `Updates/Stores/SQL2012/hrm_cat_sp_get_Cat_LeaveDayType.sql` | Thêm 3 cột vào SELECT |
+| SP modify | SP dropdown Cat_LeaveDayType cho Portal | Thêm filter `ApplyGender` theo `@ProfileGender` |
+
+---
+
+## Risk & Rollback
+
+| Risk | Likelihood | Mitigation |
+|------|-----------|-----------|
+| Reflection break trong CalcEngine | LOW | Thêm mới property không phá reflection; grep verify trước |
+| ValidateConsecutiveDays N+1 query | MEDIUM | Batch query với `profileIds.Contains` |
+| SP dropdown Portal chưa biết tên chính xác | LOW | Xác định bằng grep/code search trong Phase 3 |
+| ATT03.02 bypass validate | LOW | Cùng gọi Att_LeavedayServices qua RestServiceClient |
+
+**Rollback**: `ALTER TABLE Cat_LeaveDayType DROP COLUMN ApplyGender, IsRequireConsecutive, MaxConsecutiveDaysPerMonth` + git revert các file thay đổi.
