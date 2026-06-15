@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VNR Development Pipeline</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --surface-soft: #f8fbfe;
+      --card: #ffffff;
+      --ink: #18324a;
+      --muted: #66788a;
+      --primary: #1f4e78;
+      --primary-2: #2f75b5;
+      --accent: #f4b183;
+      --qc: #fff2cc;
+      --qc-ink: #6f5700;
+      --green: #d9ead3;
+      --green-ink: #376b2c;
+      --blue-soft: #d9eaf7;
+      --orange-soft: #fce5cd;
+      --red-soft: #f4cccc;
+      --border: #d7e0e8;
+      --code-bg: #edf5fb;
+      --code-ink: #14527d;
+      --code-border: #bfd7ea;
+      --shadow: 0 10px 30px rgba(31, 78, 120, 0.10);
+      --radius: 18px;
+    }
+
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #0f1720;
+      --surface: #111c27;
+      --surface-soft: #0c1620;
+      --card: #152331;
+      --ink: #e7eef5;
+      --muted: #a7b5c3;
+      --primary: #7db7e8;
+      --primary-2: #4d94cf;
+      --accent: #e3a06f;
+      --qc: #3a3215;
+      --qc-ink: #f7df82;
+      --green: #1f442b;
+      --green-ink: #b7edac;
+      --blue-soft: #18354d;
+      --orange-soft: #4a2d17;
+      --red-soft: #4a2020;
+      --border: #2a3a49;
+      --code-bg: #123a58;
+      --code-ink: #9ed8ff;
+      --code-border: #2f6f9d;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--primary) 10%, var(--bg)) 0%, var(--bg) 35%, var(--surface) 100%);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    a { color: inherit; }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 20;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,.28);
+      background: rgba(15, 23, 32, .28);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.16);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #16324f 0%, #1f4e78 55%, #2f75b5 100%);
+      color: white;
+      padding: 56px 24px 72px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -120px auto;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.08;
+      margin: 0 0 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      max-width: 860px;
+      font-size: 18px;
+      color: rgba(255,255,255,.86);
+      margin: 0 0 26px;
+    }
+
+    .badge-row,
+    .action-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge {
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.25);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      backdrop-filter: blur(6px);
+    }
+
+    .action-row { margin-top: 22px; }
+
+    .doc-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.32);
+      color: #ffffff;
+      padding: 11px 18px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      backdrop-filter: blur(8px);
+      transition: background .18s, transform .15s, box-shadow .18s;
+      box-shadow: 0 4px 14px rgba(0,0,0,.15);
+    }
+
+    .doc-link:hover {
+      background: rgba(255,255,255,.22);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(0,0,0,.22);
+    }
+
+    .section {
+      padding: 54px 0;
+    }
+
+    .section.soft {
+      background: var(--surface-soft);
+    }
+
+    .section-title {
+      margin: 0 0 10px;
+      font-size: 30px;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      margin: 0 0 28px;
+      max-width: 920px;
+    }
+
+    .pipeline {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .pipeline-panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .panel-head {
+      padding: 20px 22px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: white;
+    }
+
+    .panel-head small {
+      display: block;
+      opacity: .82;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 4px;
+    }
+
+    .panel-head h3 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .panel-body {
+      padding: 20px 22px 22px;
+    }
+
+    .handoff-arrow {
+      display: grid;
+      place-items: center;
+      color: var(--primary-2);
+      font-size: 34px;
+      font-weight: 900;
+      min-width: 46px;
+    }
+
+    .mini-flow {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .mini-step {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 14px;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+    }
+
+    .step-no {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: var(--primary);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .mini-step h4 {
+      margin: 0 0 4px;
+      font-size: 16px;
+    }
+
+    .mini-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .handoff-box {
+      margin-top: 18px;
+      background: var(--qc);
+      border-left: 5px solid #d6a400;
+      padding: 16px 18px;
+      border-radius: 12px;
+      color: var(--qc-ink);
+      font-weight: 650;
+    }
+
+    .stage-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .stage-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .stage-card .panel-body p {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+
+    .io-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .io-box {
+      border-radius: 14px;
+      padding: 14px;
+      border: 1px solid var(--border);
+      background: var(--surface-soft);
+    }
+
+    .io-box.input { border-top: 4px solid #6fa8dc; }
+    .io-box.output { border-top: 4px solid #93c47d; }
+
+    .io-box h4 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      color: var(--primary);
+    }
+
+    .io-box ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .artifact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .artifact {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .artifact h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+    }
+
+    .artifact p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .owner {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .owner.dev { background: var(--blue-soft); color: var(--primary); }
+    .owner.qc { background: var(--qc); color: var(--qc-ink); }
+    .owner.shared { background: var(--green); color: var(--green-ink); }
+
+    code {
+      color: var(--code-ink);
+      background: var(--code-bg);
+      border: 1px solid var(--code-border);
+      padding: 3px 7px;
+      border-radius: 7px;
+      font-size: 12px;
+      font-weight: 700;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(8, minmax(150px, 1fr));
+      gap: 14px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .timeline-card {
+      min-width: 150px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 16px;
+      position: relative;
+    }
+
+    .timeline-card:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -13px;
+      top: 42%;
+      color: var(--primary-2);
+      font-size: 24px;
+      font-weight: 800;
+      z-index: 2;
+    }
+
+    .timeline-card h3 {
+      margin: 10px 0 6px;
+      font-size: 16px;
+    }
+
+    .timeline-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer {
+      padding: 30px 0 50px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    body, .pipeline-panel, .stage-card, .artifact, .timeline-card, .mini-step, .io-box, code {
+      transition: background-color .22s ease, color .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+
+    @media (max-width: 980px) {
+      .pipeline { grid-template-columns: 1fr; }
+      .handoff-arrow { transform: rotate(90deg); min-height: 40px; }
+      .stage-grid { grid-template-columns: 1fr; }
+      .artifact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .timeline { grid-template-columns: repeat(8, 190px); }
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding: 42px 0 58px; }
+      .container { padding: 0 16px; }
+      .io-grid, .artifact-grid { grid-template-columns: 1fr; }
+      .theme-toggle { top: 12px; right: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <button id="themeToggle" class="theme-toggle" type="button" aria-label="Chuyển giao diện sáng hoặc tối">
+    <span id="themeIcon">☀️</span>
+    <span id="themeLabel">Light</span>
+  </button>
+
+  <header class="hero">
+    <div class="container">
+      <h1>VNR Development Pipeline<br/>DevKit → QCKit</h1>
+      <p class="subtitle">
+        Trang tổng quan nối hai tài liệu pipeline hiện có: DevKit chịu trách nhiệm biến yêu cầu thành thiết kế,
+        mã nguồn và báo cáo kỹ thuật; QCKit tiếp nhận artifacts để khám phá UI, mapping Page Object,
+        sinh test, chạy automation và triage kết quả.
+      </p>
+      <div class="badge-row">
+        <span class="badge">DevKit trước</span>
+        <span class="badge">QCKit sau</span>
+        <span class="badge">Artifacts làm điểm bàn giao</span>
+        <span class="badge">HITL tại các cổng chất lượng</span>
+      </div>
+      <div class="action-row">
+        <a class="doc-link" href="devkit-overview.html">Mở DevKit Overview</a>
+        <a class="doc-link" href="qckit-overview.html">Mở QCKit Overview</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">1. Luồng Development Pipeline tổng thể</h2>
+        <p class="section-desc">
+          DevKit tạo nền tảng triển khai và artifacts kỹ thuật. Sau khi mã nguồn, testcase và report sẵn sàng,
+          QCKit tiếp tục ở lớp kiểm thử tự động để xác minh hành vi thực tế của ứng dụng.
+        </p>
+
+        <div class="pipeline">
+          <article class="pipeline-panel">
+            <div class="panel-head">
+              <small>Phase 1</small>
+              <h3>DevKit - Build & Review</h3>
+            </div>
+            <div class="panel-body">
+              <p>Orchestrate từ yêu cầu feature đến plan, tasks, testcase, triển khai, review và báo cáo.</p>
+              <div class="mini-flow">
+                <div class="mini-step">
+                  <div class="step-no">1</div>
+                  <div><h4>Plan & Tasks</h4><p>Tạo <code>plan.md</code>, <code>data-model.md</code>, contracts và <code>tasks.md</code>.</p></div>
+                </div>
+                <div class="mini-step">
+                  <div class="step-no">2</div>
+                  <div><h4>Implement</h4><p>Triển khai backend, frontend, kiểm tra build và cập nhật mã nguồn.</p></div>
+                </div>
+                <div class="mini-step">
+                  <div class="step-no">3</div>
+                  <div><h4>Review & Report</h4><p>Review code, kiến trúc, bảo mật, E2E stub và xuất final report.</p></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <div class="handoff-arrow" aria-hidden="true">→</div>
+
+          <article class="pipeline-panel">
+            <div class="panel-head">
+              <small>Phase 2</small>
+              <h3>QCKit - Test & Triage</h3>
+            </div>
+            <div class="panel-body">
+              <p>Tiếp nhận feature scope và artifacts để tự động hóa kiểm thử trên UI thật bằng Playwright.</p>
+              <div class="mini-flow">
+                <div class="mini-step">
+                  <div class="step-no">4</div>
+                  <div><h4>Discover & Map</h4><p>Crawl URL, DOM, component, user flow và sinh Page Object.</p></div>
+                </div>
+                <div class="mini-step">
+                  <div class="step-no">5</div>
+                  <div><h4>Generate & Execute</h4><p>Sinh test case, dữ liệu test, spec Playwright, trace và screenshot.</p></div>
+                </div>
+                <div class="mini-step">
+                  <div class="step-no">6</div>
+                  <div><h4>Triage</h4><p>Phân loại PASS, APP_BUG, INFRA và quyết định hành động tiếp theo.</p></div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="handoff-box">
+          Điểm bàn giao chính: <code>specs/&lt;feature&gt;/plan.md</code>, <code>tasks.md</code>, <code>testcases.md</code>,
+          mã nguồn đã build, E2E stub và <code>final-report.md</code>. QCKit dùng các đầu ra này để xác minh feature trên ứng dụng chạy thật.
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft">
+      <div class="container">
+        <h2 class="section-title">2. Chi tiết hai phase</h2>
+        <p class="section-desc">
+          Mỗi phase có mục tiêu riêng nhưng dùng chung cùng một dòng dữ liệu: yêu cầu → thiết kế → triển khai → kiểm thử → bằng chứng.
+        </p>
+
+        <div class="stage-grid">
+          <article class="stage-card">
+            <div class="panel-head">
+              <small>DevKit</small>
+              <h3>Phân tích & lập kế hoạch</h3>
+            </div>
+            <div class="panel-body">
+              <p>Chuẩn hóa yêu cầu, lập plan, review plan và bẻ nhỏ thành tasks có thể triển khai.</p>
+              <div class="io-grid">
+                <div class="io-box input">
+                  <h4>Input</h4>
+                  <ul><li>User story</li><li>Feature scope</li><li>Constitution</li></ul>
+                </div>
+                <div class="io-box output">
+                  <h4>Output</h4>
+                  <ul><li>plan.md</li><li>data-model.md</li><li>tasks.md</li></ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="stage-card">
+            <div class="panel-head">
+              <small>DevKit</small>
+              <h3>Triển khai & quality gates</h3>
+            </div>
+            <div class="panel-body">
+              <p>Triển khai code, kiểm tra build, review logic, kiến trúc và bảo mật trước khi hoàn tất phase phát triển.</p>
+              <div class="io-grid">
+                <div class="io-box input">
+                  <h4>Input</h4>
+                  <ul><li>tasks.md</li><li>contracts</li><li>testcases.md</li></ul>
+                </div>
+                <div class="io-box output">
+                  <h4>Output</h4>
+                  <ul><li>src/backend</li><li>src/frontend</li><li>final-report.md</li></ul>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="stage-card">
+            <div class="panel-head">
+              <small>QCKit</small>
+              <h3>Automation & triage</h3>
+            </div>
+            <div class="panel-body">
+              <p>Crawl ứng dụng, sinh Page Object, chạy Playwright spec và phân loại kết quả kiểm thử.</p>
+              <div class="io-grid">
+                <div class="io-box input">
+                  <h4>Input</h4>
+                  <ul><li>APP_URL</li><li>Feature artifacts</li><li>Session test</li></ul>
+                </div>
+                <div class="io-box output">
+                  <h4>Output</h4>
+                  <ul><li>Locator.ts / Page.ts</li><li>trace, screenshot</li><li>triage report</li></ul>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">3. Timeline DevKit → QCKit</h2>
+        <p class="section-desc">
+          Timeline rút gọn thể hiện thứ tự thực thi. Các bước review có thể tự dừng khi FAIL; các bước còn lại tiếp tục khi artifacts đủ điều kiện.
+        </p>
+
+        <div class="timeline">
+          <article class="timeline-card">
+            <span class="owner dev">DevKit</span>
+            <h3>Input</h3>
+            <p>Nhận feature, user story và phạm vi.</p>
+          </article>
+          <article class="timeline-card">
+            <span class="owner dev">DevKit</span>
+            <h3>Plan</h3>
+            <p>Sinh plan, data model, contracts.</p>
+          </article>
+          <article class="timeline-card">
+            <span class="owner dev">DevKit</span>
+            <h3>Tasks</h3>
+            <p>Bẻ nhỏ công việc triển khai.</p>
+          </article>
+          <article class="timeline-card">
+            <span class="owner dev">DevKit</span>
+            <h3>Implement</h3>
+            <p>Viết code và kiểm tra build.</p>
+          </article>
+          <article class="timeline-card">
+            <span class="owner shared">Gate</span>
+            <h3>Report</h3>
+            <p>Review code, arch, sec, E2E stub.</p>
+          </article>
+          <article class="timeline-card">
+            <span class="owner qc">QCKit</span>
+            <h3>Discover</h3>
+            <p>Crawl URL, component, user flow.</p>
+          </article>
+          <article class="timeline-card">
+            <span class="owner qc">QCKit</span>
+            <h3>Test</h3>
+            <p>Sinh và chạy Playwright spec.</p>
+          </article>
+          <article class="timeline-card">
+            <span class="owner qc">QCKit</span>
+            <h3>Triage</h3>
+            <p>Chốt PASS, APP_BUG hoặc INFRA.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft">
+      <div class="container">
+        <h2 class="section-title">4. Artifacts bàn giao</h2>
+        <p class="section-desc">
+          Các artifacts dưới đây là cầu nối thực tế giữa hai bộ công cụ, giúp QCKit không phải suy đoán lại phạm vi kiểm thử.
+        </p>
+
+        <div class="artifact-grid">
+          <article class="artifact">
+            <span class="owner dev">DevKit</span>
+            <h3><code>plan.md</code></h3>
+            <p>Mô tả hướng tiếp cận, quyết định kỹ thuật và các ràng buộc chính của feature.</p>
+          </article>
+          <article class="artifact">
+            <span class="owner dev">DevKit</span>
+            <h3><code>tasks.md</code></h3>
+            <p>Danh sách công việc đã triển khai, là nguồn đối chiếu phạm vi khi kiểm thử.</p>
+          </article>
+          <article class="artifact">
+            <span class="owner shared">Shared</span>
+            <h3><code>testcases.md</code></h3>
+            <p>Đầu vào quan trọng để QCKit sinh automation case và phân nhóm ưu tiên.</p>
+          </article>
+          <article class="artifact">
+            <span class="owner shared">Shared</span>
+            <h3><code>final-report.md</code></h3>
+            <p>Tổng hợp kết quả phát triển, review và những điểm QC cần lưu ý khi xác minh.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      Tài liệu tổng quan Development Pipeline, liên kết DevKit và QCKit. Cập nhật ngày 15/06/2026.
+    </div>
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeLabel = document.getElementById('themeLabel');
+
+    function getPreferredTheme() {
+      const saved = localStorage.getItem('pipeline-theme');
+      if (saved === 'light' || saved === 'dark') return saved;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function applyTheme(theme) {
+      root.setAttribute('data-theme', theme);
+      localStorage.setItem('pipeline-theme', theme);
+      const isDark = theme === 'dark';
+      themeIcon.textContent = isDark ? '🌙' : '☀️';
+      themeLabel.textContent = isDark ? 'Dark' : 'Light';
+      themeToggle.setAttribute('aria-pressed', String(isDark));
+      themeToggle.setAttribute('title', isDark ? 'Chuyển sang Light mode' : 'Chuyển sang Dark mode');
+    }
+
+    applyTheme(getPreferredTheme());
+
+    themeToggle.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme') || 'light';
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+  </script>
+</body>
+</html>

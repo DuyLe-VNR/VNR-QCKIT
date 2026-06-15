@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VNR-QCKIT Flow & Skill I/O</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --surface-soft: #f8fbfe;
+      --card: #ffffff;
+      --ink: #18324a;
+      --muted: #66788a;
+      --primary: #1f4e78;
+      --primary-2: #2f75b5;
+      --accent: #f4b183;
+      --qc: #fff2cc;
+      --qc-ink: #6f5700;
+      --green: #d9ead3;
+      --red: #f4cccc;
+      --blue-soft: #d9eaf7;
+      --border: #d7e0e8;
+      --table-head: #eaf2f8;
+      --hover: #fbfdff;
+      --code-bg: #edf5fb;
+      --code-ink: #14527d;
+      --code-border: #bfd7ea;
+      --shadow: 0 10px 30px rgba(31, 78, 120, 0.10);
+      --radius: 18px;
+    }
+
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #0f1720;
+      --surface: #111c27;
+      --surface-soft: #0c1620;
+      --card: #152331;
+      --ink: #e7eef5;
+      --muted: #a7b5c3;
+      --primary: #7db7e8;
+      --primary-2: #4d94cf;
+      --accent: #e3a06f;
+      --qc: #3a3215;
+      --qc-ink: #f7df82;
+      --green: #1f442b;
+      --red: #4a2020;
+      --blue-soft: #18354d;
+      --border: #2a3a49;
+      --table-head: #193149;
+      --hover: #172838;
+      --code-bg: #123a58;
+      --code-ink: #9ed8ff;
+      --code-border: #2f6f9d;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+    }
+
+
+    [data-theme="dark"] .cycle-note {
+      background: #3b310d;
+      border-left-color: #f2c300;
+      color: #ffe681;
+    }
+
+    [data-theme="dark"] .cycle-note code,
+    [data-theme="dark"] .stage-body code {
+      color: #b8e4ff;
+      background: #0c3552;
+      border-color: #3279aa;
+      text-shadow: none;
+    }
+
+    [data-theme="dark"] .stage-body {
+      color: #eaf2f8;
+    }
+
+    [data-theme="dark"] .stage-body strong {
+      color: #ffffff;
+    }
+
+    [data-theme="dark"] .section-desc,
+    [data-theme="dark"] .step p,
+    [data-theme="dark"] .io-box ul,
+    [data-theme="dark"] .footer {
+      color: #bdc9d4;
+    }
+
+    [data-theme="dark"] .skill-mini {
+      color: #b8e4ff;
+      background: #123a58;
+      border: 1px solid #3279aa;
+    }
+
+    [data-theme="dark"] .stage-head {
+      background: linear-gradient(135deg, #265f8f, #347fb8);
+      color: #ffffff;
+    }
+
+    [data-theme="dark"] .stage-head small {
+      opacity: 1;
+      color: #e7f4ff;
+    }
+
+    [data-theme="dark"] .qc-role {
+      background: #3b3216;
+      border-color: #796b2d;
+      color: #ffe681;
+    }
+
+    [data-theme="dark"] .io-box {
+      background: #101e2b;
+    }
+
+    [data-theme="dark"] .skill-thumb {
+      border-color: #2a3a49;
+    }
+
+    [data-theme="dark"] .pdf-btn {
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.22);
+      color: #e7f4ff;
+    }
+
+    [data-theme="dark"] .pdf-btn:hover {
+      background: rgba(255,255,255,.18);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--primary) 10%, var(--bg)) 0%, var(--bg) 35%, var(--surface) 100%);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #16324f 0%, #1f4e78 55%, #2f75b5 100%);
+      color: white;
+      padding: 56px 24px 72px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -80px -120px auto;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.08;
+      margin: 0 0 16px;
+      letter-spacing: -0.03em;
+    }
+
+    .subtitle {
+      max-width: 820px;
+      font-size: 18px;
+      color: rgba(255,255,255,.86);
+      margin-bottom: 26px;
+    }
+
+    .badge-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .badge {
+      background: rgba(255,255,255,.14);
+      border: 1px solid rgba(255,255,255,.25);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      backdrop-filter: blur(6px);
+    }
+
+    /* ── PDF Download buttons ── */
+    .pdf-downloads {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pdf-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.32);
+      color: #ffffff;
+      padding: 11px 18px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: background .18s, transform .15s, box-shadow .18s;
+      box-shadow: 0 4px 14px rgba(0,0,0,.15);
+    }
+
+    .pdf-btn:hover {
+      background: rgba(255,255,255,.22);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(0,0,0,.22);
+    }
+
+    .pdf-btn:active {
+      transform: translateY(0);
+    }
+
+    .pdf-btn .pdf-icon {
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    /* ── Section styles ── */
+    .section {
+      padding: 54px 0;
+    }
+
+    .section-title {
+      margin: 0 0 10px;
+      font-size: 30px;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      margin: 0 0 28px;
+      max-width: 900px;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(180px, 1fr));
+      gap: 16px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .step {
+      min-width: 190px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding: 20px;
+      position: relative;
+    }
+
+    .step:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -14px;
+      top: 46%;
+      color: var(--primary-2);
+      font-size: 24px;
+      font-weight: 700;
+      z-index: 3;
+    }
+
+    .step-no {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: var(--primary);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .step h3 { margin: 0 0 8px; font-size: 18px; }
+    .step p { color: var(--muted); margin: 0; font-size: 14px; }
+    .step .skill-mini {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 6px 9px;
+      background: var(--blue-soft);
+      border-radius: 8px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12px;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .cycle-note {
+      margin-top: 18px;
+      background: var(--qc);
+      border-left: 5px solid #d6a400;
+      padding: 16px 18px;
+      border-radius: 12px;
+      color: var(--qc-ink);
+      font-weight: 600;
+    }
+
+    .stage-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .stage-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .stage-head {
+      padding: 20px 22px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: white;
+    }
+
+    .stage-head small {
+      opacity: .8;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .stage-head h3 {
+      margin: 4px 0 0;
+      font-size: 22px;
+    }
+
+    .stage-body { padding: 20px 22px 22px; }
+
+    .io-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .io-box {
+      border-radius: 14px;
+      padding: 14px;
+      border: 1px solid var(--border);
+      background: var(--surface-soft);
+    }
+
+    .io-box.input { border-top: 4px solid #6fa8dc; }
+    .io-box.output { border-top: 4px solid #93c47d; }
+
+    .io-box h4 {
+      margin: 0 0 8px;
+      font-size: 14px;
+      color: var(--primary);
+    }
+
+    .io-box ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .qc-role {
+      margin-top: 14px;
+      padding: 14px;
+      background: var(--qc);
+      border-radius: 14px;
+      border: 1px solid #eadb8b;
+      color: var(--qc-ink);
+    }
+
+    .qc-role strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .toolbar input, .toolbar select {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 14px;
+      background: var(--surface);
+      color: var(--ink);
+    }
+
+    .toolbar input { min-width: 280px; flex: 1; }
+
+    .skill-table-wrap {
+      overflow-x: auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 1240px;
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      background: var(--table-head);
+      color: var(--primary);
+      text-align: left;
+      padding: 14px;
+      font-size: 13px;
+      z-index: 1;
+    }
+
+    td {
+      padding: 14px;
+      border-top: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    tr:hover td { background: var(--hover); }
+
+    code {
+      color: var(--code-ink);
+      background: var(--code-bg);
+      border: 1px solid var(--code-border);
+      padding: 3px 7px;
+      border-radius: 7px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .01em;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .pill.internal { background: #eee; color: #555; }
+    .pill.discovery { background: #d9eaf7; color: #1f4e78; }
+    .pill.mapping { background: #eadcf8; color: #6a3d91; }
+    .pill.generate { background: #d9ead3; color: #376b2c; }
+    .pill.execute { background: #fce5cd; color: #a14a00; }
+    .pill.triage { background: #f4cccc; color: #990000; }
+
+    /* ── Skill thumbnail in table ── */
+    .td-thumb {
+      width: 100px;
+      text-align: center;
+    }
+
+    .skill-thumb {
+      display: block;
+      width: 90px;
+      height: 62px;
+      object-fit: cover;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      cursor: zoom-in;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+      background: var(--surface-soft);
+    }
+
+    .skill-thumb:hover {
+      transform: scale(1.07);
+      box-shadow: 0 6px 20px rgba(31, 78, 120, 0.28);
+      border-color: var(--primary-2);
+    }
+
+    .thumb-hint {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 5px;
+      display: block;
+    }
+
+    .no-thumb {
+      display: inline-block;
+      width: 90px;
+      height: 62px;
+      border-radius: 9px;
+      border: 1px dashed var(--border);
+      background: var(--surface-soft);
+      color: var(--muted);
+      font-size: 11px;
+      text-align: center;
+      line-height: 62px;
+    }
+
+    /* ── Lightbox ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 18, 28, .88);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+      backdrop-filter: blur(5px);
+      animation: lb-fade-in .18s ease;
+    }
+
+    @keyframes lb-fade-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox-inner {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      cursor: default;
+      animation: lb-scale-in .2s ease;
+    }
+
+    @keyframes lb-scale-in {
+      from { transform: scale(.92); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+
+    .lightbox-inner img {
+      max-width: 88vw;
+      max-height: 82vh;
+      border-radius: 14px;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, .55);
+      object-fit: contain;
+      display: block;
+    }
+
+    .lightbox-caption {
+      color: rgba(255,255,255,.82);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .01em;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -44px;
+      right: -6px;
+      background: rgba(255,255,255,.14);
+      color: white;
+      border: 1px solid rgba(255,255,255,.22);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .15s;
+      line-height: 1;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255,255,255,.28);
+    }
+
+    .legend {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .footer {
+      padding: 30px 0 50px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .hidden { display: none !important; }
+
+
+    .theme-toggle {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 20;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,.28);
+      background: rgba(15, 23, 32, .28);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.16);
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-1px);
+    }
+
+    .theme-toggle:focus-visible {
+      outline: 3px solid rgba(255,255,255,.65);
+      outline-offset: 3px;
+    }
+
+    .theme-icon {
+      font-size: 17px;
+      line-height: 1;
+    }
+
+    body, .step, .stage-card, .io-box, .skill-table-wrap, th, td,
+    .toolbar input, .toolbar select, code, .qc-role {
+      transition: background-color .22s ease, color .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+
+    @media (max-width: 980px) {
+      .stage-grid { grid-template-columns: 1fr; }
+      .flow { grid-template-columns: repeat(6, 220px); }
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding-top: 40px; }
+      .container { padding: 0 16px; }
+      .io-grid { grid-template-columns: 1fr; }
+      .toolbar input { min-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <button id="themeToggle" class="theme-toggle" type="button" aria-label="Chuyển giao diện sáng hoặc tối">
+    <span id="themeIcon" class="theme-icon">☀️</span>
+    <span id="themeLabel">Light</span>
+  </button>
+
+  <header class="hero">
+    <div class="container">
+      <h1>VNR-QCKIT<br/>Luồng hoạt động & Skill Input/Output</h1>
+      <p class="subtitle">
+        Dashboard tổng hợp toàn bộ quy trình QCKit từ khởi tạo môi trường, khám phá ứng dụng,
+        mapping Page Object, sinh test case, chạy automation đến triage kết quả.
+      </p>
+      <div class="badge-row">
+        <span class="badge">6 giai đoạn</span>
+        <span class="badge">12 skill chính</span>
+        <span class="badge">Playwright CLI + MCP</span>
+        <span class="badge">QC là người kiểm soát chất lượng</span>
+      </div>
+      <div class="pdf-downloads">
+        <a href="VNR-QCKIT-FLOW.pdf" download class="pdf-btn">
+          <span class="pdf-icon">📄</span> VNR-QCKIT-FLOW.pdf
+        </a>
+        <a href="VNR-QCKIT-OVERVIEW.pdf" download class="pdf-btn">
+          <span class="pdf-icon">📄</span> VNR-QCKIT-OVERVIEW.pdf
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">1. Luồng hoạt động tổng thể</h2>
+        <p class="section-desc">
+          Luồng được thực hiện tuần tự từ trái sang phải. Sau khi triage, nếu còn lỗi hoặc cần cập nhật selector,
+          hệ thống quay lại giai đoạn chạy test và phân tích kết quả.
+        </p>
+
+        <div class="flow">
+          <article class="step">
+            <div class="step-no">1</div>
+            <h3>Khởi tạo</h3>
+            <p>Chuẩn hóa Playwright, BasePage, session và danh sách URL.</p>
+            <span class="skill-mini">qc_pre</span>
+          </article>
+          <article class="step">
+            <div class="step-no">2</div>
+            <h3>Khám phá</h3>
+            <p>Crawl DOM, component, hành động và user flow thực tế.</p>
+            <span class="skill-mini">qc_detect_component</span>
+          </article>
+          <article class="step">
+            <div class="step-no">3</div>
+            <h3>Mapping</h3>
+            <p>Chuyển hiểu biết UI thành Locator, Page Object và system map.</p>
+            <span class="skill-mini">qc_map_flow</span>
+          </article>
+          <article class="step">
+            <div class="step-no">4</div>
+            <h3>Sinh Test Case</h3>
+            <p>Sinh testcase, dữ liệu giả và tài liệu knowledge cho từng PBI.</p>
+            <span class="skill-mini">qc_generate</span>
+          </article>
+          <article class="step">
+            <div class="step-no">5</div>
+            <h3>Chạy Test</h3>
+            <p>Sinh spec.ts, thực thi, trace, screenshot và cập nhật trạng thái.</p>
+            <span class="skill-mini">qc_auto_test</span>
+          </article>
+          <article class="step">
+            <div class="step-no">6</div>
+            <h3>Triage</h3>
+            <p>Phân loại PASS, APP_BUG, INFRA và xác định severity.</p>
+            <span class="skill-mini">qc_triage</span>
+          </article>
+        </div>
+
+        <div class="cycle-note">
+          Chu trình cải tiến: Fix lỗi hoặc cập nhật selector → chạy lại <code>qc_auto_test</code> → phân tích lại bằng <code>qc_triage</code>.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background:var(--surface-soft);">
+      <div class="container">
+        <h2 class="section-title">2. Chi tiết từng giai đoạn</h2>
+        <p class="section-desc">
+          Mỗi giai đoạn bên dưới thể hiện mục tiêu, input, output và vai trò kiểm soát của QC.
+        </p>
+
+        <div class="stage-grid">
+          <article class="stage-card">
+            <div class="stage-head">
+              <small>Giai đoạn 1</small>
+              <h3>Cài đặt & Khởi tạo</h3>
+            </div>
+            <div class="stage-body">
+              <p><strong>Luồng:</strong> <code>qc_pre</code> gọi <code>qc_setup</code>, kiểm tra <code>qc_basepage</code>, sau đó crawl navigation để sinh aliases.</p>
+              <div class="io-grid">
+                <div class="io-box input">
+                  <h4>Input</h4>
+                  <ul><li>.specify/tests/.env</li><li>.env.{ENV}</li><li>APP_URL</li><li>Chromium bundle</li></ul>
+                </div>
+                <div class="io-box output">
+                  <h4>Output</h4>
+                  <ul><li>playwright.config.ts</li><li>global-setup.ts</li><li>BasePage.ts</li><li>url-aliases.md</li></ul>
+                </div>
+              </div>
+              <div class="qc-role"><strong>Vai trò QC</strong>Xác nhận môi trường chạy được, tài khoản test hợp lệ, URL đầy đủ và đúng phạm vi cần kiểm thử.</div>
+            </div>
+          </article>
+
+          <article class="stage-card">
+            <div class="stage-head">
+              <small>Giai đoạn 2</small>
+              <h3>Khám phá Ứng dụng</h3>
+            </div>
+            <div class="stage-body">
+              <p><strong>Luồng:</strong> <code>qc_detect_component</code> → <code>qc_component_rule</code> → <code>qc_user_flow</code>.</p>
+              <div class="io-grid">
+                <div class="io-box input">
+                  <h4>Input</h4>
+                  <ul><li>url-aliases.md</li><li>component-rule.md</li><li>user.json</li><li>App đang chạy</li></ul>
+                </div>
+                <div class="io-box output">
+                  <h4>Output</h4>
+                  <ul><li>component_{alias}.md</li><li>component-rule.md</li><li>userflow-{group}.md</li><li>flow-index.md</li></ul>
+                </div>
+              </div>
+              <div class="qc-role"><strong>Vai trò QC</strong>Rà soát component, field, validation, toolbar action, happy path và các luồng phụ.</div>
+            </div>
+          </article>
+
+          <article class="stage-card">
+            <div class="stage-head">
+              <small>Giai đoạn 3</small>
+              <h3>Mapping Page Object</h3>
+            </div>
+            <div class="stage-body">
+              <p><strong>Luồng:</strong> <code>qc_map_flow</code> → <code>qc_url_page_map</code> → <code>qc_sub-system-map</code>.</p>
+              <div class="io-grid">
+                <div class="io-box input">
+                  <h4>Input</h4>
+                  <ul><li>component_{alias}.md</li><li>component-rule.md</li><li>userflow-{group}.md</li><li>url-aliases.md</li></ul>
+                </div>
+                <div class="io-box output">
+                  <h4>Output</h4>
+                  <ul><li>{Alias}Locator.ts</li><li>{Alias}Page.ts</li><li>locator-map.md</li><li>sub-system-map.json</li></ul>
+                </div>
+              </div>
+              <div class="qc-role"><strong>Vai trò QC</strong>Xác nhận locator ổn định, action method đúng nghiệp vụ và mapping đúng màn hình.</div>
+            </div>
+          </article>
+
+          <article class="stage-card">
+            <div class="stage-head">
+              <small>Giai đoạn 4</small>
+              <h3>Sinh Test Case</h3>
+            </div>
+            <div class="stage-body">
+              <p><strong>Luồng:</strong> <code>qc_generate &lt;PBI_ID&gt;</code> đọc spec, plan và user flow để sinh toàn bộ bộ test.</p>
+              <div class="io-grid">
+                <div class="io-box input">
+                  <h4>Input</h4>
+                  <ul><li>spec.md</li><li>plan.md</li><li>userflow-{group}.md</li><li>domain knowledge</li></ul>
+                </div>
+                <div class="io-box output">
+                  <h4>Output</h4>
+                  <ul><li>testcase.md</li><li>datafake.json</li><li>screen-summary.md</li><li>field-catalog.md</li></ul>
+                </div>
+              </div>
+              <div class="qc-role"><strong>Vai trò QC</strong>Review độ phủ, nhóm test, priority, Auto/Manual, dữ liệu test và tiêu chí chấp nhận.</div>
+            </div>
+          </article>
+
+          <article class="stage-card">
+            <div class="stage-head">
+              <small>Giai đoạn 5</small>
+              <h3>Chạy Test Tự động</h3>
+            </div>
+            <div class="stage-body">
+              <p><strong>Luồng:</strong> <code>qc_auto_test &lt;PBI_ID&gt;</code> sinh spec.ts, chạy theo thứ tự ưu tiên và ghi bằng chứng.</p>
+              <div class="io-grid">
+                <div class="io-box input">
+                  <h4>Input</h4>
+                  <ul><li>testcase.md</li><li>Page Object / Locator</li><li>datafake.json</li><li>user.json</li></ul>
+                </div>
+                <div class="io-box output">
+                  <h4>Output</h4>
+                  <ul><li>{PBI_ID}.spec.ts</li><li>trace per TC</li><li>screenshot lỗi</li><li>HISTORY.md + summary</li></ul>
+                </div>
+              </div>
+              <div class="qc-role"><strong>Vai trò QC</strong>Đánh giá precondition, độ tin cậy của assertion, data chaining, trace và trạng thái từng TC.</div>
+            </div>
+          </article>
+
+          <article class="stage-card">
+            <div class="stage-head">
+              <small>Giai đoạn 6</small>
+              <h3>Phân loại & Triage</h3>
+            </div>
+            <div class="stage-body">
+              <p><strong>Luồng:</strong> <code>qc_triage &lt;PBI_ID&gt;</code> đọc run gần nhất, phân loại và xác định severity.</p>
+              <div class="io-grid">
+                <div class="io-box input">
+                  <h4>Input</h4>
+                  <ul><li>HISTORY.md</li><li>run-summary.md</li><li>testcase.md</li><li>Trace / screenshot</li></ul>
+                </div>
+                <div class="io-box output">
+                  <h4>Output</h4>
+                  <ul><li>PASS</li><li>APP_BUG</li><li>INFRA</li><li>triage-{PBI_ID}-{DATE}.md</li></ul>
+                </div>
+              </div>
+              <div class="qc-role"><strong>Vai trò QC</strong>Ưu tiên loại trừ INFRA trước, sau đó xác nhận APP_BUG và đánh severity phù hợp.</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">3. Input / Output từng Skill</h2>
+        <p class="section-desc">
+          Có thể tìm kiếm theo tên skill, input, output hoặc lọc theo nhóm chức năng.
+          Nhấp vào hình thumbnail để xem ảnh mô tả đầy đủ.
+        </p>
+
+        <div class="toolbar">
+          <input id="search" type="search" placeholder="Tìm skill, input, output..." />
+          <select id="typeFilter">
+            <option value="all">Tất cả nhóm</option>
+            <option value="Internal">Internal</option>
+            <option value="Khám phá">Khám phá</option>
+            <option value="Mapping">Mapping</option>
+            <option value="Sinh test">Sinh test</option>
+            <option value="Thực thi">Thực thi</option>
+            <option value="Triage">Triage</option>
+          </select>
+        </div>
+
+        <div class="skill-table-wrap">
+          <table id="skillTable">
+            <thead>
+              <tr>
+                <th>Skill</th>
+                <th>Hình mô tả</th>
+                <th>Nhóm</th>
+                <th>Mục đích</th>
+                <th>Input chính</th>
+                <th>Output chính</th>
+                <th>Vai trò QC</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-type="Internal">
+                <td><code>qc_pre</code></td>
+                <td class="td-thumb">
+                  <img class="skill-thumb" src="Images/skills/qc_pre.png" alt="qc_pre" data-label="qc_pre — Khởi tạo project QC" />
+                  <span class="thumb-hint">🔍 click để xem</span>
+                </td>
+                <td><span class="pill internal">Orchestrator</span></td>
+                <td>Khởi tạo toàn bộ project QC.</td>
+                <td>.env, APP_URL, url-aliases.md cũ</td>
+                <td>Config, BasePage.ts, url-aliases.md</td>
+                <td>Xác nhận phạm vi màn hình và môi trường.</td>
+              </tr>
+              <tr data-type="Internal">
+                <td><code>qc_setup</code></td>
+                <td class="td-thumb">
+                  <span class="no-thumb">—</span>
+                </td>
+                <td><span class="pill internal">Internal</span></td>
+                <td>Cài Playwright, Chromium và tạo config.</td>
+                <td>.env, Chromium bundle</td>
+                <td>playwright.config.ts, global-setup.ts, tsconfig.json</td>
+                <td>Kiểm tra login, browser và cấu hình chạy.</td>
+              </tr>
+              <tr data-type="Internal">
+                <td><code>qc_basepage</code></td>
+                <td class="td-thumb">
+                  <span class="no-thumb">—</span>
+                </td>
+                <td><span class="pill internal">Internal</span></td>
+                <td>Tạo lớp common methods cho Page Object.</td>
+                <td>Template BasePage, APP_URL</td>
+                <td>BasePage.ts</td>
+                <td>Xác nhận hành vi chung đúng với UI.</td>
+              </tr>
+              <tr data-type="Khám phá">
+                <td><code>qc_detect_component</code></td>
+                <td class="td-thumb">
+                  <img class="skill-thumb" src="Images/skills/qc_detect_component.png" alt="qc_detect_component" data-label="qc_detect_component — Crawl DOM & phát hiện component" />
+                  <span class="thumb-hint">🔍 click để xem</span>
+                </td>
+                <td><span class="pill discovery">Khám phá</span></td>
+                <td>Crawl DOM và phát hiện component.</td>
+                <td>url-aliases.md, component-rule.md, session</td>
+                <td>component_{alias}.md</td>
+                <td>Review field, label, required, unknown input.</td>
+              </tr>
+              <tr data-type="Khám phá">
+                <td><code>qc_component_rule</code></td>
+                <td class="td-thumb">
+                  <img class="skill-thumb" src="Images/skills/qc_component_rule.png" alt="qc_component_rule" data-label="qc_component_rule — Chuẩn hóa selector rule" />
+                  <span class="thumb-hint">🔍 click để xem</span>
+                </td>
+                <td><span class="pill discovery">Khám phá</span></td>
+                <td>Chuẩn hóa selector rule cho component.</td>
+                <td>component_*.md, DOM references</td>
+                <td>component-rule.md</td>
+                <td>Đảm bảo selector ổn định và có ngữ nghĩa.</td>
+              </tr>
+              <tr data-type="Khám phá">
+                <td><code>qc_user_flow</code></td>
+                <td class="td-thumb">
+                  <img class="skill-thumb" src="Images/skills/qc_user_flow.png" alt="qc_user_flow" data-label="qc_user_flow — Crawl user flow thực tế" />
+                  <span class="thumb-hint">🔍 click để xem</span>
+                </td>
+                <td><span class="pill discovery">Khám phá</span></td>
+                <td>Crawl action, form, tab và user flow.</td>
+                <td>url-aliases.md, session, app</td>
+                <td>userflow-{group}.md, flow-index.md</td>
+                <td>Xác nhận happy path, phụ và validation.</td>
+              </tr>
+              <tr data-type="Mapping">
+                <td><code>qc_map_flow</code></td>
+                <td class="td-thumb">
+                  <img class="skill-thumb" src="Images/skills/qc_map_flow.png" alt="qc_map_flow" data-label="qc_map_flow — Sinh Locator.ts & Page.ts" />
+                  <span class="thumb-hint">🔍 click để xem</span>
+                </td>
+                <td><span class="pill mapping">Mapping</span></td>
+                <td>Sinh Locator.ts và Page.ts.</td>
+                <td>component, rule, userflow</td>
+                <td>Locator.ts, Page.ts, locator-map.md</td>
+                <td>Review tên action và locator tái sử dụng.</td>
+              </tr>
+              <tr data-type="Mapping">
+                <td><code>qc_url_page_map</code></td>
+                <td class="td-thumb">
+                  <img class="skill-thumb" src="Images/skills/qc_url_map.png" alt="qc_url_page_map" data-label="qc_url_page_map — Khớp alias với Page Object" />
+                  <span class="thumb-hint">🔍 click để xem</span>
+                </td>
+                <td><span class="pill mapping">Mapping</span></td>
+                <td>Khớp alias với Page Object.</td>
+                <td>url-aliases.md, Page/Locator files</td>
+                <td>url-page-map.md</td>
+                <td>Kiểm tra alias chưa khớp hoặc khớp sai.</td>
+              </tr>
+              <tr data-type="Mapping">
+                <td><code>qc_sub-system-map</code></td>
+                <td class="td-thumb">
+                  <img class="skill-thumb" src="Images/skills/qc_sub_system_map.png" alt="qc_sub-system-map" data-label="qc_sub-system-map — Mapping màn hình → group" />
+                  <span class="thumb-hint">🔍 click để xem</span>
+                </td>
+                <td><span class="pill mapping">Mapping</span></td>
+                <td>Sinh mapping màn hình → group.</td>
+                <td>url-page-map.md</td>
+                <td>sub-system-map.json</td>
+                <td>Xác nhận đúng group và màn hình của PBI.</td>
+              </tr>
+              <tr data-type="Sinh test">
+                <td><code>qc_generate</code></td>
+                <td class="td-thumb">
+                  <img class="skill-thumb" src="Images/skills/qc_generate.png" alt="qc_generate" data-label="qc_generate — Sinh test case & dữ liệu theo PBI" />
+                  <span class="thumb-hint">🔍 click để xem</span>
+                </td>
+                <td><span class="pill generate">Sinh test</span></td>
+                <td>Sinh test case và dữ liệu test theo PBI.</td>
+                <td>spec.md, plan.md, userflow, domain knowledge</td>
+                <td>testcase.md, datafake.json, knowledge/*.md</td>
+                <td>Review coverage, priority, Auto/Manual.</td>
+              </tr>
+              <tr data-type="Thực thi">
+                <td><code>qc_auto_test</code></td>
+                <td class="td-thumb">
+                  <img class="skill-thumb" src="Images/skills/qc_auto_test.png" alt="qc_auto_test" data-label="qc_auto_test — Sinh spec.ts, chạy test & lưu trace" />
+                  <span class="thumb-hint">🔍 click để xem</span>
+                </td>
+                <td><span class="pill execute">Thực thi</span></td>
+                <td>Sinh spec.ts, chạy test, lưu trace và history.</td>
+                <td>testcase, Page Object, session, datafake</td>
+                <td>spec.ts, trace, screenshot, HISTORY.md</td>
+                <td>Xác minh precondition, assertion và bằng chứng.</td>
+              </tr>
+              <tr data-type="Triage">
+                <td><code>qc_triage</code></td>
+                <td class="td-thumb">
+                  <img class="skill-thumb" src="Images/skills/qc_triage.png" alt="qc_triage" data-label="qc_triage — Phân loại kết quả & severity" />
+                  <span class="thumb-hint">🔍 click để xem</span>
+                </td>
+                <td><span class="pill triage">Triage</span></td>
+                <td>Phân loại kết quả và severity.</td>
+                <td>HISTORY.md, run-summary.md, testcase.md</td>
+                <td>triage report</td>
+                <td>Quyết định PASS / APP_BUG / INFRA và action.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="legend">
+          <span class="pill internal">Internal</span>
+          <span class="pill discovery">Khám phá</span>
+          <span class="pill mapping">Mapping</span>
+          <span class="pill generate">Sinh test</span>
+          <span class="pill execute">Thực thi</span>
+          <span class="pill triage">Triage</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background:var(--surface-soft);">
+      <div class="container">
+        <h2 class="section-title">4. Vai trò trung tâm của QC</h2>
+        <div class="stage-grid">
+          <article class="stage-card">
+            <div class="stage-body">
+              <h3>QC kiểm soát đầu vào</h3>
+              <p>Spec, plan, URL, session, dữ liệu test và phạm vi màn hình phải đủ và đúng trước khi automation chạy.</p>
+            </div>
+          </article>
+          <article class="stage-card">
+            <div class="stage-body">
+              <h3>QC kiểm soát độ phủ</h3>
+              <p>QC quyết định nhóm test, mức ưu tiên, TC nào Auto hay Manual và tiêu chí nào là đủ để chấp nhận PBI.</p>
+            </div>
+          </article>
+          <article class="stage-card">
+            <div class="stage-body">
+              <h3>QC kiểm soát độ tin cậy</h3>
+              <p>QC đánh giá assertion, trace, screenshot, session và data chaining để tránh false positive hoặc false negative.</p>
+            </div>
+          </article>
+          <article class="stage-card">
+            <div class="stage-body">
+              <h3>QC quyết định phân loại lỗi</h3>
+              <p>QCKit hỗ trợ tổng hợp bằng chứng, nhưng QC là người quyết định lỗi ứng dụng, lỗi hạ tầng và severity.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      Tài liệu HTML tổng hợp từ README.md và VNR-QCKIT-FLOW.md — cập nhật theo nội dung ngày 15/06/2026.
+    </div>
+  </footer>
+
+  <!-- ── Lightbox overlay ── -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Xem ảnh mô tả skill">
+    <div class="lightbox-inner" id="lightboxInner">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Đóng hình ảnh">✕</button>
+      <img id="lightboxImg" src="" alt="" />
+      <span class="lightbox-caption" id="lightboxCaption"></span>
+    </div>
+  </div>
+
+  <script>
+
+    /* ── Theme toggle ── */
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeLabel = document.getElementById('themeLabel');
+
+    function getPreferredTheme() {
+      const saved = localStorage.getItem('qckit-theme');
+      if (saved === 'light' || saved === 'dark') return saved;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function applyTheme(theme) {
+      root.setAttribute('data-theme', theme);
+      localStorage.setItem('qckit-theme', theme);
+      const isDark = theme === 'dark';
+      themeIcon.textContent = isDark ? '🌙' : '☀️';
+      themeLabel.textContent = isDark ? 'Dark' : 'Light';
+      themeToggle.setAttribute('aria-pressed', String(isDark));
+      themeToggle.setAttribute('title', isDark ? 'Chuyển sang Light mode' : 'Chuyển sang Dark mode');
+    }
+
+    applyTheme(getPreferredTheme());
+
+    themeToggle.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme') || 'light';
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+
+    /* ── Skill table search / filter ── */
+    const search = document.getElementById('search');
+    const filter = document.getElementById('typeFilter');
+    const rows = Array.from(document.querySelectorAll('#skillTable tbody tr'));
+
+    function applyFilter() {
+      const q = search.value.trim().toLowerCase();
+      const type = filter.value;
+
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        const rowType = row.dataset.type;
+        const visible = (!q || text.includes(q)) && (type === 'all' || rowType === type);
+        row.classList.toggle('hidden', !visible);
+      });
+    }
+
+    search.addEventListener('input', applyFilter);
+    filter.addEventListener('change', applyFilter);
+
+    /* ── Lightbox ── */
+    const lightbox      = document.getElementById('lightbox');
+    const lightboxImg   = document.getElementById('lightboxImg');
+    const lightboxCap   = document.getElementById('lightboxCaption');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxInner = document.getElementById('lightboxInner');
+
+    function openLightbox(src, label) {
+      lightboxImg.src   = src;
+      lightboxImg.alt   = label;
+      lightboxCap.textContent = label;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      lightboxClose.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+      lightboxImg.src = '';
+    }
+
+    /* Click on thumbnails */
+    document.querySelectorAll('.skill-thumb').forEach(img => {
+      img.addEventListener('click', () => {
+        openLightbox(img.src, img.dataset.label || img.alt);
+      });
+    });
+
+    /* Close via button */
+    lightboxClose.addEventListener('click', closeLightbox);
+
+    /* Close via backdrop click (not inner) */
+    lightbox.addEventListener('click', e => {
+      if (!lightboxInner.contains(e.target)) closeLightbox();
+    });
+
+    /* Close via Escape key */
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+    });
+  </script>
+</body>
+</html>
