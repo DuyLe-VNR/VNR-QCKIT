@@ -172,10 +172,12 @@ qc_pre                   qc_detect_component          qc_map_flow
 GĐ 4 — SINH TEST CASE    GĐ 5 — CHẠY TEST            GĐ 6 — PHÂN LOẠI
 ────────────────────     ─────────────────────        ─────────────────────
 qc_generate              qc_auto_test                 qc_triage
-  └─ testcase.md           └─ lọc TC Auto chưa PASS    └─ PASS / APP_BUG / INFRA
-  └─ datafake.json          └─ sinh/tái dùng spec.ts    └─ Severity table
-  └─ knowledge/*.md          └─ chạy Playwright          └─ triage-*.md
-                             └─ cập nhật testcase.md
+  └─ testcase.md           └─ lọc TC Auto chưa PASSED    └─ PASS / APP_BUG / INFRA
+  └─ datafake.json          └─ data chaining (context)    └─ Severity table
+  └─ knowledge/*.md          └─ sinh spec.ts có cấu trúc   └─ triage-*.md
+  └─ _IMPACT_INDEX.json      └─ playwright-cli (execution)
+                             └─ playwright-mcp (discovery)
+                             └─ cập nhật Mục 4 + Locator.ts
                              └─ HISTORY.md
 ```
 
@@ -195,7 +197,7 @@ qc_generate              qc_auto_test                 qc_triage
 | `/vnr-qckit:qc_url_page_map` | Mapping | Khớp alias → Page Object đã có → sinh url-page-map.md |
 | `/vnr-qckit:qc_sub-system-map` | Mapping | Trích xuất màn hình → group → sinh sub-system-map.json |
 | `/vnr-qckit:qc_generate` | Sinh test | Sinh testcase.md, datafake.json, knowledge/*.md từ spec PBI |
-| `/vnr-qckit:qc_auto_test` | Chạy test | Chạy TC Auto chưa PASS, cập nhật kết quả vào testcase.md |
+| `/vnr-qckit:qc_auto_test` | Chạy test | Chạy TC Auto chưa PASSED, sinh spec.ts có cấu trúc, data chaining, cập nhật kết quả |
 | `/vnr-qckit:qc_triage` | Phân tích | Phân loại PASS/APP_BUG/INFRA, sinh bảng Severity |
 | `/vnr-qckit:playwright_cli` | Driver | Điều khiển browser qua MCP (dùng bởi các skill khác) |
 
@@ -273,12 +275,14 @@ qc_generate              qc_auto_test                 qc_triage
 │                                                                         │
 │  /vnr-qckit:qc_generate <PBI_ID>                                        │
 │    ├── Đọc song song: spec.md, plan.md, userflow, domain-knowledge,     │
-│    │   mockup ảnh, data-catalog, sub-system-map.json                    │
-│    ├── Phân tích: màn hình, fields, business rules, nhóm TC             │
+│    │   mockup ảnh, testcase_template.md (nếu có)                        │
+│    ├── Phân tích: màn hình, fields, business rules, nhóm TC, --uutien   │
 │    ├── Sinh .specify/specs/{PBI_ID}/testcase.md                          │
-│    ├── Sinh .specify/specs/{PBI_ID}/datafake.json                        │
+│    │    (TC ID: template → {PBI_ID}_{GROUP}_NNN, fallback → TC-NNN)     │
+│    ├── Sinh .specify/tests/playwright/{PBI_ID}/datafake.json             │
 │    └── Sinh .specify/tests/knowledge/{PBI_ID}/screen-summary.md         │
 │               + field-catalog.md                                        │
+│               + _IMPACT_INDEX.json (tạo/cập nhật luôn)                 │
 └─────────────────────────────────────────────────────────────────────────┘
                                    │
                                    ▼
@@ -286,13 +290,24 @@ qc_generate              qc_auto_test                 qc_triage
 │  GIAI ĐOẠN 5 — CHẠY TEST TỰ ĐỘNG  (per PBI, lặp lại)                   │
 │                                                                         │
 │  /vnr-qckit:qc_auto_test <PBI_ID>                                       │
-│    ├── Đọc testcase.md → lọc TC Auto chưa PASSED (Mục 4)               │
-│    ├── Bóc tách bước → Page Object/Locator                              │
-│    ├── Sinh/tái sử dụng TC-{NNN}.spec.ts + {PBI_ID}.spec.ts            │
-│    ├── Chạy playwright-cli (execution) + playwright-mcp (discovery)    │
-│    ├── Cập nhật PageObject/Locator nếu phát hiện component mới         │
-│    ├── Ghi kết quả vào testcase.md (PASSED / FAILED / SKIPPED)         │
-│    └── Ghi HISTORY.md + run-summary.md                                  │
+│    ├── Đọc .env → testcase.md → sub-system-map.json                     │
+│    ├── Bóc tách Locator.ts + Page.ts per-màn hình                       │
+│    ├── Phân tích chuỗi phụ thuộc data giữa TC                           │
+│    ├── Cập nhật cột ⭐ trong Mục 4                                      │
+│    ├── Load session + login check + save session                        │
+│    ├── Sinh playwright/{PBI_ID}/{PBI_ID}.spec.ts (structured)           │
+│    │    (import Locator/Page via baseUrl, runtimeContext, describe/test) │
+│    ├── Sinh playwright/{PBI_ID}/{TC_ID}.spec.ts (per-TC)                │
+│    ├── Discovery [MISSING_SELECTOR] qua mcp browser_snapshot            │
+│    │    → cập nhật component_{alias}.md                                 │
+│    │    → cập nhật Locator.ts + Page.ts                                 │
+│    ├── Thực thi --uutien → p0 → p1 → p2...                              │
+│    │    playwright-cli (execution), mcp (discovery + Kendo combobox)    │
+│    ├── Data chaining: capture ID/name/URL từ TC sinh data               │
+│    ├── Exploratory assertions tự sinh theo loại TC                      │
+│    ├── trace per-TC → auto_test_results/traces/TC-{NNN}.zip             │
+│    ├── Cập nhật Mục 4 ngay sau mỗi TC                                   │
+│    └── Ghi HISTORY.md (Engine: cli+mcp) + run-summary.md               │
 └─────────────────────────────────────────────────────────────────────────┘
                                    │
                                    ▼
@@ -300,11 +315,12 @@ qc_generate              qc_auto_test                 qc_triage
 │  GIAI ĐOẠN 6 — PHÂN LOẠI KẾT QUẢ                                       │
 │                                                                         │
 │  /vnr-qckit:qc_triage <PBI_ID>                                          │
-│    ├── Đọc HISTORY.md → lấy run mới nhất                               │
+│    ├── Đọc auto_test_results/HISTORY.md → lấy run mới nhất             │
 │    ├── Đọc run-summary.md + testcase.md                                 │
 │    ├── Phân loại từng TC: ✅ PASS / 🐛 APP_BUG / 🔧 INFRA              │
+│    ├── Ưu tiên phân loại INFRA trước (có thể che giấu APP_BUG)         │
 │    ├── Xác định Severity: 🔴 Critical / 🟠 High / 🟡 Medium / 🟢 Low  │
-│    └── Sinh auto_test_results/triage-{PBI_ID}-{YYYYMMDD}.md             │
+│    └── Sinh auto_test_results/triage-{PBI_ID}-{YYYYMMDD}.md            │
 └─────────────────────────────────────────────────────────────────────────┘
                                    │
                       Fix lỗi → lặp lại GĐ 5 & 6
@@ -819,23 +835,27 @@ BƯỚC 5 → Báo cáo số lượng
 | `.specify/specs/{PBI_ID}/spec.md` | ✅ | **Thiếu → DỪNG ngay** |
 | `.specify/specs/{PBI_ID}/plan.md` | ✅ | **Thiếu → DỪNG ngay** |
 | `.specify/memory/userflow-{group}.md` | ✅ | **Thiếu → DỪNG, hỏi group màn hình** |
-| `.specify/templates/testcase_template.md` | — | Template chuẩn cho testcase.md (ưu tiên dùng) |
+| `.specify/templates/testcase_template.md` | — | Template chuẩn — **ưu tiên dùng khi có** |
 | `.specify/memory/constitution.md` | — | Quy tắc dự án |
 | `.specify/memory/domain-knowledge.md` | — | Business domain |
 | `.specify/specs/{PBI_ID}/assets/*.png,*.jpg` | — | UI mockup (đọc qua vision) |
 | `.specify/tests/data-catalog/categories/` | — | Dữ liệu thực (vendors, customers, ...) |
-| `.specify/memory/sub-system-map.json` | — | Kiểm tra Group/Màn hình hợp lệ |
-| `.specify/tests/knowledge/_IMPACT_INDEX.json` | — | Load business + impact knowledge |
 
 **Output:**
 
 | File | Trạng thái | Ghi chú |
 |---|---|---|
-| `.specify/specs/{PBI_ID}/testcase.md` | Tạo mới | Danh sách TC đầy đủ (Mục 1–5) |
-| `.specify/specs/{PBI_ID}/datafake.json` | Tạo mới | Data giả có nghĩa nghiệp vụ |
+| `.specify/specs/{PBI_ID}/testcase.md` | Tạo mới | Danh sách TC đầy đủ; ID format phụ thuộc template |
+| `.specify/tests/playwright/{PBI_ID}/datafake.json` | Tạo mới | Data giả có nghĩa nghiệp vụ |
 | `.specify/tests/knowledge/{PBI_ID}/screen-summary.md` | Tạo mới | Mô tả màn hình, luồng, business rules |
 | `.specify/tests/knowledge/{PBI_ID}/field-catalog.md` | Tạo mới | Danh mục field và validation |
-| `.specify/tests/knowledge/_IMPACT_INDEX.json` | Cập nhật nếu có | Thêm entry PBI_ID |
+| `.specify/tests/knowledge/_IMPACT_INDEX.json` | Tạo mới / cập nhật | **Luôn tạo/cập nhật** — không cần tạo thủ công |
+
+**TC ID format:**
+```
+Khi có template : {PBI_ID}_{GROUP}_{FEATURE_CODE}_{NNN}  (ví dụ: 15552_CAT_CHUYENKHO_001)
+Khi không có    : TC-NNN  (fallback)
+```
 
 **Nhóm test case sinh ra:**
 ```
@@ -848,20 +868,28 @@ P2 — Permission: phân quyền theo role
 
 **Phân loại Loại TC:**
 ```
-✅ Auto      — Playwright có thể thực thi hoàn toàn
-⚠️ Semi-Auto — Playwright thực thi một phần, cần confirm thủ công
-🖐 Manual    — Playwright không thể test (captcha, email, file upload)
+✅ Auto   — Toàn bộ steps qua Web browser, verify qua DOM, message lỗi đã xác định
+🖐 Manual — Thiết bị vật lý, visual check, message [TODO], data setup phức tạp trong DB
+```
+
+> **Mặc định là Auto** — chỉ chuyển Manual khi có lý do cụ thể. Mỗi TC phải có `Lý do loại`.
+
+**Khái niệm `--uutien`:**
+```
+TC thiết yếu nhất — nếu fail thì PBI không thể chấp nhận
+Mỗi PBI: 3–7 TC ưu tiên, không quá 40% tổng TC
+qc_auto_test chạy --uutien trước; nếu fail → dừng toàn bộ batch
 ```
 
 **Luồng xử lý (6 Bước):**
 ```
 Bước 1 → Đọc song song tất cả tài liệu
-Bước 2 → Phân tích spec: màn hình, fields, business rules, nhóm TC
-Bước 3 → Sinh testcase.md (theo template nếu có)
-Bước 4 → Sinh datafake.json (happy_path, validation, edge_cases)
+Bước 2 → Phân tích spec: màn hình, fields, business rules, nhóm TC; đánh dấu --uutien
+Bước 3 → Sinh testcase.md (dùng template nếu có; fallback TC-NNN)
+Bước 4 → Sinh datafake.json → .specify/tests/playwright/{PBI_ID}/
            Quy tắc: KHÔNG dùng foo/bar/test123; ưu tiên data-catalog → domain → format VN
 Bước 5 → Sinh knowledge/*.md (screen-summary, field-catalog)
-Bước 6 → Cập nhật _IMPACT_INDEX.json nếu tồn tại
+Bước 6 → Tạo/cập nhật _IMPACT_INDEX.json (luôn thực hiện)
 ```
 
 ---
@@ -876,73 +904,102 @@ Bước 6 → Cập nhật _IMPACT_INDEX.json nếu tồn tại
 |---|---|
 | **Gọi bằng** | `/vnr-qckit:qc_auto_test <PBI_ID>` |
 | **Arguments** | `<PBI_ID>` (bắt buộc) / `--reset TC-001,TC-002` / `--reset-all` / `--uutien TC-001` |
-| **Mục đích** | Chạy TC Auto chưa PASSED, cập nhật kết quả vào testcase.md Mục 4 |
+| **Mục đích** | Chạy TC Auto chưa PASSED, sinh spec.ts có cấu trúc (import Locator/Page), thực thi, data chaining giữa TC, cập nhật kết quả vào testcase.md |
 | **Tools** | `playwright-cli` (execution) + `playwright-mcp` (discovery DOM khi cần) |
 
 **Phân công tool:**
 ```
 playwright-cli  → MỌI thao tác thực thi:
-                  navigate, fill, click, check, assert_visible/text/url/value, run_test
+                  navigate, fill, click, check, assert_visible/text/url/value/count/hidden
+                  evaluate (auth guard, capture ID/URL/text từ DOM)
+                  screenshot, load/save_storage_state, tracing_start/stop
 
-playwright-mcp  → CHỈ dùng cho discovery:
-                  browser_snapshot (tìm selector mới)
-                  browser_click + browser_type + browser_snapshot (Kendo combobox popup)
-                  browser_current_url (kiểm tra redirect auth guard)
+playwright-mcp  → CHỈ dùng cho 2 trường hợp:
+                  browser_snapshot  (discovery selector component mới chưa có trong Locator.ts)
+                  Kendo combobox sequence: browser_click + browser_type + browser_snapshot + browser_click
 ```
 
-**Input:**
+**Input (đọc theo thứ tự, không gom song song):**
 
-| File | Bắt buộc | Ghi chú |
+| File | Bắt buộc | Thứ tự đọc |
 |---|---|---|
-| `.specify/specs/{PBI_ID}/testcase.md` | ✅ | Mục 4 — nguồn TC + kết quả; thiếu → DỪNG |
-| `.specify/specs/{PBI_ID}/datafake.json` | ✅ | Dữ liệu test; thiếu → DỪNG |
-| `.specify/tests/pages/BasePage.ts` | ✅ | Thiếu → nhắc chạy `/qc_basepage` |
-| `.specify/tests/user.json` | ✅ | Session login |
-| `.specify/tests/.env` + `.env.{ENV}` | ✅ | APP_URL |
-| `.specify/rules/component-rule.md` | — | Selector hints khi gặp component mới |
-| `auto_test_results/TC-{NNN}.spec.ts` | — | Tái sử dụng nếu bước TC không đổi |
+| `.specify/tests/.env` + `.env.{ENV}` | ✅ | 1 — lấy APP_URL |
+| `.specify/specs/{PBI_ID}/testcase.md` | ✅ | 2 — lọc TC, cập nhật cột ⭐ |
+| `.specify/memory/sub-system-map.json` | ✅ | 3 — lấy URL + Locator/Page path |
+| `{AliasName}Locator.ts` + `{AliasName}Page.ts` | ✅ | 4 — per-màn hình |
+| `.specify/tests/user.json` | ✅ | 5 — trước login check |
+| `.specify/tests/playwright/{PBI_ID}/datafake.json` | ✅ | 6 — trước khi sinh spec.ts |
 
 **Output:**
 
 | File | Trạng thái | Ghi chú |
 |---|---|---|
-| `.specify/specs/{PBI_ID}/testcase.md` | Cập nhật Mục 4 | Thêm Kết quả thực tế + Chạy lúc |
-| `auto_test_results/{PBI_ID}.spec.ts` | Tạo / ghi đè | Script batch (ghi đè mỗi lần chạy) |
-| `auto_test_results/TC-{NNN}.spec.ts` | Tạo / tái dùng | Script per-TC (tái sử dụng nếu bước không đổi) |
-| `auto_test_results/run-{DATETIME}.json` | Tạo mới | Playwright raw output |
-| `auto_test_results/run-{DATETIME}-summary.md` | Tạo mới | Tóm tắt lần chạy |
-| `auto_test_results/HISTORY.md` | Append | Lịch sử tất cả lần chạy |
-| `.specify/tests/runs/{PBI_ID}.spec.ts` | Tạm | Copy để Playwright chạy |
+| `.specify/specs/{PBI_ID}/testcase.md` | Cập nhật | Cột Trạng thái + cột ⭐ trong Mục 4 |
+| `.specify/tests/playwright/{PBI_ID}/{PBI_ID}.spec.ts` | Tạo mới | Tất cả TC trong 1 file (chạy batch) |
+| `.specify/tests/playwright/{PBI_ID}/{TC_ID}.spec.ts` | Tạo mới | 1 file / 1 TC (rerun đơn lẻ) |
+| `.specify/specs/{PBI_ID}/auto_test_results/traces/TC-{NNN}.zip` | Tạo mới | Trace per-TC |
+| `.specify/specs/{PBI_ID}/auto_test_results/screenshots/TC-{NNN}-fail-*.png` | Khi FAILED | Ảnh chụp khi thất bại / auth expired |
+| `.specify/specs/{PBI_ID}/auto_test_results/run-{DATETIME}-summary.md` | Tạo mới | Tóm tắt lần chạy + data chaining + component mới |
+| `.specify/specs/{PBI_ID}/auto_test_results/HISTORY.md` | Append | Lịch sử chạy (Engine: cli+mcp; cột New components) |
+| `.specify/memory/components/component_{alias}.md` | Cập nhật nếu có component mới | Tag `[NEW - /qc_auto_test {PBI_ID}]` |
+| `{AliasName}Locator.ts` / `{AliasName}Page.ts` | Cập nhật nếu cần | Thêm selector/method mới |
 
-**Logic tái sử dụng script:**
+**Cấu trúc spec.ts sinh ra:**
+```typescript
+// {PBI_ID}.spec.ts — sinh bởi /qc_auto_test
+import { CatLeaveDayTypePage } from 'pages/cat/cat_leave_day_type/CatLeaveDayTypePage'
+import datafake from './datafake.json'
+
+// Runtime context — data sinh từ TC trước dùng cho TC sau
+const runtimeContext = { createdId: undefined, createdName: undefined, selectedValues: {} }
+
+test.describe('⭐ --uutien', () => {
+  test.beforeEach(async ({ page }) => { await checkAuthGuard(page) })
+  test('[TC-001] @auto @uutien — Tên TC', async ({ page }) => { ... })
+})
+test.describe('p0', () => { ... })
+test.describe('p1', () => { ... })
 ```
-TC-{NNN}.spec.ts đã có + bước TC KHÔNG đổi → GIỮ NGUYÊN (không sinh lại)
-TC-{NNN}.spec.ts đã có + bước TC ĐÃ ĐỔI  → SINH LẠI
+
+**Data chaining giữa TC:**
+```
+TC sinh data (tạo/sửa/xóa)  → capture ID/name/URL vào runtimeContext ngay sau PASSED
+TC dùng data từ TC trước      → đọc runtimeContext trước, fallback về datafake nếu chưa có
 ```
 
 **Quy tắc quan trọng:**
 ```
-TC có ✅ PASSED → KHÔNG chạy lại (trừ --reset)
-TC có ❌ FAILED / ⏭ SKIPPED → chạy lại lần tiếp theo
-Chỉ chạy TC Loại = ✅ Auto, bỏ qua Semi-Auto và Manual
-Thứ tự ưu tiên chạy: --uutien → p0 → p1 → p2 → ...
+TC ✅ PASSED / ❌ FAILED  → KHÔNG chạy lại (trừ --reset)
+TC ⏭ SKIPPED / ⬜ Chưa test → chạy lại lần tiếp
+Chỉ chạy TC Loại = ✅ Auto; bỏ qua Manual
+Thứ tự ưu tiên: --uutien → p0 → p1 → p2 → ...
+TC --uutien FAILED → dừng toàn bộ batch
+Login check bắt buộc → PASSED phải save_storage_state ngay; FAILED → dừng
+playwright.config.ts phải có testDir: './playwright'
 ```
 
 **Luồng xử lý (8 Bước):**
 ```
-Bước 0 → Đọc .env → APP_URL
-Bước 1 → Đọc testcase.md Mục 4 → lọc TC Auto chưa PASSED
-Bước 2 → Đọc datafake.json + BasePage.ts + component-rule.md
-Bước 3 → Bóc tách bước từng TC → xác định Page Object + Locator cần dùng
-          Kiểm tra script tái sử dụng; sinh/cập nhật TC-NNN.spec.ts + batch spec
-Bước 4 → playwright-cli load_storage_state user.json
-          Copy spec → .specify/tests/runs/
-          Chạy: playwright-cli run_test hoặc npx playwright test
-Bước 5 → Parse output → PASSED / FAILED / SKIPPED từng TC
-          Nếu FAILED: playwright-mcp browser_snapshot để discovery DOM nếu cần
-Bước 6 → Cập nhật testcase.md Mục 4 (Kết quả thực tế + Chạy lúc)
-Bước 7 → Ghi run-{DATETIME}-summary.md + append HISTORY.md
-Bước 8 → Cập nhật bảng Tóm tắt trong testcase.md (cột Đã pass)
+Bước 0 → Đọc .env → testcase.md (lọc, sort, cập nhật ⭐) → sub-system-map.json
+           Đọc Locator.ts + Page.ts per-màn hình → bóc tách selector + method
+           Phân tích chuỗi phụ thuộc data giữa TC (runtime_context analysis)
+Bước 1 → Load user.json → playwright-cli load_storage_state → login check
+           PASSED → save_storage_state ngay
+Bước 2 → Đọc datafake.json → sinh spec.ts có cấu trúc
+           Discovery [MISSING_SELECTOR] qua browser_snapshot (mcp)
+           Cập nhật component_{alias}.md + Locator.ts + Page.ts nếu có component mới
+Bước 3 → Thực thi từng TC tuần tự (playwright-cli chính):
+           A. tracing_start per-TC
+           B. Auth guard check: evaluate "window.location.href"
+           C. Inject runtime context → thực thi bước
+           D. Assertion chính + Exploratory assertions (tự sinh theo loại TC)
+           E. Capture runtime context nếu TC sinh data (sau PASSED)
+           F. tracing_stop → traces/TC-{NNN}.zip
+           G. Cập nhật Mục 4 ngay → kiểm tra điều kiện dừng
+Bước 4 → Xác định trạng thái cuối từng TC
+Bước 5 → Ghi run-{DATETIME}-summary.md (Data Chaining log + Exploratory Warnings + Component mới)
+Bước 6 → Append HISTORY.md (Engine: cli+mcp; cột New components)
+Bước 7 → Cập nhật bảng Tóm tắt trong testcase.md
 ```
 
 ---
@@ -963,15 +1020,15 @@ Bước 8 → Cập nhật bảng Tóm tắt trong testcase.md (cột Đã pass)
 
 | File | Bắt buộc | Ghi chú |
 |---|---|---|
-| `auto_test_results/HISTORY.md` | ✅ | Thiếu → DỪNG (nhắc chạy qc_auto_test trước) |
-| `auto_test_results/run-{DATETIME}-summary.md` | Ưu tiên | Summary của run mới nhất |
+| `.specify/specs/{PBI_ID}/auto_test_results/HISTORY.md` | ✅ | Thiếu → DỪNG (nhắc chạy qc_auto_test trước) |
+| `.specify/specs/{PBI_ID}/auto_test_results/run-{DATETIME}-summary.md` | Ưu tiên | Summary của run mới nhất |
 | `.specify/specs/{PBI_ID}/testcase.md` | ✅ | Lấy mô tả, nhóm, priority, kết quả inline |
 
 **Output:**
 
 | File | Trạng thái | Ghi chú |
 |---|---|---|
-| `auto_test_results/triage-{PBI_ID}-{YYYYMMDD}.md` | Tạo / ghi đè | Báo cáo phân loại đầy đủ + hành động tiếp theo |
+| `.specify/specs/{PBI_ID}/auto_test_results/triage-{PBI_ID}-{YYYYMMDD}.md` | Tạo / ghi đè | Báo cáo phân loại đầy đủ + hành động tiếp theo |
 
 **3 loại phân loại:**
 
@@ -1038,12 +1095,12 @@ Bước 5 → Báo cáo console: tổng quan + bug nổi bật + bước tiếp 
 | `qc_detect_component` | `url-aliases.md`, `component-rule.md`, session | `components/component_{alias}.md` | Ghi đè |
 | `qc_component_rule` | `component_*.md`, DOM reference | `component-rule.md` | Append |
 | `qc_user_flow` | `url-aliases.md`, session | `userflow-{group}.md`, `flow-index.md` | Cập nhật |
-| `qc_map_flow` | `component_temp_{alias}.md`, `component-rule.md`, `userflow.md` | `{AliasLocator}.ts`, `{AliasPage}.ts`, `locator-map.md` | Ghi đè |
+| `qc_map_flow` | `component_temp_{alias}.md`, `component-rule.md`, `userflow-{group}.md` | `{AliasLocator}.ts`, `{AliasPage}.ts`, `locator-map.md` | Ghi đè |
 | `qc_url_page_map` | `url-aliases.md`, `*Page.ts`, `*Locator.ts` | `url-page-map.md` | Ghi đè |
 | `qc_sub-system-map` | `url-page-map.md` | `sub-system-map.json` | Ghi đè |
-| `qc_generate` | `spec.md`, `plan.md`, `userflow-*.md` | `testcase.md`, `datafake.json`, `knowledge/*.md` | Tạo mới |
-| `qc_auto_test` | `testcase.md`, `datafake.json`, `BasePage.ts`, session | `testcase.md` (cập nhật), `*.spec.ts`, `HISTORY.md` | Cập nhật/Append |
-| `qc_triage` | `HISTORY.md`, `run-summary.md`, `testcase.md` | `triage-{PBI_ID}-{YYYYMMDD}.md` | Ghi đè |
+| `qc_generate` | `spec.md`, `plan.md` (cả hai bắt buộc), `userflow-{group}.md` | `testcase.md`, `playwright/{PBI_ID}/datafake.json`, `knowledge/*.md`, `_IMPACT_INDEX.json` | Tạo mới |
+| `qc_auto_test` | `testcase.md`, `playwright/{PBI_ID}/datafake.json`, `sub-system-map.json`, `Locator.ts`/`Page.ts` | `playwright/{PBI_ID}/{PBI_ID}.spec.ts` + per-TC spec, `traces/`, `screenshots/`, `HISTORY.md`; cập nhật Mục 4 + Locator.ts/Page.ts nếu có component mới | Cập nhật/Append |
+| `qc_triage` | `HISTORY.md`, `run-summary.md`, `testcase.md` | `triage-{PBI_ID}-{YYYYMMDD}.md` | Ghi đè (cùng ngày) |
 
 ---
 
@@ -1055,12 +1112,15 @@ Bước 5 → Báo cáo console: tổng quan + bug nổi bật + bước tiếp 
 │   ├── .env                              ← INPUT: ENV=local
 │   ├── .env.local                        ← INPUT: APP_URL=..., PW_HEADLESS=false
 │   ├── user.json                         ← Session state (sinh bởi global-setup.ts)
-│   ├── playwright.config.ts              ← [qc_setup] cấu hình Playwright
+│   ├── playwright.config.ts              ← [qc_setup] testDir: './playwright'
 │   ├── global-setup.ts                   ← [qc_setup] login + lưu user.json
-│   ├── tsconfig.json                     ← [qc_setup] TypeScript config
+│   ├── tsconfig.json                     ← [qc_setup] baseUrl: "."
 │   ├── url-aliases.md                    ← [qc_pre] alias → path từ crawl navigation
-│   ├── runs/                             ← Thư mục chạy test (testDir)
-│   │   └── {PBI_ID}.spec.ts             ← [qc_auto_test] copy tạm để Playwright chạy
+│   ├── playwright/                       ← testDir — Playwright chạy từ đây
+│   │   └── {PBI_ID}/
+│   │       ├── {PBI_ID}.spec.ts         ← [qc_auto_test] tất cả TC (batch)
+│   │       ├── {TC_ID}.spec.ts          ← [qc_auto_test] per-TC (rerun đơn)
+│   │       └── datafake.json            ← [qc_generate] dữ liệu test
 │   ├── pages/
 │   │   ├── BasePage.ts                   ← [qc_basepage] lớp cha common methods
 │   │   ├── url-page-map.md               ← [qc_url_page_map] alias → Page Object
@@ -1071,7 +1131,7 @@ Bước 5 → Báo cáo console: tổng quan + bug nổi bật + bước tiếp 
 │   ├── data-catalog/                     ← INPUT cho qc_generate
 │   │   └── categories/
 │   └── knowledge/
-│       ├── _IMPACT_INDEX.json            ← [qc_generate] cập nhật per PBI
+│       ├── _IMPACT_INDEX.json            ← [qc_generate] tạo/cập nhật per PBI
 │       ├── {PBI_ID}/
 │       │   ├── screen-summary.md         ← [qc_generate]
 │       │   └── field-catalog.md          ← [qc_generate]
@@ -1084,20 +1144,19 @@ Bước 5 → Báo cáo console: tổng quan + bug nổi bật + bước tiếp 
 │       ├── plan.md                       ← INPUT bắt buộc cho qc_generate
 │       ├── assets/*.png                  ← INPUT optional (UI mockup)
 │       ├── testcase.md                   ← [qc_generate] sinh; [qc_auto_test] cập nhật
-│       ├── datafake.json                 ← [qc_generate]
 │       └── auto_test_results/
-│           ├── {PBI_ID}.spec.ts          ← [qc_auto_test] batch, ghi đè mỗi lần
-│           ├── TC-{NNN}.spec.ts          ← [qc_auto_test] per-TC, tái sử dụng
-│           ├── run-{DATETIME}.json       ← [qc_auto_test] Playwright raw output
-│           ├── run-{DATETIME}-summary.md ← [qc_auto_test]
-│           ├── HISTORY.md                ← [qc_auto_test] lịch sử tất cả lần chạy
+│           ├── traces/
+│           │   └── TC-{NNN}.zip          ← [qc_auto_test] trace per-TC
+│           ├── screenshots/
+│           │   └── TC-{NNN}-fail-*.png   ← [qc_auto_test] ảnh khi FAILED / auth expired
+│           ├── run-{DATETIME}-summary.md ← [qc_auto_test] Data Chaining log + Component mới
+│           ├── HISTORY.md                ← [qc_auto_test] lịch sử chạy (Engine: cli+mcp)
 │           └── triage-{PBI_ID}-{YYYYMMDD}.md ← [qc_triage]
 │
 ├── memory/
 │   ├── constitution.md                   ← INPUT (quy tắc dự án)
 │   ├── domain-knowledge.md               ← INPUT (business domain)
 │   ├── flow-index.md                     ← [qc_user_flow] index thời gian + trạng thái
-│   ├── flow-{MA_PHAN_HE}.md              ← INPUT cho qc_generate (flow nghiệp vụ)
 │   ├── userflow-{group}.md               ← [qc_user_flow] ASCII diagram + mô tả
 │   ├── sub-system-map.json               ← [qc_sub-system-map]
 │   └── components/
@@ -1107,7 +1166,7 @@ Bước 5 → Báo cáo console: tổng quan + bug nổi bật + bước tiếp 
 │   └── component-rule.md                 ← [qc_component_rule] selector rules
 │
 └── templates/
-    └── testcase_template.md              ← INPUT template cho qc_generate
+    └── testcase_template.md              ← INPUT template cho qc_generate (optional)
 ```
 
 ---
@@ -1129,8 +1188,11 @@ Bước 5 → Báo cáo console: tổng quan + bug nổi bật + bước tiếp 
 - Skill **không thay đổi** `.env` nếu file đã tồn tại.
 - `qc_pre` tự gọi `qc_setup` và `qc_basepage` — không cần gọi riêng khi init project.
 - `qc_basepage` và `qc_setup` là internal — không chạy tự động trong pipeline ngoài `qc_pre`.
-- TC đã `✅ PASSED` sẽ **không chạy lại** ở lần sau (trừ khi dùng `--reset`).
-- `playwright-cli` = mọi thao tác execution; `playwright-mcp` = chỉ discovery DOM khi cần.
+- TC đã `✅ PASSED` / `❌ FAILED` sẽ **không chạy lại** ở lần sau (trừ khi dùng `--reset`).
+- TC `⏭ SKIPPED` / `⬜ Chưa test` **sẽ chạy lại** lần tiếp theo.
+- `playwright-cli` = mọi thao tác execution; `playwright-mcp` = chỉ discovery DOM (selector mới + Kendo combobox).
+- `datafake.json` lưu tại `.specify/tests/playwright/{PBI_ID}/` (cùng thư mục spec.ts).
+- `playwright.config.ts` phải có `testDir: './playwright'` và `tsconfig.json` có `baseUrl: "."`.
 - Ưu tiên loại trừ INFRA **trước** khi kết luận APP_BUG trong qc_triage.
 
 **Thứ tự chạy đề xuất (project mới):**
@@ -1143,3 +1205,5 @@ qc_pre → qc_detect_component → qc_component_rule → qc_user_flow
 ---
 
 > Tài liệu chi tiết (format file, ví dụ đầy đủ, locator strategy): xem [VNR-QCKIT-FLOW.md](./VNR-QCKIT-FLOW.md)
+>
+> Cập nhật: 2026-06-15
