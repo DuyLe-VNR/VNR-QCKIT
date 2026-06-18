@@ -2,7 +2,8 @@ Backend/
 Frontend/
 node_modules/
 .specify/tests/test-results/
-.env.*
+.env.prod
+.env.staging
 user.json
 logs/
 .playwright-mcp/
